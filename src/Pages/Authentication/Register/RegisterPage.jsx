@@ -1,5 +1,6 @@
 import Lottie from "lottie-react";
 import registrationAnimation from "../../../../src/assets/animations/form registration.json";
+import RegisterForm from "./RegisterForm";
 
 const RegisterPage = () => {
   return (
@@ -35,6 +36,7 @@ const RegisterPage = () => {
               Create Account
             </h2>
           </div>
+          <RegisterForm />
         </div>
       </div>
     </div>
