@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Field from "../../Shared/components/Field";
 import SocialLogin from "../SocialLogin/SocialLogin";
 
@@ -45,6 +46,18 @@ const LoginForm = () => {
       </div>
 
       <SocialLogin />
+
+      <div className="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800 text-center">
+        <p className="text-sm text-slate-600 dark:text-slate-400">
+          Don't have an account?{" "}
+          <Link
+            to="/register"
+            className="font-bold text-sky-600 hover:text-sky-500 transition-colors underline underline-offset-4"
+          >
+            Create an Account
+          </Link>
+        </p>
+      </div>
     </form>
   );
 };
