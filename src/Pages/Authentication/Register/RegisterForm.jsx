@@ -1,16 +1,42 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Field from "../../Shared/components/Field";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 
 const RegisterForm = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setError,
+    reset,
   } = useForm();
 
-  const submitForm = async (formData) => {
-    console.log(formData);
+  const submitForm = async (data) => {
+    const payload = {
+      fullName: `${data.firstName} ${data.lastName}`,
+      email: data.email,
+      password: data.password,
+    };
+    try {
+      const res = await axios.post(
+        `${import.meta.env.VITE_SERVER_BASE_URL}/register`,
+        payload,
+      );
+      if (res?.status === 201) {
+        navigate("/login");
+      }
+      console.log(res);
+    } catch (err) {
+      setError("root.serverError", {
+        type: "server",
+        message:
+          err.response?.data?.message ||
+          "Something went wrong. Please try again.",
+      });
+    }
+    reset();
   };
   return (
     <form
@@ -64,7 +90,11 @@ const RegisterForm = () => {
           placeholder="••••••••"
         />
       </Field>
-      <p>{errors?.root?.random?.message}</p>
+      {errors?.root?.serverError && (
+        <p className="text-red-500 text-sm">
+          {errors.root.serverError.message}
+        </p>
+      )}
 
       <div className="pt-2">
         <button
