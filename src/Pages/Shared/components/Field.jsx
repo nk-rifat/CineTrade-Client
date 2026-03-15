@@ -3,7 +3,7 @@ import React from "react";
 const Field = ({ label, children, htmlFor, error }) => {
   const id = htmlFor || getChildId(children);
   return (
-    <div className="">
+    <div className="mt-2">
       {label && (
         <label htmlFor={id} className="">
           {label}

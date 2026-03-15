@@ -1,5 +1,6 @@
 import Lottie from "lottie-react";
 import loginAnimation from "../../../../src/assets/animations/Login.json";
+import LoginForm from "./LoginForm";
 
 const LoginPage = () => {
   return (
@@ -31,16 +32,15 @@ const LoginPage = () => {
       {/* Right: Login Form */}
       <div className="flex items-center justify-center p-6 sm:p-12">
         <div className="w-full max-w-md bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-xl lg:shadow-none lg:bg-transparent">
-          <div className="mb-8">    
+          <div className="mb-8">
             <h2 className="text-2xl font-bold text-slate-800 dark:text-white">
               Sign In
             </h2>
             <p className="text-slate-500 text-sm mt-1">
               Please enter your details to continue.
             </p>
+            <LoginForm />
           </div>
-
-          <div className="mt-8 pt-6 border-t border-slate-100 dark:border-slate-700 text-center"></div>
         </div>
       </div>
     </div>
