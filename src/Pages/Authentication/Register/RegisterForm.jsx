@@ -1,30 +1,46 @@
 import { Link } from "react-router-dom";
 import Field from "../../Shared/components/Field";
+import { useForm } from "react-hook-form";
 
 const RegisterForm = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const submitForm = async (formData) => {
+    console.log(formData);
+  };
   return (
-    <form className="space-y-4 pb-10 lg:pb-[60px]">
-      <Field label="First Name">
+    <form
+      onSubmit={handleSubmit(submitForm)}
+      className="space-y-4 pb-10 lg:pb-[60px]"
+    >
+      <Field label="First Name" error={errors.firstName}>
         <input
-          className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all placeholder:text-slate-400"
+          {...register("firstName", { required: "First Name is Required" })}
+          className={`w-full px-4 py-3 rounded-xl border  dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all placeholder:text-slate-400 ${errors.firstName ? "border-red-500" : "border-slate-200"}`}
           type="text"
           name="firstName"
           id="firstName"
           placeholder="Enter your First Name"
         />
       </Field>
-      <Field label="Last Name">
+      <Field label="Last Name" error={errors.lastName}>
         <input
-          className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all placeholder:text-slate-400"
+          {...register("lastName", { required: "Last Name is Required" })}
+          className={`w-full px-4 py-3 rounded-xl border  dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all placeholder:text-slate-400 ${errors.lastName ? "border-red-500" : "border-slate-200"}`}
           type="text"
           name="lastName"
           id="lastName"
           placeholder="Enter your Last Name"
         />
       </Field>
-      <Field label="Email">
+      <Field label="Email" error={errors.email}>
         <input
-          className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all placeholder:text-slate-400"
+          {...register("email", { required: "Email is Required" })}
+          className={`w-full px-4 py-3 rounded-xl border  dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all placeholder:text-slate-400 ${errors.email ? "border-red-500" : "border-slate-200"}`}
           type="email"
           name="email"
           id="email"
@@ -32,15 +48,23 @@ const RegisterForm = () => {
         />
       </Field>
 
-      <Field label="Password">
+      <Field label="Password" error={errors.password}>
         <input
-          className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all placeholder:text-slate-400"
+          {...register("password", {
+            required: "Password is Required",
+            minLength: {
+              value: 8,
+              message: "Your password must be at least 8 characters ",
+            },
+          })}
+          className={`w-full px-4 py-3 rounded-xl border dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all placeholder:text-slate-400 ${errors.password ? "border-red-500" : "border-slate-200 "}`}
           type="password"
           name="password"
           id="password"
           placeholder="••••••••"
         />
       </Field>
+      <p>{errors?.root?.random?.message}</p>
 
       <div className="pt-2">
         <button

@@ -27,7 +27,7 @@ const NavDropdown = ({ title, items, currentFilter }) => (
       tabIndex={0}
       className="dropdown-content menu bg-white dark:bg-slate-800 rounded-box z-[20] w-[350px] p-4 shadow-2xl border border-slate-100 dark:border-slate-700 mt-2"
     >
-      <div className="grid grid-cols-2 gap-1">
+      <ul className="grid grid-cols-2 gap-1">
         {items.map((item) => (
           <li key={item}>
             <Link
@@ -38,7 +38,7 @@ const NavDropdown = ({ title, items, currentFilter }) => (
             </Link>
           </li>
         ))}
-      </div>
+      </ul>
     </div>
   </li>
 );
