@@ -4,6 +4,7 @@ import axiosPublic, { setAccessToken } from "../api/axios";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  console.log(user);
 
   const login = async ({ email, password }) => {
     const res = await axiosPublic.post("/login", { email, password });
@@ -11,15 +12,18 @@ const AuthProvider = ({ children }) => {
     setAccessToken(res.data.accessToken);
 
     setUser(res.data.user);
+    return res;
   };
 
   const register = async ({ fullName, email, password }) => {
-    await axiosPublic.post("register", { fullName, email, password });
+    return await axiosPublic.post("register", { fullName, email, password });
   };
 
   const logOut = async () => {
-    await axiosPublic("/logout");
+    const res = await axiosPublic("/logout");
     setUser(null);
+    setAccessToken(null);
+    return res;
   };
 
   return (

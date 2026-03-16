@@ -1,10 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
 import Field from "../../Shared/components/Field";
 import { useForm } from "react-hook-form";
-import axios from "axios";
+import Swal from "sweetalert2";
+import { useAuth } from "../../../hooks/useAuth";
 
 const RegisterForm = () => {
   const navigate = useNavigate();
+  const { register: registerUser } = useAuth();
+
   const {
     register,
     handleSubmit,
@@ -19,23 +22,48 @@ const RegisterForm = () => {
       email: data.email,
       password: data.password,
     };
+
+    console.log(data);
+
     try {
-      const res = await axios.post(
-        `${import.meta.env.VITE_SERVER_BASE_URL}/register`,
-        payload,
-      );
+      const res = await registerUser(payload);
+
       if (res?.status === 201) {
+        Swal.fire({
+          icon: "success",
+          title: "Registration Successful",
+          text: "You can now login!",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+
         navigate("/login");
+      } else {
+        // If API returned error in 200 response
+        Swal.fire({
+          icon: "error",
+          title: "Registration Failed",
+          text: res?.data?.message || "Please try again",
+        });
       }
-      console.log(res);
     } catch (err) {
+      // React Hook Form server error
       setError("root.serverError", {
         type: "server",
         message:
           err.response?.data?.message ||
           "Something went wrong. Please try again.",
       });
+
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text:
+          err.response?.data?.message ||
+          "Something went wrong. Please try again.",
+      });
     }
+
     reset();
   };
   return (
