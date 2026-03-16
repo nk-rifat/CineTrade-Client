@@ -13,8 +13,17 @@ const AuthProvider = ({ children }) => {
     setUser(res.data.user);
   };
 
+  const register = async ({ fullName, email, password }) => {
+    await axiosPublic.post("register", { fullName, email, password });
+  };
+
+  const logOut = async () => {
+    await axiosPublic("/logout");
+    setUser(null);
+  };
+
   return (
-    <AuthContext.Provider value={{ user, login }}>
+    <AuthContext.Provider value={{ user, login, register, logOut }}>
       {children}
     </AuthContext.Provider>
   );
