@@ -22,7 +22,7 @@ const Navbar = () => {
 
   const handleLogOut = async () => {
     await logOut();
-    navigate("/");
+    navigate("/login");
   };
 
   const activeClass = (path) =>
