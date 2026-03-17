@@ -1,20 +1,18 @@
-import { useState } from "react";
 import { Link, useLocation, useSearchParams } from "react-router-dom";
 import Logo from "../components/Logo";
 import Search from "../components/Search";
 import { categoryList } from "./navData";
 import NavDropdown from "./NavDropDown";
+import { useAuth } from "../../../hooks/useAuth";
 
 const Navbar = () => {
   const location = useLocation();
+  const { user, logOut } = useAuth();
   const [searchParams] = useSearchParams();
 
-  // TODO: replace with real auth user .
-  const [user, setUser] = useState({
-    displayName: "Admin",
-    photoURL:
-      "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp",
-  });
+  const getInitial = (name) => {
+    return name ? name.charAt(0).toUpperCase() : "?";
+  };
 
   const activeClass = (path) =>
     location.pathname === path
@@ -92,8 +90,18 @@ const Navbar = () => {
                 role="button"
                 className="btn btn-ghost btn-circle avatar border-2 border-sky-500"
               >
-                <div className="w-10 rounded-full border border-white">
-                  <img src={user.photoURL} alt="Profile" />
+                <div className="relative w-10 h-10 rounded-full overflow-hidden shadow-md">
+                  {user.photoURL ? (
+                    <img
+                      src={user.photoURL}
+                      alt="Profile"
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-200"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-sky-600 flex items-center justify-center text-white font-bold text-lg hover:bg-sky-500 transition-colors duration-200">
+                      {getInitial(user.fullName)}
+                    </div>
+                  )}
                 </div>
               </div>
               <ul
