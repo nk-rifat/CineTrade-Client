@@ -1,8 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Field from "../../Shared/components/Field";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
+import { useAuth } from "../../../hooks/useAuth";
 
 const LoginForm = () => {
+  const { login } = useAuth();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -11,8 +15,49 @@ const LoginForm = () => {
     reset,
   } = useForm();
 
-  const submitForm = (data) => {
-    console.log(data);
+  const submitForm = async (data) => {
+    const payload = {
+      email: data.email,
+      password: data.password,
+    };
+
+    console.log(payload)
+    try {
+      const res = await login(payload);
+      if (res?.status === 200) {
+        Swal.fire({
+          icon: "success",
+          title: "Login Successful",
+          timer: 1000,
+          showConfirmButton: false,
+        });
+
+        navigate("/");
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Login Failed",
+          text: res?.data?.message || "Please try again",
+        });
+      }
+    } catch (err) {
+      // React Hook Form server error
+      setError("root.serverError", {
+        type: "server",
+        message:
+          err.response?.data?.message ||
+          "Something went wrong. Please try again.",
+      });
+
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text:
+          err.response?.data?.message ||
+          "Something went wrong. Please try again.",
+      });
+    }
+    reset();
   };
 
   return (

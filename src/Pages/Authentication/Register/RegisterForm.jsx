@@ -23,8 +23,6 @@ const RegisterForm = () => {
       password: data.password,
     };
 
-    console.log(data);
-
     try {
       const res = await registerUser(payload);
 
@@ -33,13 +31,12 @@ const RegisterForm = () => {
           icon: "success",
           title: "Registration Successful",
           text: "You can now login!",
-          timer: 2000,
+          timer: 1000,
           showConfirmButton: false,
         });
 
         navigate("/login");
       } else {
-        // If API returned error in 200 response
         Swal.fire({
           icon: "error",
           title: "Registration Failed",
