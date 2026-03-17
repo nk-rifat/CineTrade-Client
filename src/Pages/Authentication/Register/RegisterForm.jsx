@@ -74,7 +74,7 @@ const RegisterForm = () => {
       <Field label="First Name" error={errors.firstName}>
         <input
           {...register("firstName", { required: "First Name is Required" })}
-          className={`w-full px-4 py-3 rounded-xl border  dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all placeholder:text-slate-400 ${errors.firstName ? "border-red-500" : "border-slate-200"}`}
+          className={`input-style ${errors.firstName ? "input-error" : ""}`}
           type="text"
           name="firstName"
           id="firstName"
@@ -84,7 +84,7 @@ const RegisterForm = () => {
       <Field label="Last Name" error={errors.lastName}>
         <input
           {...register("lastName", { required: "Last Name is Required" })}
-          className={`w-full px-4 py-3 rounded-xl border  dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all placeholder:text-slate-400 ${errors.lastName ? "border-red-500" : "border-slate-200"}`}
+          className={`input-style ${errors.firstName ? "input-error" : ""}`}
           type="text"
           name="lastName"
           id="lastName"
@@ -94,7 +94,7 @@ const RegisterForm = () => {
       <Field label="Email" error={errors.email}>
         <input
           {...register("email", { required: "Email is Required" })}
-          className={`w-full px-4 py-3 rounded-xl border  dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all placeholder:text-slate-400 ${errors.email ? "border-red-500" : "border-slate-200"}`}
+          className={`input-style ${errors.firstName ? "input-error" : ""}`}
           type="email"
           name="email"
           id="email"
@@ -111,7 +111,7 @@ const RegisterForm = () => {
               message: "Your password must be at least 8 characters ",
             },
           })}
-          className={`w-full px-4 py-3 rounded-xl border dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all placeholder:text-slate-400 ${errors.password ? "border-red-500" : "border-slate-200 "}`}
+          className={`input-style ${errors.firstName ? "input-error" : ""}`}
           type="password"
           name="password"
           id="password"

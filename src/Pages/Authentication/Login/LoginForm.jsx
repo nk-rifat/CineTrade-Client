@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import Field from "../../Shared/components/Field";
-import SocialLogin from "../SocialLogin/SocialLogin";
 import { useForm } from "react-hook-form";
 
 const LoginForm = () => {
@@ -24,7 +23,7 @@ const LoginForm = () => {
       <Field label="Email" error={errors.email}>
         <input
           {...register("email", { required: "Email is required" })}
-          className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all placeholder:text-slate-400"
+          className={`input-style ${errors.firstName ? "input-error" : ""}`}
           type="email"
           name="email"
           id="email"
@@ -41,13 +40,19 @@ const LoginForm = () => {
               message: "Your password must be at least 8 characters ",
             },
           })}
-          className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all placeholder:text-slate-400"
+          className={`input-style ${errors.firstName ? "input-error" : ""}`}
           type="password"
           name="password"
           id="password"
           placeholder="••••••••"
         />
       </Field>
+
+      {errors?.root?.serverError && (
+        <p className="text-red-500 text-sm">
+          {errors.root.serverError.message}
+        </p>
+      )}
 
       <div className="pt-2">
         <button
@@ -57,19 +62,6 @@ const LoginForm = () => {
           Sign In to CineTrade
         </button>
       </div>
-
-      <div className="relative py-4">
-        <div className="absolute inset-0 flex items-center">
-          <div className="w-full border-t border-slate-200 dark:border-slate-700"></div>
-        </div>
-        <div className="relative flex justify-center text-xs uppercase">
-          <span className="bg-slate-50 dark:bg-slate-900 px-2 text-slate-400 font-bold tracking-widest">
-            OR
-          </span>
-        </div>
-      </div>
-
-      <SocialLogin />
 
       <div className="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800 text-center">
         <p className="text-sm text-slate-600 dark:text-slate-400">
