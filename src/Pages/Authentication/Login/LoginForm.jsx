@@ -1,12 +1,29 @@
 import { Link } from "react-router-dom";
 import Field from "../../Shared/components/Field";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import { useForm } from "react-hook-form";
 
 const LoginForm = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setError,
+    reset,
+  } = useForm();
+
+  const submitForm = (data) => {
+    console.log(data);
+  };
+
   return (
-    <form className="space-y-4 pb-10 lg:pb-[60px]">
-      <Field label="Email">
+    <form
+      onSubmit={handleSubmit(submitForm)}
+      className="space-y-4 pb-10 lg:pb-[60px]"
+    >
+      <Field label="Email" error={errors.email}>
         <input
+          {...register("email", { required: "Email is required" })}
           className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all placeholder:text-slate-400"
           type="email"
           name="email"
@@ -15,8 +32,15 @@ const LoginForm = () => {
         />
       </Field>
 
-      <Field label="Password">
+      <Field label="Password" error={errors.password}>
         <input
+          {...register("password", {
+            required: "Password is required",
+            minLength: {
+              value: 8,
+              message: "Your password must be at least 8 characters ",
+            },
+          })}
           className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all placeholder:text-slate-400"
           type="password"
           name="password"
