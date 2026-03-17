@@ -20,7 +20,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const logOut = async () => {
-    const res = await axiosPublic("/logout");
+    const res = await axiosPublic.post("/logout");
     setUser(null);
     setAccessToken(null);
     return res;

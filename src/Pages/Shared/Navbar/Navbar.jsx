@@ -1,4 +1,9 @@
-import { Link, useLocation, useSearchParams } from "react-router-dom";
+import {
+  Link,
+  useLocation,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
 import Logo from "../components/Logo";
 import Search from "../components/Search";
 import { categoryList } from "./navData";
@@ -7,11 +12,17 @@ import { useAuth } from "../../../hooks/useAuth";
 
 const Navbar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { user, logOut } = useAuth();
   const [searchParams] = useSearchParams();
 
   const getInitial = (name) => {
     return name ? name.charAt(0).toUpperCase() : "?";
+  };
+
+  const handleLogOut = async () => {
+    await logOut();
+    navigate("/");
   };
 
   const activeClass = (path) =>
@@ -125,7 +136,7 @@ const Navbar = () => {
                 <div className="divider my-1"></div>
                 <li>
                   <button
-                    onClick={() => setUser(null)}
+                    onClick={handleLogOut}
                     className="text-red-500 font-medium"
                   >
                     Sign Out
