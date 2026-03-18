@@ -3,7 +3,7 @@ import bg from "../../../../src/assets/banner-bg.png";
 
 const Banner = () => {
   return (
-    <div className="relative w-full h-[500px] md:h-[650px] overflow-hidden rounded-2xl shadow-xl bg-indigo-950">
+    <div className="relative w-full h-[500px] md:h-[650px] overflow-hidden shadow-xl bg-indigo-950">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-[4000ms] hover:scale-105"
