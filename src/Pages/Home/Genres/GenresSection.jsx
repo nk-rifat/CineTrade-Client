@@ -22,14 +22,17 @@ const GenresSection = () => {
   }
 
   return (
-    <section className="w-full bg-[#050505] py-10 border-y border-white/5">
+    <section className="w-full bg-[#050505] py-10 ">
       <div className="px-6 md:px-12">
         {/* Section Header */}
-        <div className="flex items-center gap-3 mb-8">
-          <div className="h-4 w-[2px] bg-amber-500 shadow-[0_0_10px_#f59e0b]"></div>
-          <h2 className="text-[12px] font-black uppercase tracking-[0.4em] text-white/80">
-            Explore Category
+        <div className="flex items-center justify-between mb-14">
+          <h2 className="text-2xl md:text-3xl font-black uppercase italic text-white">
+            Explore{" "}
+            <span className="text-sky-500 border-b-2 border-sky-500">
+              Categories
+            </span>
           </h2>
+          <div className="h-[1px] flex-grow ml-8 bg-gradient-to-r from-sky-500/50 to-transparent hidden md:block"></div>
         </div>
 
         {/* The Grid */}

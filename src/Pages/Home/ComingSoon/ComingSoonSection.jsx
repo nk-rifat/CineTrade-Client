@@ -22,7 +22,7 @@ const ComingSoonSection = () => {
   }
 
   return (
-    <section className="w-full bg-[#050505] py-20 text-white">
+    <section className="w-full bg-[#050505] py-16 text-white">
       <div className="px-6 md:px-12">
         {/* Header */}
         <div className="flex items-center justify-between mb-14">
