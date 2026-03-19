@@ -22,8 +22,8 @@ const GenresSection = () => {
   }
 
   return (
-    <section className="w-full bg-[#121212] py-10 border-y border-white/5">
-      <div className="w-full px-6">
+    <section className="w-full bg-[#050505] py-10 border-y border-white/5">
+      <div className="px-6 md:px-12">
         {/* Section Header */}
         <div className="flex items-center gap-3 mb-8">
           <div className="h-4 w-[2px] bg-amber-500 shadow-[0_0_10px_#f59e0b]"></div>

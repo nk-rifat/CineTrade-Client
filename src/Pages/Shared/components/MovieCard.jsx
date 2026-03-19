@@ -1,0 +1,72 @@
+import { formatMinutesToHours } from "../../../utils/formatMinutesToHours";
+
+const MovieCard = ({ movie, comingSoon, preOrder }) => {
+  return (
+    <div className="bg-[#141414] group rounded-2xl overflow-hidden border border-white/10 hover:border-amber-500 transition-all duration-300 hover:shadow-[0_0_25px_rgba(245,158,11,0.2)]">
+      {/* Image */}
+      <div className="relative h-[360px] overflow-hidden">
+        <img
+          src={movie?.poster}
+          alt={movie?.title}
+          className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+        />
+
+        <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent"></div>
+
+        {/* Badge */}
+        {comingSoon && (
+          <div className="absolute top-3 left-3">
+            <span className="bg-black/60 text-white text-[10px] px-2 py-1 rounded border border-white/20 group-hover:text-amber-400 group-hover:border-amber-500/40 transition">
+              COMING SOON
+            </span>
+          </div>
+        )}
+
+        {/* Price */}
+        <div className="absolute top-3 right-3">
+          <span className="bg-white text-black text-xs px-3 py-1 rounded-full font-bold group-hover:bg-amber-500 transition">
+            ${movie?.price}
+          </span>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="p-4">
+        <h3 className="font-bold text-lg text-white group-hover:text-amber-400 transition line-clamp-1">
+          {movie?.title}
+        </h3>
+
+        <p className="text-gray-400 text-sm mt-1 flex gap-2">
+          <span>{movie?.release_year}</span>
+          <span>|</span>
+          <span>{formatMinutesToHours(movie?.duration)}</span>
+        </p>
+
+        <p className="text-gray-500 text-sm mt-3 line-clamp-2">
+          {movie?.description}
+        </p>
+
+        {/* Buttons */}
+        <div className="flex gap-3 mt-5">
+          {/* Pre-Order Button */}
+          <button className="flex-1 relative overflow-hidden rounded-xl border border-white/20 bg-white/5 backdrop-blur-md py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:border-amber-500 hover:text-black group/btn">
+            {/* Hover background */}
+            <span className="absolute inset-0 bg-amber-500 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300"></span>
+
+            {/* Text */}
+            <span className="relative z-10 flex items-center justify-center gap-2">
+              {preOrder ? "Pre-Order" : "Add To Cart"}
+            </span>
+          </button>
+
+          {/* Details Button */}
+          <button className="flex-1 rounded-xl border border-white/20 py-2.5 text-sm font-medium text-gray-300 transition-all duration-300  hover:border-amber-500/50 hover:bg-amber-500/10 hover:text-amber-400 ">
+            Details
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default MovieCard;
