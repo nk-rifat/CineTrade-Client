@@ -7,7 +7,7 @@ const ComingSoonSection = () => {
     queryKey: ["comingSoon"],
     queryFn: async () => {
       const res = await axios.get(
-        `${import.meta.env.VITE_SERVER_BASE_URL}/movies/coming-soon`,
+        `${import.meta.env.VITE_SERVER_BASE_URL}/movies/coming-soon`
       );
       return res.data;
     },
@@ -22,7 +22,7 @@ const ComingSoonSection = () => {
   }
 
   return (
-    <section className="w-full bg-[#050505] py-16 text-white">
+    <section className="w-full bg-[#050505] py-8 text-white">
       <div className="px-6 md:px-12">
         {/* Header */}
         <div className="flex items-center justify-between mb-14">
