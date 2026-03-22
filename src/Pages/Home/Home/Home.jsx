@@ -1,5 +1,7 @@
 import Banner from "../Banner/Banner";
 import ComingSoonSection from "../ComingSoon/ComingSoonSection";
+import FaqSection from "../FAQ/FaqSection";
+import FAQ from "../FAQ/FaqSection";
 import GenresSection from "../Genres/GenresSection";
 import PopularSection from "../Popular/PopularSection";
 
@@ -10,6 +12,7 @@ const Home = () => {
       <GenresSection />
       <ComingSoonSection />
       <PopularSection />
+      <FaqSection/>
     </>
   );
 };
