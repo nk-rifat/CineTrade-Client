@@ -21,7 +21,7 @@ const LoginForm = () => {
       password: data.password,
     };
 
-    console.log(payload)
+    console.log(payload);
     try {
       const res = await login(payload);
       if (res?.status === 200) {
@@ -102,14 +102,22 @@ const LoginForm = () => {
       <div className="pt-2">
         <button
           type="submit"
-          className="w-full py-3.5 px-4 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-600 hover:to-indigo-700 text-white font-bold rounded-xl shadow-lg shadow-sky-500/25 transition-all active:scale-[0.98] focus:ring-4 focus:ring-sky-500/20"
+          className="w-full py-3.5 px-4 
+             bg-gradient-to-r from-sky-500 to-indigo-600 
+             hover:from-sky-600 hover:to-indigo-700 
+             text-white font-bold 
+             rounded-xl 
+             shadow-lg shadow-sky-500/40 
+             transition-all duration-200 
+             active:scale-[0.97] 
+             focus:outline-none focus:ring-4 focus:ring-sky-500/30"
         >
           Sign In to CineTrade
         </button>
       </div>
 
       <div className="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800 text-center">
-        <p className="text-sm text-slate-600 dark:text-slate-400">
+        <p className="text-sm text-gray-200">
           Don't have an account?{" "}
           <Link
             to="/register"
