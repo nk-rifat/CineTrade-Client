@@ -5,7 +5,7 @@ const NavDropdown = ({ title, items, currentFilter }) => (
     <div
       tabIndex={0}
       role="button"
-      className="text-slate-600 dark:text-slate-300 hover:text-sky-500 flex items-center gap-1 transition-colors px-4 py-2 rounded-lg cursor-pointer"
+      className="text-white hover:text-sky-500 flex items-center gap-1 transition-colors px-4 py-2 rounded-lg cursor-pointer"
     >
       {title}
       <svg
@@ -25,7 +25,7 @@ const NavDropdown = ({ title, items, currentFilter }) => (
     </div>
     <div
       tabIndex={0}
-      className="dropdown-content menu bg-white dark:bg-slate-800 rounded-box z-[20] w-[350px] p-4 shadow-2xl border border-slate-100 dark:border-slate-700 mt-2"
+      className="dropdown-content menu bg-white rounded-box z-[20] w-[350px] p-4 shadow-2xl border border-slate-100 mt-2"
     >
       <ul className="grid grid-cols-2 gap-1">
         {items.map((item) => (

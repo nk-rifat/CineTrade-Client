@@ -27,8 +27,8 @@ const Navbar = () => {
 
   const activeClass = (path) =>
     location.pathname === path
-      ? "text-sky-500 font-bold bg-sky-50 dark:bg-slate-800 px-4 py-2 rounded-lg"
-      : "text-slate-600 dark:text-slate-300 hover:text-sky-500 transition-colors px-4 py-2 rounded-lg";
+      ? "text-sky-400 font-bold bg-sky-500/10 px-4 py-2 rounded-lg"
+      : "text-gray-100 hover:text-sky-400 transition-colors px-4 py-2 rounded-lg";
 
   const navLinks = (
     <>
@@ -51,7 +51,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="sticky top-0 z-50 backdrop-blur-lg bg-white/90 dark:bg-slate-900/90 border-b border-slate-200 dark:border-slate-800 w-full">
+    <div className="sticky top-0 z-50 backdrop-blur-lg bg-gradient-to-b from-[#0f0f1a] to-black border-b border-sky-500/20 shadow-[0_4px_30px_rgba(56,189,248,0.1)] w-full">
       <div className="navbar max-w-full mx-auto px-4 sm:px-8">
         {/* mobile menu */}
         <div className="navbar-start">

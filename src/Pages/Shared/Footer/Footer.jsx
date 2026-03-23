@@ -5,7 +5,7 @@ const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className=" bg-gradient-to-b from-[#0f0f1a] to-black text-gray-300">
+    <footer className=" bg-gradient-to-b from-[#0f0f1a] to-black">
       {/* Main Footer */}
       <div className="footer footer-center p-10 text-base-content">
         <Logo />
