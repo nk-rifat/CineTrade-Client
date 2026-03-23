@@ -102,15 +102,7 @@ const LoginForm = () => {
       <div className="pt-2">
         <button
           type="submit"
-          className="w-full py-3.5 px-4 
-             bg-gradient-to-r from-sky-500 to-indigo-600 
-             hover:from-sky-600 hover:to-indigo-700 
-             text-white font-bold 
-             rounded-xl 
-             shadow-lg shadow-sky-500/40 
-             transition-all duration-200 
-             active:scale-[0.97] 
-             focus:outline-none focus:ring-4 focus:ring-sky-500/30"
+          className="w-full py-3.5 px-4 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-600 hover:to-indigo-700 text-white font-bold rounded-xl shadow-lg shadow-sky-500/25 transition-all active:scale-[0.98] focus:ring-4 focus:ring-sky-500/20"
         >
           Sign In to CineTrade
         </button>

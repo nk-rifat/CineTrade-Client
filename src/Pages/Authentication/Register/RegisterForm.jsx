@@ -136,8 +136,8 @@ const RegisterForm = () => {
         </div>
       </div>
 
-      <div className="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800 text-center">
-        <p className="text-sm text-slate-600 dark:text-slate-400">
+      <div className="text-center">
+        <p className="text-sm text-gray-200">
           Already have an account?{" "}
           <Link
             to="/login"
