@@ -2,7 +2,7 @@ import { formatMinutesToHours } from "../../../utils/formatMinutesToHours";
 
 const MovieCard = ({ movie, comingSoon, preOrder }) => {
   return (
-    <div className="bg-[#141414] group rounded-2xl overflow-hidden border border-white/10 hover:border-amber-500 transition-all duration-300 hover:shadow-[0_0_25px_rgba(245,158,11,0.2)]">
+    <div className="bg-[#141414] flex flex-col h-full  group rounded-2xl overflow-hidden border border-white/10 hover:border-amber-500 transition-all duration-300 hover:shadow-[0_0_25px_rgba(245,158,11,0.2)]">
       {/* Image */}
       <div className="relative h-[360px] overflow-hidden">
         <img
@@ -31,7 +31,7 @@ const MovieCard = ({ movie, comingSoon, preOrder }) => {
       </div>
 
       {/* Content */}
-      <div className="p-4">
+      <div className="p-4 flex-1 flex flex-col">
         <h3 className="font-bold text-lg text-white group-hover:text-amber-400 transition line-clamp-1">
           {movie?.title}
         </h3>
@@ -47,19 +47,15 @@ const MovieCard = ({ movie, comingSoon, preOrder }) => {
         </p>
 
         {/* Buttons */}
-        <div className="flex gap-3 mt-5">
-          {/* Pre-Order Button */}
+        <div className="flex gap-3 pt-5 mt-auto">
           <button className="flex-1 relative overflow-hidden rounded-xl border border-white/20 bg-white/5 backdrop-blur-md py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:border-amber-500 hover:text-black group/btn">
-            {/* Hover background */}
             <span className="absolute inset-0 bg-amber-500 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300"></span>
 
-            {/* Text */}
             <span className="relative z-10 flex items-center justify-center gap-2">
               {preOrder ? "Pre-Order" : "Add To Cart"}
             </span>
           </button>
 
-          {/* Details Button */}
           <button className="flex-1 rounded-xl border border-white/20 py-2.5 text-sm font-medium text-gray-300 transition-all duration-300  hover:border-amber-500/50 hover:bg-amber-500/10 hover:text-amber-400 ">
             Details
           </button>
