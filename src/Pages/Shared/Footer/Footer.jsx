@@ -5,42 +5,56 @@ const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className=" bg-gradient-to-b from-[#0f0f1a] to-black">
+    <footer className="bg-gradient-to-b from-[#0f0f1a] to-black">
       {/* Main Footer */}
-      <div className="footer footer-center p-10 text-base-content">
-        <Logo />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col sm:flex-col md:flex-row md:justify-between md:items-center gap-6">
+        {/* Logo */}
+        <div className="flex justify-center md:justify-start">
+          <Logo />
+        </div>
 
         {/* Links */}
-        <nav className="grid grid-flow-col gap-6">
-          <Link to="/community" className="text-white">
+        <nav className="flex  sm:flex-row justify-center items-center gap-4 md:gap-6 text-white">
+          <Link
+            to="/community"
+            className="text-white hover:text-sky-400 transition-colors"
+          >
             Community
           </Link>
-          <Link to="/privacy" className="text-white">
+          <Link
+            to="/privacy"
+            className="text-white hover:text-sky-400 transition-colors"
+          >
             Privacy
           </Link>
-          <Link to="/terms" className="text-white">
+          <Link
+            to="/terms"
+            className="text-white hover:text-sky-400 transition-colors"
+          >
             Terms
           </Link>
-          <Link to="/contact" className="text-white">
+          <Link
+            to="/contact"
+            className="text-white hover:text-sky-400 transition-colors"
+          >
             Contact
           </Link>
         </nav>
 
         {/* Social Media */}
-        <nav>
-          <div className="grid grid-flow-col gap-5">
-            {/* Facebook */}
-            <a href="https://facebook.com" target="_blank" rel="noreferrer">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-                className="text-gray-400 hover:text-blue-500 transition duration-300"
-              >
-                <path
-                  d="M22 12c0-5.523-4.477-10-10-10S2 6.477 
+        <div className="flex justify-center md:justify-end gap-5">
+          {/* Facebook */}
+          <a href="https://facebook.com" target="_blank" rel="noreferrer">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              className="text-gray-400 hover:text-blue-500 transition duration-300"
+            >
+              <path
+                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 
                 2 12c0 4.991 3.657 9.128 8.438 
                 9.878v-6.987h-2.54V12h2.54V9.797
                 c0-2.506 1.492-3.89 3.777-3.89 
@@ -49,22 +63,22 @@ const Footer = () => {
                 1.562V12h2.773l-.443 
                 2.89h-2.33v6.988C18.343 
                 21.128 22 16.991 22 12z"
-                />
-              </svg>
-            </a>
+              />
+            </svg>
+          </a>
 
-            {/* Instagram */}
-            <a href="https://instagram.com" target="_blank" rel="noreferrer">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-                className="text-gray-400 hover:text-blue-500 transition duration-300"
-              >
-                <path
-                  d="M7.75 2C4.678 2 2 4.678 2 
+          {/* Instagram */}
+          <a href="https://instagram.com" target="_blank" rel="noreferrer">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              className="text-gray-400 hover:text-blue-500 transition duration-300"
+            >
+              <path
+                d="M7.75 2C4.678 2 2 4.678 2 
                 7.75v8.5C2 19.322 4.678 22 7.75 
                 22h8.5C19.322 22 22 19.322 22 
                 16.25v-8.5C22 4.678 19.322 2 
@@ -80,22 +94,22 @@ const Footer = () => {
                 0 000-10zm0 2a3 3 
                 0 110 6 3 3 0 
                 010-6z"
-                />
-              </svg>
-            </a>
+              />
+            </svg>
+          </a>
 
-            {/* YouTube */}
-            <a href="https://youtube.com" target="_blank" rel="noreferrer">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-                className="text-gray-400 hover:text-blue-500 transition duration-300"
-              >
-                <path
-                  d="M21.8 8s-.2-1.4-.8-2c-.8-.8
+          {/* YouTube */}
+          <a href="https://youtube.com" target="_blank" rel="noreferrer">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              className="text-gray-400 hover:text-blue-500 transition duration-300"
+            >
+              <path
+                d="M21.8 8s-.2-1.4-.8-2c-.8-.8
                 -1.7-.8-2.1-.9C15.9 4.9 12 
                 4.9 12 4.9s-3.9 0-6.9.2c-.4 
                 0-1.3.1-2.1.9-.6.6-.8 
@@ -110,11 +124,10 @@ const Footer = () => {
                 9.6 21.8 8 21.8 8zM10 
                 14.7V9.3l5.2 
                 2.7L10 14.7z"
-                />
-              </svg>
-            </a>
-          </div>
-        </nav>
+              />
+            </svg>
+          </a>
+        </div>
       </div>
 
       {/* Bottom Copyright */}
