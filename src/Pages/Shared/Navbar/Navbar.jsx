@@ -6,15 +6,16 @@ import {
 } from "react-router-dom";
 import Logo from "../components/Logo";
 import Search from "../components/Search";
-import { categoryList } from "./navData";
 import NavDropdown from "./NavDropDown";
 import { useAuth } from "../../../hooks/useAuth";
+import { useGenres } from "../../../hooks/useGenres";
 
 const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { user, logOut } = useAuth();
   const [searchParams] = useSearchParams();
+    const { data: genres} = useGenres();
 
   const getInitial = (name) => {
     return name ? name.charAt(0).toUpperCase() : "?";
@@ -39,7 +40,7 @@ const Navbar = () => {
       </li>
       <NavDropdown
         title="Explore"
-        items={categoryList}
+        genres={genres || []} 
         currentFilter={searchParams.get("category")}
       />
       <li>

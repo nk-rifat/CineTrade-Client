@@ -7,9 +7,6 @@ const MoviesByGenres = () => {
   const [searchParams] = useSearchParams();
   const genre = searchParams.get("genre");
 
-
-  // TODO: make sort by price / rating /year
-
   const { data: movies = [], isLoading } = useQuery({
     queryKey: ["moviesByGenre", genre],
     queryFn: async () => {

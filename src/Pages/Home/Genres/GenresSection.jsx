@@ -1,17 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { useGenres } from "../../../hooks/useGenres";
 
 const GenresSection = () => {
-  const { data: genres, isLoading } = useQuery({
-    queryKey: ["movieGenres"],
-    queryFn: async () => {
-      const res = await axios.get(
-        `${import.meta.env.VITE_SERVER_BASE_URL}/movies/genres`,
-      );
-      return res.data;
-    },
-  });
+  const { data: genres, isLoading } = useGenres();
 
   if (isLoading) {
     return (

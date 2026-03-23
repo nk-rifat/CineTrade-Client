@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const NavDropdown = ({ title, items, currentFilter }) => (
+const NavDropdown = ({ title, genres, currentFilter }) => (
   <li className="dropdown dropdown-bottom lg:dropdown-hover">
     <div
       tabIndex={0}
@@ -28,13 +28,13 @@ const NavDropdown = ({ title, items, currentFilter }) => (
       className="dropdown-content menu bg-white rounded-box z-[20] w-[350px] p-4 shadow-2xl border border-slate-100 mt-2"
     >
       <ul className="grid grid-cols-2 gap-1">
-        {items.map((item) => (
-          <li key={item}>
+        {genres.map((genre, index) => (
+          <li key={index}>
             <Link
-              to={`/movies?genre=${item}`}
-              className={`text-sm py-2 hover:text-sky-500 ${currentFilter === item ? "text-sky-500 font-bold bg-sky-50" : ""}`}
+              to={`/movies?genre=${genre}`}
+              className={`text-sm py-2 hover:text-sky-500 ${currentFilter === genre? "text-sky-500 font-bold bg-sky-50" : ""}`}
             >
-              {item}
+              {genre}
             </Link>
           </li>
         ))}
