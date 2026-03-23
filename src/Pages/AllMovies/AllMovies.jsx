@@ -1,0 +1,32 @@
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import MovieCard from "../Shared/components/MovieCard";
+
+const AllMovies = () => {
+  const { data: movies = [], isLoading } = useQuery({
+    queryKey: ["movies"],
+    queryFn: async () => {
+      const res = await axios.get(
+        `${import.meta.env.VITE_SERVER_BASE_URL}/movies`,
+      );
+
+      return res.data;
+    },
+  });
+
+  if (isLoading) {
+    return <p className="text-center text-white mt-10">Loading...</p>;
+  }
+
+  return (
+    <div className="px-4 md:px-10 py-10 bg-[#050505]">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        {movies.map((movie) => (
+          <MovieCard key={movie._id} movie={movie} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default AllMovies;

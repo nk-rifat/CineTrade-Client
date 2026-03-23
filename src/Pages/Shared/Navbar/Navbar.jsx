@@ -15,7 +15,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const { user, logOut } = useAuth();
   const [searchParams] = useSearchParams();
-    const { data: genres} = useGenres();
+  const { data: genres } = useGenres();
 
   const getInitial = (name) => {
     return name ? name.charAt(0).toUpperCase() : "?";
@@ -38,16 +38,16 @@ const Navbar = () => {
           Home
         </Link>
       </li>
-      <NavDropdown
-        title="Explore"
-        genres={genres || []} 
-        currentFilter={searchParams.get("category")}
-      />
       <li>
-        <Link to="/top-movies" className={activeClass("/top-movies")}>
-          Top Rated
+        <Link to="/all-movies" className={activeClass("/all-movies")}>
+          All Movies
         </Link>
       </li>
+      <NavDropdown
+        title="Explore"
+        genres={genres || []}
+        currentFilter={searchParams.get("category")}
+      />
     </>
   );
 
@@ -57,7 +57,11 @@ const Navbar = () => {
         {/* mobile menu */}
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost text-white lg:hidden">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost text-white lg:hidden"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
