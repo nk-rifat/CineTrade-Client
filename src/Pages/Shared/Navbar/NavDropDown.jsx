@@ -31,7 +31,7 @@ const NavDropdown = ({ title, items, currentFilter }) => (
         {items.map((item) => (
           <li key={item}>
             <Link
-              to={`/movies?category=${item}`}
+              to={`/movies?genre=${item}`}
               className={`text-sm py-2 hover:text-sky-500 ${currentFilter === item ? "text-sky-500 font-bold bg-sky-50" : ""}`}
             >
               {item}

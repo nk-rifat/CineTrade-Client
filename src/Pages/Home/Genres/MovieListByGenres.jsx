@@ -1,0 +1,60 @@
+import { useSearchParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import MovieCard from "../../Shared/components/MovieCard";
+
+const MoviesByGenres = () => {
+  const [searchParams] = useSearchParams();
+  const genre = searchParams.get("genre");
+
+
+  // TODO: make sort by price / rating /year
+
+  const { data: movies = [], isLoading } = useQuery({
+    queryKey: ["moviesByGenre", genre],
+    queryFn: async () => {
+      const res = await axios.get(
+        `${import.meta.env.VITE_SERVER_BASE_URL}/movies?genre=${genre}`,
+      );
+      return res.data;
+    },
+  });
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center p-20 bg-black">
+        <span className="loading loading-spinner text-amber-500"></span>
+      </div>
+    );
+  }
+
+  return (
+    <section className="bg-[#050505] min-h-screen px-6 md:px-12 py-10">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-10">
+        <h2 className="text-2xl md:text-3xl font-black uppercase italic text-white">
+          {genre}{" "}
+          <span className="text-amber-500 border-b-2 border-amber-500">
+            Movies
+          </span>
+        </h2>
+        <div className="h-[1px] flex-grow ml-6 bg-gradient-to-r from-amber-500/50 to-transparent hidden md:block"></div>
+      </div>
+
+      {/* Movies Grid */}
+      {movies.length === 0 ? (
+        <p className="text-gray-400 text-center mt-20">
+          No movies found in this genre.
+        </p>
+      ) : (
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5">
+          {movies.map((movie) => (
+            <MovieCard key={movie._id} movie={movie} />
+          ))}
+        </div>
+      )}
+    </section>
+  );
+};
+
+export default MoviesByGenres;

@@ -7,7 +7,7 @@ const GenresSection = () => {
     queryKey: ["movieGenres"],
     queryFn: async () => {
       const res = await axios.get(
-        `${import.meta.env.VITE_SERVER_BASE_URL}/genres`,
+        `${import.meta.env.VITE_SERVER_BASE_URL}/movies/genres`,
       );
       return res.data;
     },
@@ -40,7 +40,7 @@ const GenresSection = () => {
           {genres?.map((genre) => (
             <Link
               key={genre}
-              to={`/all-movies?genre=${genre}`}
+              to={`/movies?genre=${genre}`}
               className="group flex items-center justify-center py-3 px-4 rounded-md 
                          bg-[#1a1a1a] border border-white/[0.03] 
                          hover:border-amber-500/50 hover:bg-amber-500/10 

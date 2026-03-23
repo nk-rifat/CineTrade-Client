@@ -3,6 +3,7 @@ import RootLayout from "../layouts/RootLayout";
 import Home from "../Pages/Home/Home/Home";
 import LoginPage from "../Pages/Authentication/Login/LoginPage";
 import RegisterPage from "../Pages/Authentication/Register/RegisterPage";
+import MoviesByGenres from "../Pages/Home/Genres/MovieListByGenres";
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ export const router = createBrowserRouter([
       {
         path: "register",
         Component: RegisterPage,
+      },
+      {
+        path: "/movies",
+        element: <MoviesByGenres />,
       },
     ],
   },
