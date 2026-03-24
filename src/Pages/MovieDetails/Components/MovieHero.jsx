@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { FaStar, FaRegClock, FaGlobe, FaShoppingCart } from "react-icons/fa";
 import { HiOutlineArrowLeft, HiOutlineCalendar } from "react-icons/hi";
+import { formatMinutesToHours } from "../../../utils/formatMinutesToHours";
 
 const MovieHero = ({ movie }) => (
   <div className="relative w-full h-[70vh] md:h-[85vh] overflow-hidden">
@@ -51,15 +52,15 @@ const MovieHero = ({ movie }) => (
           </h1>
           <div className="flex flex-wrap justify-center md:justify-start gap-5 text-sm text-gray-300 mb-8 font-medium italic">
             <span className="flex items-center gap-2">
-              <HiOutlineCalendar size={18} className="text-primary" />{" "}
+              <HiOutlineCalendar size={18} className="text-sky-500" />{" "}
               {movie?.release_year}
             </span>
             <span className="flex items-center gap-2">
-              <FaRegClock size={16} className="text-primary" />{" "}
-              {movie?.duration} min
+              <FaRegClock size={16} className="text-sky-500" />
+              {formatMinutesToHours(movie?.duration)}
             </span>
             <span className="flex items-center gap-2">
-              <FaGlobe size={16} className="text-primary" /> {movie?.language}
+              <FaGlobe size={16} className="text-sky-500" /> {movie?.language}
             </span>
             <span className="flex items-center gap-1.5 text-yellow-400 font-bold not-italic">
               <FaStar /> {movie?.rating}

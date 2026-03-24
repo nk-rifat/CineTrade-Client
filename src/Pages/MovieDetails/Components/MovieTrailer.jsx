@@ -3,7 +3,7 @@ import { FaPlay } from "react-icons/fa";
 const MovieTrailer = ({ movie }) => (
   <div>
     <div className="flex items-center gap-3 mb-6">
-      <FaPlay className="text-primary" />
+      <FaPlay className="text-amber-500" />
       <h3 className="text-xl font-bold uppercase tracking-tighter">
         Official Trailer
       </h3>

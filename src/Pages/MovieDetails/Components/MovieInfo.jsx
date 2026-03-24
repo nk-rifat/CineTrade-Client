@@ -3,7 +3,7 @@ import { FaUserAlt, FaUsers } from "react-icons/fa";
 const MovieInfo = ({ movie }) => (
   <div className="space-y-12">
     <div>
-      <h3 className="text-xl font-bold border-l-4 border-primary pl-4 mb-4 uppercase tracking-tighter italic">
+      <h3 className="text-xl font-bold border-l-4 border-amber-500 pl-4 mb-4 uppercase tracking-tighter italic">
         Synopsis
       </h3>
       <p className="text-gray-200 text-lg leading-relaxed font-light">
@@ -12,7 +12,7 @@ const MovieInfo = ({ movie }) => (
     </div>
     <div className="space-y-6 pt-6 border-t border-white/5">
       <div className="flex items-start gap-4">
-        <div className="p-3 bg-white/5 rounded-lg text-primary">
+        <div className="p-3 bg-white/5 rounded-lg text-sky-500">
           <FaUserAlt size={20} />
         </div>
         <div>
@@ -23,7 +23,7 @@ const MovieInfo = ({ movie }) => (
         </div>
       </div>
       <div className="flex items-start gap-4">
-        <div className="p-3 bg-white/5 rounded-lg text-primary">
+        <div className="p-3 bg-white/5 rounded-lg text-sky-500">
           <FaUsers size={20} />
         </div>
         <div>
