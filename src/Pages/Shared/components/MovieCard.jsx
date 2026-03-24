@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { formatMinutesToHours } from "../../../utils/formatMinutesToHours";
 
 const MovieCard = ({ movie, comingSoon, preOrder }) => {
@@ -56,9 +57,11 @@ const MovieCard = ({ movie, comingSoon, preOrder }) => {
             </span>
           </button>
 
-          <button className="flex-1 rounded-xl border border-white/20 py-2.5 text-sm font-medium text-gray-300 transition-all duration-300  hover:border-amber-500/50 hover:bg-amber-500/10 hover:text-amber-400 ">
-            Details
-          </button>
+          <Link to={`/movies/${movie._id}`} className="flex-1">
+            <button className="w-full rounded-xl border border-white/20 py-2.5 text-sm font-medium text-gray-300 transition-all duration-300 hover:border-amber-500/50 hover:bg-amber-500/10 hover:text-amber-400">
+              Details
+            </button>
+          </Link>
         </div>
       </div>
     </div>

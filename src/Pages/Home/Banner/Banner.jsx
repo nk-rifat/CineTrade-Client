@@ -32,7 +32,7 @@ const Banner = () => {
 
           {/* Buttons */}
           <div className="flex flex-wrap gap-4 pt-4 justify-end">
-            <Link to="/movies">
+            <Link to="/all-movies">
               <button className="px-8 md:px-10 py-3 md:py-4 border-2 border-white/30 backdrop-blur-sm font-bold rounded-xl hover:bg-white/10 hover:border-white transition-all">
                 Browse & Watch
               </button>

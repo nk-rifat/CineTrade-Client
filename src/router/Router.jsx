@@ -5,6 +5,7 @@ import LoginPage from "../Pages/Authentication/Login/LoginPage";
 import RegisterPage from "../Pages/Authentication/Register/RegisterPage";
 import MoviesByGenres from "../Pages/Home/Genres/MovieListByGenres";
 import AllMovies from "../Pages/AllMovies/AllMovies";
+import MovieDetails from "../Pages/MovieDetails/MovieDetails";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
       {
         path: "/all-movies",
         element: <AllMovies />,
+      },
+      {
+        path: "/movies/:id",
+        element: <MovieDetails />,
       },
     ],
   },
