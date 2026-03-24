@@ -1,12 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import MovieCard from "../Shared/components/MovieCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const AllMovies = () => {
   const [filters, setFilters] = useState({ sort: "", language: "", year: "" });
 
   const [debouncedFilters, setDebouncedFilters] = useState(filters);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedFilters(filters);
+    }, 400);
+
+    return () => clearTimeout(timer);
+  }, [filters]);
+
   const { data: movies = [], isLoading } = useQuery({
     queryKey: ["movies"],
     queryFn: async () => {
