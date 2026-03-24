@@ -4,6 +4,7 @@ import axios from "axios";
 import MovieHero from "./Components/MovieHero";
 import MovieInfo from "./Components/MovieInfo";
 import MovieTrailer from "./Components/MovieTrailer";
+import RelatedMovies from "./Components/RelatedMovies";
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -49,6 +50,7 @@ const MovieDetails = () => {
             <MovieTrailer movie={movie} />
           </div>
         </div>
+        <RelatedMovies currentId={id} genre={movie?.genres?.[0]} />
       </div>
     </div>
   );
