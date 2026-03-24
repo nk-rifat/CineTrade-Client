@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import MovieHero from "./Components/MovieHero";
 import MovieInfo from "./Components/MovieInfo";
+import MovieTrailer from "./Components/MovieTrailer";
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -43,6 +44,9 @@ const MovieDetails = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
           <div className="lg:col-span-4">
             <MovieInfo movie={movie} />
+          </div>
+          <div className="lg:col-span-8">
+            <MovieTrailer movie={movie} />
           </div>
         </div>
       </div>
