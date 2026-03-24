@@ -5,6 +5,7 @@ import MovieHero from "./Components/MovieHero";
 import MovieInfo from "./Components/MovieInfo";
 import MovieTrailer from "./Components/MovieTrailer";
 import RelatedMovies from "./Components/RelatedMovies";
+import { useEffect } from "react";
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -22,6 +23,11 @@ const MovieDetails = () => {
       return res.data;
     },
   });
+
+  // Scroll to top whenever the ID changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [id]);
 
   if (isLoading)
     return (
