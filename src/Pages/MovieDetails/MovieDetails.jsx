@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import MovieHero from "./Components/MovieHero";
+import MovieInfo from "./Components/MovieInfo";
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -37,6 +38,14 @@ const MovieDetails = () => {
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white">
       <MovieHero movie={movie} />
+
+      <div className="container mx-auto px-6 py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+          <div className="lg:col-span-4">
+            <MovieInfo movie={movie} />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
