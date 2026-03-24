@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import MovieHero from "./Components/MovieHero";
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -33,9 +34,11 @@ const MovieDetails = () => {
       </div>
     );
 
-  return <div className="min-h-screen bg-[#0a0a0a] text-white">
-    
-  </div>;
+  return (
+    <div className="min-h-screen bg-[#0a0a0a] text-white">
+      <MovieHero movie={movie} />
+    </div>
+  );
 };
 
 export default MovieDetails;
