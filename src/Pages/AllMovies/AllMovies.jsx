@@ -17,14 +17,16 @@ const AllMovies = () => {
   }, [filters]);
 
   const { data: movies = [], isLoading } = useQuery({
-    queryKey: ["movies"],
+    queryKey: ["movies", debouncedFilters],
     queryFn: async () => {
       const res = await axios.get(
         `${import.meta.env.VITE_SERVER_BASE_URL}/movies`,
+        { params: debouncedFilters },
       );
 
       return res.data;
     },
+    keepPreviousData: true,
   });
 
   if (isLoading) {
