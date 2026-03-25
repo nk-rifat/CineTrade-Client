@@ -132,10 +132,10 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link
-                    to="/become-moderator"
+                    to="/become-partner"
                     className="text-sky-500 font-semibold"
                   >
-                    Become a Moderator
+                    Become a Partner
                   </Link>
                 </li>
                 <div className="divider my-1"></div>

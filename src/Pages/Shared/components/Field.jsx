@@ -5,7 +5,7 @@ const Field = ({ label, children, htmlFor, error }) => {
   return (
     <div className="mt-2">
       {label && (
-        <label htmlFor={id} className="">
+        <label htmlFor={id} className="text-white">
           {label}
         </label>
       )}

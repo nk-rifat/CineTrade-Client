@@ -6,6 +6,8 @@ import RegisterPage from "../Pages/Authentication/Register/RegisterPage";
 import MoviesByGenres from "../Pages/Home/Genres/MovieListByGenres";
 import AllMovies from "../Pages/AllMovies/AllMovies";
 import MovieDetails from "../Pages/MovieDetails/MovieDetails";
+import BecomePartner from "../Pages/BecomeModerator/BecomePartner";
+
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +37,10 @@ export const router = createBrowserRouter([
       {
         path: "/movies/:id",
         element: <MovieDetails />,
+      },
+      {
+        path: "become-partner",
+        element: <BecomePartner/>,
       },
     ],
   },

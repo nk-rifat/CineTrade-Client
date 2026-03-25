@@ -38,9 +38,9 @@ const Banner = () => {
               </button>
             </Link>
 
-            <Link to="/dashboard">
+            <Link to="/become-partner">
               <button className="px-8 md:px-10 py-3 md:py-4 bg-white text-indigo-900 font-extrabold rounded-xl shadow-lg hover:bg-sky-50 transition-all hover:-translate-y-1 active:scale-95">
-                Become a Moderator
+                Become a Partner
               </button>
             </Link>
           </div>
