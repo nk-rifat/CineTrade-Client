@@ -2,12 +2,11 @@ import { useForm } from "react-hook-form";
 import Field from "../Shared/components/Field";
 import { useAuth } from "../../hooks/useAuth";
 import Swal from "sweetalert2";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import axiosPublic from "../../api/axios";
 
 const BecomePartnerForm = () => {
   const auth = useAuth();
-
 
   const {
     register,
@@ -15,6 +14,17 @@ const BecomePartnerForm = () => {
     formState: { errors },
     reset,
   } = useForm({});
+
+ 
+  const { data: application } = useQuery({
+    queryKey: ["partnerApplication"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/partner/my-application");
+      return res.data;
+    },
+  });
+
+  console.log(application);
 
   // 🔥 Submit application
   const { mutate } = useMutation({
@@ -28,7 +38,7 @@ const BecomePartnerForm = () => {
     },
 
     onSuccess: () => {
-      Swal.close(); 
+      Swal.close();
       Swal.fire({
         icon: "success",
         title: "Application Submitted!",
