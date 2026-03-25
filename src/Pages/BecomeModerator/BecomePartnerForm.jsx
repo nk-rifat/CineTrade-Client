@@ -2,11 +2,12 @@ import { useForm } from "react-hook-form";
 import Field from "../Shared/components/Field";
 import { useAuth } from "../../hooks/useAuth";
 import Swal from "sweetalert2";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axiosPublic from "../../api/axios";
 
 const BecomePartnerForm = () => {
   const auth = useAuth();
+  const queryClient = useQueryClient();
 
   const {
     register,
@@ -26,7 +27,7 @@ const BecomePartnerForm = () => {
   console.log(application);
 
   // 🔥 Submit application
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: async (formData) => {
       const payload = {
         fullName: formData?.fullName,
@@ -44,6 +45,7 @@ const BecomePartnerForm = () => {
         text: "Your request is under review by admin.",
         confirmButtonColor: "#2563eb",
       });
+      queryClient.invalidateQueries(["partnerApplication"]);
       reset();
     },
 
@@ -181,9 +183,10 @@ const BecomePartnerForm = () => {
       {/* Submit Button */}
       <button
         type="submit"
+        disabled={isPending}
         className="w-full py-3.5 px-4 bg-gradient-to-r from-sky-600 to-indigo-700 text-white font-bold rounded-xl shadow-lg shadow-sky-500/25"
       >
-        Apply for Partner
+        {isPending ? "Submitting..." : "Apply for Partner"}
       </button>
     </form>
   );
