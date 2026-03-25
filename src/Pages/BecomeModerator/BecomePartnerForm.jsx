@@ -15,8 +15,7 @@ const BecomePartnerForm = () => {
     reset,
   } = useForm({});
 
- 
-  const { data: application } = useQuery({
+  const { data: application, isLoading } = useQuery({
     queryKey: ["partnerApplication"],
     queryFn: async () => {
       const res = await axiosPublic.get("/partner/my-application");
@@ -71,6 +70,32 @@ const BecomePartnerForm = () => {
 
     mutate(data);
   };
+
+  if (isLoading) return <p className="text-white">Loading...</p>;
+
+  if (application?.status === "pending") {
+    return <p className="text-yellow-400">⏳ Waiting for approval</p>;
+  }
+
+  if (
+    application?.status === "approved" &&
+    application?.paymentStatus === "unpaid"
+  ) {
+    return (
+      <div className="text-center space-y-4">
+        <p className="text-green-400 font-semibold">
+          ✅ Approved! Complete payment to become a partner.
+        </p>
+        <button className="w-full py-3 bg-gradient-to-r from-sky-600 to-indigo-700 text-white font-bold rounded-xl">
+          Pay Now ($49.99)
+        </button>
+      </div>
+    );
+  }
+
+  if (application?.status === "rejected") {
+    return <p className="text-red-400">❌ Application rejected</p>;
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
