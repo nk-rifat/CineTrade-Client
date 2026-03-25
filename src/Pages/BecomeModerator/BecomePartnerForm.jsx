@@ -1,18 +1,65 @@
 import { useForm } from "react-hook-form";
 import Field from "../Shared/components/Field";
 import { useAuth } from "../../hooks/useAuth";
+import Swal from "sweetalert2";
+import { useMutation } from "@tanstack/react-query";
+import axiosPublic from "../../api/axios";
 
 const BecomePartnerForm = () => {
   const auth = useAuth();
+
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({});
 
-  const onSubmit = async (data) => {
-    console.log("Application Data:", data);
+  // 🔥 Submit application
+  const { mutate } = useMutation({
+    mutationFn: async (formData) => {
+      const payload = {
+        fullName: formData?.fullName,
+        reason: formData?.reason,
+      };
+      const res = await axiosPublic.post("/partner/apply", payload);
+      return res.data;
+    },
+
+    onSuccess: () => {
+      Swal.close(); 
+      Swal.fire({
+        icon: "success",
+        title: "Application Submitted!",
+        text: "Your request is under review by admin.",
+        confirmButtonColor: "#2563eb",
+      });
+      reset();
+    },
+
+    onError: (err) => {
+      Swal.close();
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: err?.response?.data?.message || "Something went wrong",
+        confirmButtonColor: "#dc2626",
+      });
+    },
+  });
+
+  const onSubmit = (data) => {
+    Swal.fire({
+      title: "Submitting...",
+      text: "Please wait",
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
+
+    mutate(data);
   };
 
   return (
@@ -101,7 +148,7 @@ const BecomePartnerForm = () => {
         type="submit"
         className="w-full py-3.5 px-4 bg-gradient-to-r from-sky-600 to-indigo-700 text-white font-bold rounded-xl shadow-lg shadow-sky-500/25"
       >
-        Unlock Moderator Access — $49.99
+        Apply for Partner
       </button>
     </form>
   );
