@@ -8,34 +8,36 @@ import AllMovies from "../Pages/AllMovies/AllMovies";
 import MovieDetails from "../Pages/MovieDetails/MovieDetails";
 import BecomePartnerPage from "../Pages/BecomeModerator/BecomePartnerPage";
 import DashboardLayout from "../layouts/DashboardLayout";
+import PrivateRoute from "../routes/PrivateRoute";
+import MyMovies from "../Pages/Dashboard/MyMovies/MyMovies";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    Component: RootLayout,
+    element: <RootLayout />,
     children: [
       {
         path: "/",
-        Component: Home,
+        element: <Home />,
       },
       {
         path: "login",
-        Component: LoginPage,
+        element: <LoginPage />,
       },
       {
         path: "register",
-        Component: RegisterPage,
+        element: <RegisterPage />,
       },
       {
-        path: "/movies",
+        path: "movies",
         element: <MoviesByGenres />,
       },
       {
-        path: "/all-movies",
+        path: "all-movies",
         element: <AllMovies />,
       },
       {
-        path: "/movies/:id",
+        path: "movies/:id",
         element: <MovieDetails />,
       },
       {
@@ -46,6 +48,11 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout />,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
+    children: [{ path: "myMovies", element: <MyMovies /> }],
   },
 ]);
