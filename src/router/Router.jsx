@@ -7,8 +7,7 @@ import MoviesByGenres from "../Pages/Home/Genres/MovieListByGenres";
 import AllMovies from "../Pages/AllMovies/AllMovies";
 import MovieDetails from "../Pages/MovieDetails/MovieDetails";
 import BecomePartnerPage from "../Pages/BecomeModerator/BecomePartnerPage";
-
-
+import DashboardLayout from "../layouts/DashboardLayout";
 
 export const router = createBrowserRouter([
   {
@@ -41,8 +40,12 @@ export const router = createBrowserRouter([
       },
       {
         path: "become-partner",
-        element: <BecomePartnerPage/>,
+        element: <BecomePartnerPage />,
       },
     ],
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
   },
 ]);
