@@ -1,14 +1,20 @@
 import { NavLink, Outlet } from "react-router-dom";
 import {
   FaFilm,
-  FaShoppingCart,
   FaHistory,
   FaUserEdit,
   FaHome,
+  FaUserShield,
+  FaHandshake,
+  FaUsers,
+  FaChartLine,
+  FaCogs,
 } from "react-icons/fa";
 import Logo from "../Pages/Shared/components/Logo";
+import { useAuth } from "../hooks/useAuth";
 
 const DashboardLayout = () => {
+  const { user } = useAuth();
   const navLinkClass = ({ isActive }) =>
     `flex items-center gap-3 px-4 py-2 rounded-lg transition-all duration-200 ${
       isActive
@@ -79,24 +85,44 @@ const DashboardLayout = () => {
           </li>
 
           <li>
-            <NavLink to="/dashboard/cart" className={navLinkClass}>
-              <FaShoppingCart /> My Cart
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink to="/dashboard/orders" className={navLinkClass}>
-              <FaHistory /> Purchase History
-            </NavLink>
-          </li>
-
-          <li>
             <NavLink to="/dashboard/profile" className={navLinkClass}>
               <FaUserEdit /> Profile Settings
             </NavLink>
           </li>
+          {/* Admin links */}
+          {user?.role === "admin" && (
+            <>
+              <li>
+                <NavLink to="/dashboard/admin" className={navLinkClass}>
+                  <FaUserShield /> Admin Dashboard
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/manageUsers" className={navLinkClass}>
+                  <FaUsers /> Manage Users
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/managePartners"
+                  className={navLinkClass}
+                >
+                  <FaHandshake /> Manage Partners
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/manageMovies" className={navLinkClass}>
+                  <FaFilm /> Manage Movies
+                </NavLink>
+              </li>
 
-          
+              <li>
+                <NavLink to="/dashboard/reports" className={navLinkClass}>
+                  <FaChartLine /> Reports & Analytics
+                </NavLink>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </div>
