@@ -1,10 +1,13 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axiosPublic from "../../../api/axios";
 import { FaUsers } from "react-icons/fa";
 import UserStats from "./UserStats";
 import UserTable from "./UserTable";
+import Swal from "sweetalert2";
 
 const ManageUsers = () => {
+  const queryClient = useQueryClient();
+
   const { data, isLoading } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
@@ -14,6 +17,48 @@ const ManageUsers = () => {
   });
 
   const users = data?.data || data || [];
+
+  // Mutation for updating user status
+  const updateUserMutation = useMutation({
+    mutationFn: async ({ userId, updateData }) => {
+      const res = await axiosPublic.patch(`/users/${userId}`, updateData);
+      return res.data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["users"] });
+      Swal.fire("Updated!", "User record has been modified.", "success");
+    },
+    onError: (error) => {
+      Swal.fire(
+        "Error",
+        error.response?.data?.message || "Action failed",
+        "error",
+      );
+    },
+  });
+
+  const handleUpdate = (userId, updateData) => {
+    const isBanAction = updateData.status === "banned";
+    const isRoleAction = !!updateData.role;
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: isBanAction
+        ? "This user will be restricted from logging into the platform!"
+        : `You are about to change this user's ${isRoleAction ? "role" : "status"}.`,
+      icon: isBanAction ? "warning" : "question",
+      showCancelButton: true,
+      confirmButtonColor: isBanAction ? "#ef4444" : "#6366f1",
+      cancelButtonColor: "#334155",
+      confirmButtonText: "Yes, proceed!",
+      background: "#0f172a",
+      color: "#f8fafc",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        updateUserMutation.mutate({ userId, updateData });
+      }
+    });
+  };
 
   if (isLoading) {
     return (
@@ -35,7 +80,7 @@ const ManageUsers = () => {
         </h2>
         <UserStats totalUsers={users.length} />
       </div>
-      <UserTable users={users} />
+      <UserTable users={users} handleUpdate={handleUpdate} />
     </div>
   );
 };

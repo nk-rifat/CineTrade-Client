@@ -1,6 +1,6 @@
 import UserRow from "./UserRow";
 
-const UserTable = ({ users }) => (
+const UserTable = ({ users, handleUpdate }) => (
   <div className="bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden">
     <div className="overflow-x-auto">
       <table className="table w-full border-separate border-spacing-0">
@@ -15,7 +15,12 @@ const UserTable = ({ users }) => (
         </thead>
         <tbody className="divide-y divide-slate-800">
           {users.map((user, index) => (
-            <UserRow key={user._id} user={user} index={index} />
+            <UserRow
+              key={user._id}
+              user={user}
+              index={index}
+              handleUpdate={handleUpdate}
+            />
           ))}
         </tbody>
       </table>

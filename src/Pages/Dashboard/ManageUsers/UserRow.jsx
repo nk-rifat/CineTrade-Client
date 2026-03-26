@@ -1,10 +1,19 @@
-import { FaUserShield, FaUserTie, FaBan } from "react-icons/fa";
+import { FaUserShield, FaBan } from "react-icons/fa";
 
-const UserRow = ({ user, index }) => {
+const UserRow = ({ user, index, handleUpdate }) => {
   const roleStyles = {
     admin: "bg-rose-600/20 uppercase text-rose-600 hover:bg-rose-600/30",
     partner: "bg-amber-400/20 text-amber-500 hover:bg-amber-400/30",
     user: "bg-slate-700/20 text-slate-300 hover:bg-slate-700/30",
+  };
+
+  const handlePromote = () => {
+    handleUpdate(user._id, { role: "admin" });
+  };
+
+  const handleStatusToggle = () => {
+    const newStatus = user.status === "banned" ? "active" : "banned";
+    handleUpdate(user._id, { status: newStatus });
   };
 
   return (
@@ -44,6 +53,7 @@ const UserRow = ({ user, index }) => {
         {user?.role !== "admin" && (
           <div className="flex justify-center gap-1">
             <ActionButton
+              onClick={handlePromote}
               icon={<FaUserShield size={18} />}
               tip="Promote to Admin"
               color="text-amber-500"
@@ -52,6 +62,7 @@ const UserRow = ({ user, index }) => {
             <div className="w-[1px] bg-slate-700 h-4 self-center mx-1"></div>
 
             <ActionButton
+              onClick={handleStatusToggle}
               icon={<FaBan size={16} />}
               tip={user?.status === "banned" ? "Unban" : "Restrict"}
               color={
@@ -66,9 +77,10 @@ const UserRow = ({ user, index }) => {
 };
 
 // Small sub-component for buttons to keep Row clean
-const ActionButton = ({ icon, tip, color }) => (
+const ActionButton = ({ icon, tip, color, onClick }) => (
   <div className="tooltip tooltip-top" data-tip={tip}>
     <button
+      onClick={onClick}
       className={`btn btn-ghost btn-sm btn-square ${color} hover:bg-white/10`}
     >
       {icon}
