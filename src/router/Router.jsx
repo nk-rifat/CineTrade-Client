@@ -10,6 +10,7 @@ import BecomePartnerPage from "../Pages/BecomeModerator/BecomePartnerPage";
 import DashboardLayout from "../layouts/DashboardLayout";
 import PrivateRoute from "../routes/PrivateRoute";
 import MyMovies from "../Pages/Dashboard/MyMovies/MyMovies";
+import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 
 export const router = createBrowserRouter([
   {
@@ -53,6 +54,9 @@ export const router = createBrowserRouter([
         <DashboardLayout />
       </PrivateRoute>
     ),
-    children: [{ path: "myMovies", element: <MyMovies /> }],
+    children: [
+      { path: "myMovies", element: <MyMovies /> },
+      { path: "manageUsers", element: <ManageUsers /> },
+    ],
   },
 ]);
