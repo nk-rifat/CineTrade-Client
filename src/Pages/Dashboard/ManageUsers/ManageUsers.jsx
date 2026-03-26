@@ -1,17 +1,18 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import axiosPublic from "../../../api/axios";
 import { FaUsers } from "react-icons/fa";
 import UserStats from "./UserStats";
 import UserTable from "./UserTable";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const ManageUsers = () => {
   const queryClient = useQueryClient();
+  const axiosSecure = useAxiosSecure();
 
   const { data, isLoading } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await axiosPublic.get("/users");
+      const res = await axiosSecure.get("/users");
       return res.data;
     },
   });
@@ -21,7 +22,7 @@ const ManageUsers = () => {
   // Mutation for updating user status
   const updateUserMutation = useMutation({
     mutationFn: async ({ userId, updateData }) => {
-      const res = await axiosPublic.patch(`/users/${userId}`, updateData);
+      const res = await axiosSecure.patch(`/users/${userId}`, updateData);
       return res.data;
     },
     onSuccess: () => {
