@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import axiosPublic from "../../../api/axios";
 import { FaUsers } from "react-icons/fa";
+import UserStats from "./UserStats";
+import UserTable from "./UserTable";
 
 const ManageUsers = () => {
   const { data, isLoading } = useQuery({
@@ -10,6 +12,8 @@ const ManageUsers = () => {
       return res.data;
     },
   });
+
+  const users = data?.data || data || [];
 
   if (isLoading) {
     return (
@@ -29,7 +33,9 @@ const ManageUsers = () => {
           <FaUsers className="text-amber-500" />
           Manage Users
         </h2>
+        <UserStats totalUsers={users.length} />
       </div>
+      <UserTable users={users} />
     </div>
   );
 };
