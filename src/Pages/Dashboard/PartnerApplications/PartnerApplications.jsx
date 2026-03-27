@@ -1,17 +1,54 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import ApplicationRow from "./ApplicationRow";
+import Swal from "sweetalert2";
 
 const PartnerApplications = () => {
   const axiosSecure = useAxiosSecure();
 
-  const { data: applications = [], isLoading } = useQuery({
+  const {
+    data: applications = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["partner-applications"],
     queryFn: async () => {
       const res = await axiosSecure.get("/partner-applications");
       return res.data?.success ? res.data.data : [];
     },
   });
+
+  const handleApprove = async (id) => {
+    Swal.fire({
+      title: "Approve this application?",
+      text: "The user will be notified to proceed with payment.",
+      icon: "info",
+      showCancelButton: true,
+      confirmButtonColor: "#38bdf8",
+      cancelButtonColor: "#64748b",
+      confirmButtonText: "Yes, Approve",
+      background: "#0f172a",
+      color: "#f1f5f9",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const res = await axiosSecure.patch(`/approve-application/${id}`);
+          if (res.data.success) {
+            refetch();
+            Swal.fire({
+              title: "Approved!",
+              text: "Status updated. Waiting for user payment.",
+              icon: "success",
+              background: "#0f172a",
+              color: "#f1f5f9",
+            });
+          }
+        } catch (error) {
+          Swal.fire("Error", "Could not update status.", "error");
+        }
+      }
+    });
+  };
 
   if (isLoading)
     return (
@@ -40,7 +77,12 @@ const PartnerApplications = () => {
           </thead>
           <tbody className="divide-y divide-slate-800">
             {applications.map((app, index) => (
-              <ApplicationRow key={app._id} application={app} index={index} />
+              <ApplicationRow
+                handleApprove={handleApprove}
+                key={app._id}
+                application={app}
+                index={index}
+              />
             ))}
           </tbody>
         </table>

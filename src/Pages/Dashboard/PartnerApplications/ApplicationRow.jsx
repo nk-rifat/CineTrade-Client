@@ -34,7 +34,7 @@ const ApplicationRow = ({ application, index, handleApprove }) => {
       <td className="py-4 text-left">
         <span
           className={`badge badge-md font-semibold rounded-md border-none uppercase r ${
-            status === "approve"
+            status === "approved"
               ? "bg-emerald-500/20 text-emerald-400"
               : "bg-rose-500/20 text-rose-400"
           }`}
@@ -53,7 +53,7 @@ const ApplicationRow = ({ application, index, handleApprove }) => {
               Approve
             </button>
           ) : (
-            <span className="text-emerald-500 font-bold text-[10px] uppercase py-1 px-2 border border-emerald-500/20 rounded bg-emerald-500/5">
+            <span className="bg-emerald-500/20 text-emerald-400 btn btn-sm rounded-md border-none transition-all">
               Completed
             </span>
           )}
