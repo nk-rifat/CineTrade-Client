@@ -104,10 +104,10 @@ const DashboardLayout = () => {
               </li>
               <li>
                 <NavLink
-                  to="/dashboard/managePartners"
+                  to="/dashboard/partnerApplications"
                   className={navLinkClass}
                 >
-                  <FaHandshake /> Manage Partners
+                  <FaHandshake /> Partner Applications
                 </NavLink>
               </li>
               <li>

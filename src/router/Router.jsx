@@ -11,6 +11,7 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import PrivateRoute from "../routes/PrivateRoute";
 import MyMovies from "../Pages/Dashboard/MyMovies/MyMovies";
 import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
+import PartnerApplications from "../Pages/Dashboard/PartnerApplications/PartnerApplications";
 
 export const router = createBrowserRouter([
   {
@@ -57,6 +58,7 @@ export const router = createBrowserRouter([
     children: [
       { path: "myMovies", element: <MyMovies /> },
       { path: "manageUsers", element: <ManageUsers /> },
+      { path: "partnerApplications", element: <PartnerApplications /> },
     ],
   },
 ]);
