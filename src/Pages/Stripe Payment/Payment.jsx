@@ -3,10 +3,10 @@ import { loadStripe } from "@stripe/stripe-js";
 
 const stripePromise = loadStripe(import.meta.env.VITE_payment_key);
 
-const Payment = () => {
+const Payment = ({children}) => {
   return (
     <Elements stripe={stripePromise}>
-      <PaymentForm />
+      {children}
     </Elements>
   );
 };
