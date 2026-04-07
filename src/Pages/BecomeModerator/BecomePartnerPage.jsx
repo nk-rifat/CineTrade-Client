@@ -67,7 +67,7 @@ const BecomePartnerPage = () => {
         {/* Right Side: The Form Integration */}
         <div className="w-full lg:w-[60%] p-8 sm:p-12 bg-transparent">
           <h3 className="text-xl sm:text-2xl font-bold text-amber-500  mb-6">
-            Moderator Application
+            Partner Application
           </h3>
           <div className="w-full">
             <BecomePartner />
