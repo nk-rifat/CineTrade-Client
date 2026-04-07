@@ -1,7 +1,9 @@
-const PaymentSection = () => {
+import { useNavigate } from "react-router-dom";
+
+const PaymentSection = ({ applicationId }) => {
+  const navigate = useNavigate();
   const handlePayment = () => {
-    // Later integrate Stripe 
-    console.log("Redirect to payment");
+    navigate(`/payment/partner/${applicationId}`);
   };
 
   return (

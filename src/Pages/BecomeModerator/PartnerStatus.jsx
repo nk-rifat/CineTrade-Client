@@ -11,7 +11,7 @@ const PartnerStatus = ({ application }) => {
     application?.status === "approved" &&
     application?.paymentStatus === "unpaid"
   ) {
-    return <PaymentSection />;
+    return <PaymentSection applicationId={application?._id} />;
   }
 
   if (application?.status === "approved") {
