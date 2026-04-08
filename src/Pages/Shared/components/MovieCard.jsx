@@ -53,7 +53,7 @@ const MovieCard = ({ movie, comingSoon, preOrder }) => {
             <span className="absolute inset-0 bg-amber-500 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300"></span>
 
             <span className="relative z-10 flex items-center justify-center gap-2">
-              {preOrder ? "Pre-Order" : "Add To Cart"}
+              {preOrder ? "Pre-Order" : "Buy Now"}
             </span>
           </button>
 
