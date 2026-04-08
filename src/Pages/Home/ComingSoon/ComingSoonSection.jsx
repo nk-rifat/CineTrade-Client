@@ -38,7 +38,7 @@ const ComingSoonSection = () => {
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-8">
           {comingSoonMovies?.map((movie) => (
-            <MovieCard movie={movie} comingSoon={true} preOrder={true} />
+            <MovieCard movie={movie} />
           ))}
         </div>
       </div>

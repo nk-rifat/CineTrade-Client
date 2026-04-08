@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { formatMinutesToHours } from "../../../utils/formatMinutesToHours";
 
-const MovieCard = ({ movie, comingSoon, preOrder }) => {
+const MovieCard = ({ movie }) => {
+  const isUpcoming = movie?.release_status === "upcoming";
+
   return (
     <div className="bg-[#141414] flex flex-col h-full  group rounded-2xl overflow-hidden border border-white/10 hover:border-amber-500 transition-all duration-300 hover:shadow-[0_0_25px_rgba(245,158,11,0.2)]">
       {/* Image */}
@@ -15,7 +17,7 @@ const MovieCard = ({ movie, comingSoon, preOrder }) => {
         <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent"></div>
 
         {/* Badge */}
-        {comingSoon && (
+        {isUpcoming && (
           <div className="absolute top-3 left-3">
             <span className="bg-black/60 text-white text-[10px] px-2 py-1 rounded border border-white/20 group-hover:text-amber-400 group-hover:border-amber-500/40 transition">
               COMING SOON
@@ -53,7 +55,7 @@ const MovieCard = ({ movie, comingSoon, preOrder }) => {
             <span className="absolute inset-0 bg-amber-500 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300"></span>
 
             <span className="relative z-10 flex items-center justify-center gap-2">
-              {preOrder ? "Pre-Order" : "Buy Now"}
+              {isUpcoming ? "Pre-Order" : "Buy Now"}
             </span>
           </button>
 
