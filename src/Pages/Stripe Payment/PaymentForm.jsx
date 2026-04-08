@@ -5,7 +5,6 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useAuth } from "../../hooks/useAuth";
 
-
 const PaymentForm = ({ type, referenceId, amount, successRedirect }) => {
   const stripe = useStripe();
   const elements = useElements();
@@ -80,7 +79,17 @@ const PaymentForm = ({ type, referenceId, amount, successRedirect }) => {
           createdAt: new Date(),
         };
 
-        await axiosSecure.post("/payments", paymentData);
+        const res = await axiosSecure.post("/payments", paymentData);
+        if (!res.data.success) {
+          await Swal.fire({
+            icon: "error",
+            title: "Payment Failed",
+            text: res.data.message,
+          });
+
+          setLoading(false);
+          return;
+        }
 
         await Swal.fire({
           title: "🎉 Payment Successful!",

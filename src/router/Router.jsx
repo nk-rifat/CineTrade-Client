@@ -13,6 +13,7 @@ import MyMovies from "../Pages/Dashboard/MyMovies/MyMovies";
 import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 import PartnerApplications from "../Pages/Dashboard/PartnerApplications/PartnerApplications";
 import PartnerPaymentPage from "../Pages/BecomeModerator/PartnerPaymentPage";
+import AdminRoute from "../routes/AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -63,7 +64,14 @@ export const router = createBrowserRouter([
     children: [
       { path: "myMovies", element: <MyMovies /> },
       { path: "manageUsers", element: <ManageUsers /> },
-      { path: "partnerApplications", element: <PartnerApplications /> },
+      {
+        path: "partnerApplications",
+        element: (
+          <AdminRoute>
+            <PartnerApplications />
+          </AdminRoute>
+        ),
+      },
     ],
   },
 ]);
