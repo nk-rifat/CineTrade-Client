@@ -1,6 +1,5 @@
-const ApplicationRow = ({ application, index, handleApprove }) => {
-  const { _id, fullName, email, applied_at, paymentStatus, status } =
-    application;
+const ApplicationRow = ({ application, index, handleUpdateStatus }) => {
+  const { fullName, email, applied_at, paymentStatus, status } = application;
 
   return (
     <tr className="hover:bg-gray-800/40 transition-colors group">
@@ -45,18 +44,24 @@ const ApplicationRow = ({ application, index, handleApprove }) => {
 
       <td className="pr-8 py-4">
         <div className="flex justify-center gap-2">
-          {status === "pending" ? (
-            <button
-              onClick={() => handleApprove(_id)}
-              className="btn btn-sm bg-sky-400 hover:bg-sky-500 text-slate-900 rounded-md border-none transition-all"
-            >
-              Approve
-            </button>
-          ) : (
-            <span className="bg-emerald-500/20 text-emerald-400 btn btn-sm rounded-md border-none transition-all">
-              Completed
-            </span>
+          {application.status === "pending" && (
+            <>
+              <button
+                onClick={() => handleUpdateStatus(application._id, "approved")}
+                className="btn btn-sm bg-sky-500 text-white"
+              >
+                Approve
+              </button>
+
+              <button
+                onClick={() => handleUpdateStatus(application._id, "rejected")}
+                className="btn btn-sm bg-red-500 text-white"
+              >
+                Reject
+              </button>
+            </>
           )}
+
           <button className="btn btn-sm btn-outline border-white/20 text-gray-300 hover:border-amber-500/50 hover:bg-amber-500/10 hover:text-amber-400 transition-all">
             Details
           </button>

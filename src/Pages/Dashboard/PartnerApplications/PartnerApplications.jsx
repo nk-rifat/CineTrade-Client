@@ -18,37 +18,45 @@ const PartnerApplications = () => {
     },
   });
 
-  const handleApprove = async (id) => {
-    Swal.fire({
-      title: "Approve this application?",
-      text: "The user will be notified to proceed with payment.",
-      icon: "info",
-      showCancelButton: true,
-      confirmButtonColor: "#38bdf8",
-      cancelButtonColor: "#64748b",
-      confirmButtonText: "Yes, Approve",
-      background: "#0f172a",
-      color: "#f1f5f9",
-    }).then(async (result) => {
-      if (result.isConfirmed) {
-        try {
-          const res = await axiosSecure.patch(`/approve-application/${id}`);
-          if (res.data.success) {
-            refetch();
-            Swal.fire({
-              title: "Approved!",
-              text: "Status updated. Waiting for user payment.",
-              icon: "success",
-              background: "#0f172a",
-              color: "#f1f5f9",
-            });
-          }
-        } catch (error) {
-          Swal.fire("Error", "Could not update status.", "error");
+  //handle status update - Approve or Reject
+
+  const handleUpdateStatus = async (id, status) => {
+  const actionText = status === "approved" ? "Approve" : "Reject";
+
+  Swal.fire({
+    title: `${actionText} this application?`,
+    icon: status === "approved" ? "info" : "warning",
+    showCancelButton: true,
+    confirmButtonColor: status === "approved" ? "#38bdf8" : "#ef4444",
+    cancelButtonColor: "#64748b",
+    confirmButtonText: `Yes, ${actionText}`,
+    background: "#0f172a",
+    color: "#f1f5f9",
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+      try {
+        const res = await axiosSecure.patch(
+          `/application-update-status/${id}`,
+          { status }
+        );
+
+        if (res.data.success) {
+          refetch();
+
+          Swal.fire({
+            title: "Updated!",
+            text: `Application ${status}`,
+            icon: "success",
+            background: "#0f172a",
+            color: "#f1f5f9",
+          });
         }
+      } catch (error) {
+        Swal.fire("Error", "Something went wrong.", "error");
       }
-    });
-  };
+    }
+  });
+};
 
   if (isLoading)
     return (
@@ -78,7 +86,7 @@ const PartnerApplications = () => {
           <tbody className="divide-y divide-slate-800">
             {applications.map((app, index) => (
               <ApplicationRow
-                handleApprove={handleApprove}
+                handleUpdateStatus={handleUpdateStatus}
                 key={app._id}
                 application={app}
                 index={index}
