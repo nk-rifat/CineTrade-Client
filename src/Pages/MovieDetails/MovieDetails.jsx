@@ -6,8 +6,10 @@ import MovieInfo from "./Components/MovieInfo";
 import MovieTrailer from "./Components/MovieTrailer";
 import RelatedMovies from "./Components/RelatedMovies";
 import { useEffect } from "react";
+import { useAuth } from "../../hooks/useAuth";
 
 const MovieDetails = () => {
+  const { user } = useAuth();
   const { id } = useParams();
 
   const {
@@ -29,17 +31,23 @@ const MovieDetails = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [id]);
 
+  
+  //increase the views of movie if visit details page 
+
   useEffect(() => {
+    if (!id) return;
     const key = `viewed-${id}`;
     const lastView = localStorage.getItem(key);
     const now = Date.now();
 
     //  12 hours cooldown
     if (!lastView || now - lastView > 12 * 60 * 60 * 1000) {
-      axios.patch(`${import.meta.env.VITE_SERVER_BASE_URL}/movies/${id}/view`);
+      axios.patch(`${import.meta.env.VITE_SERVER_BASE_URL}/movies/${id}/view`, {
+        role: user?.role || "guest",
+      });
       localStorage.setItem(key, now.toString());
     }
-  }, [id]);
+  }, [id, user?.role]);
 
   if (isLoading)
     return (
