@@ -34,7 +34,7 @@ const MovieDetails = () => {
     const lastView = localStorage.getItem(key);
     const now = Date.now();
 
-    //  10 minutes cooldown
+    //  12 hours cooldown
     if (!lastView || now - lastView > 12 * 60 * 60 * 1000) {
       axios.patch(`${import.meta.env.VITE_SERVER_BASE_URL}/movies/${id}/view`);
       localStorage.setItem(key, now.toString());

@@ -46,11 +46,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "become-partner",
-        element: <BecomePartnerPage />,
+        element: (
+          <PrivateRoute>
+            <BecomePartnerPage />
+          </PrivateRoute>
+        ),
       },
       {
         path: "payment/partner/:id",
-        element: <PartnerPaymentPage />,
+        element: (
+          <PrivateRoute>
+            <PartnerPaymentPage />
+          </PrivateRoute>
+        ),
       },
     ],
   },
@@ -62,10 +70,10 @@ export const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
-      { path: "myMovies", element: <MyMovies /> },
-      { path: "manageUsers", element: <ManageUsers /> },
+      { path: "my-movies", element: <MyMovies /> },
+      { path: "manage-users", element: <ManageUsers /> },
       {
-        path: "partnerApplications",
+        path: "partner-applications",
         element: (
           <AdminRoute>
             <PartnerApplications />
