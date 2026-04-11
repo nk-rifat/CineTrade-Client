@@ -14,6 +14,7 @@ import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 import PartnerApplications from "../Pages/Dashboard/PartnerApplications/PartnerApplications";
 import PartnerPaymentPage from "../Pages/BecomeModerator/PartnerPaymentPage";
 import AdminRoute from "../routes/AdminRoute";
+import MoviePaymentPage from "../Pages/BuyMovie/MoviePaymentPage";
 
 export const router = createBrowserRouter([
   {
@@ -57,6 +58,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <PartnerPaymentPage />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "payment/movie/:id",
+        element: (
+          <PrivateRoute>
+            <MoviePaymentPage />
           </PrivateRoute>
         ),
       },

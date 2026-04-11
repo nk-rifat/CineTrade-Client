@@ -120,7 +120,7 @@ const PaymentForm = ({ type, referenceId, amount, successRedirect }) => {
         disabled={!stripe || loading}
         className="btn bg-green-500 text-white w-full rounded-xl"
       >
-        {loading ? "Processing..." : `Pay ${amount} Tk`}
+        {loading ? "Processing..." : `Pay $ ${amount}`}
       </button>
 
       {error && <p className="text-red-500 text-sm">{error}</p>}

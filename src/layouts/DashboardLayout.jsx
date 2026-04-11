@@ -79,7 +79,7 @@ const DashboardLayout = () => {
           </li>
 
           <li>
-            <NavLink to="/dashboard/myMovies" className={navLinkClass}>
+            <NavLink to="/dashboard/my-movies" className={navLinkClass}>
               <FaFilm /> My Movies
             </NavLink>
           </li>
@@ -98,20 +98,20 @@ const DashboardLayout = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/manageUsers" className={navLinkClass}>
+                <NavLink to="/dashboard/manage-users" className={navLinkClass}>
                   <FaUsers /> Manage Users
                 </NavLink>
               </li>
               <li>
                 <NavLink
-                  to="/dashboard/partnerApplications"
+                  to="/dashboard/partner-applications"
                   className={navLinkClass}
                 >
-                  <FaHandshake /> Partner Applications
+                  <FaHandshake /> Partner Applications    
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/manageMovies" className={navLinkClass}>
+                <NavLink to="/dashboard/manage-movies" className={navLinkClass}>
                   <FaFilm /> Manage Movies
                 </NavLink>
               </li>

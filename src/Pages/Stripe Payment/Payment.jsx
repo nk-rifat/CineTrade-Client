@@ -5,7 +5,7 @@ const stripePromise = loadStripe(import.meta.env.VITE_payment_key);
 
 const Payment = ({children}) => {
   return (
-    <Elements stripe={stripePromise}>
+    <Elements stripe={stripePromise} >
       {children}
     </Elements>
   );
