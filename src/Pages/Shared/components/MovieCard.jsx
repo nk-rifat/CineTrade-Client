@@ -1,8 +1,10 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { formatMinutesToHours } from "../../../utils/formatMinutesToHours";
+import useMovieAction from "../../../hooks/useMovieAction";
 
 const MovieCard = ({ movie }) => {
-  const navigate = useNavigate();
+  const { handleAction, getButtonText, isPurchased } = useMovieAction(movie);
+
   const isUpcoming = movie?.release_status === "upcoming";
 
   return (
@@ -53,13 +55,13 @@ const MovieCard = ({ movie }) => {
         {/* Buttons */}
         <div className="flex gap-3 pt-5 mt-auto">
           <button
-            onClick={() => navigate(`/payment/movie/${movie?._id}`)}
-            className="flex-1 relative overflow-hidden rounded-xl border border-white/20 bg-white/5 backdrop-blur-md py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:border-amber-500 hover:text-black group/btn"
+            onClick={() => handleAction()}
+            className={`flex-1 relative overflow-hidden rounded-xl border backdrop-blur-md py-2.5 text-sm font-semibold transition-all duration-300 ${isPurchased ? "bg-green-800 text-white border-green-500 cursor-default" : "bg-white/5 text-white border-white/20 hover:border-amber-500 hover:text-black group/btn"}`}
           >
             <span className="absolute inset-0 bg-amber-500 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300"></span>
 
             <span className="relative z-10 flex items-center justify-center gap-2">
-              {isUpcoming ? "Pre-Order" : "Buy Now"}
+              {getButtonText()}
             </span>
           </button>
 
