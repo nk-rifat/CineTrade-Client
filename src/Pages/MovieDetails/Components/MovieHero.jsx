@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
-import { FaStar, FaRegClock, FaGlobe, FaShoppingCart } from "react-icons/fa";
+import { FaStar, FaRegClock, FaGlobe } from "react-icons/fa";
 import { HiOutlineArrowLeft, HiOutlineCalendar } from "react-icons/hi";
 import { formatMinutesToHours } from "../../../utils/formatMinutesToHours";
+import useMovieAction from "../../../hooks/useMovieAction";
 
 const MovieHero = ({ movie }) => {
-  const isUpcoming = movie?.release_status === "upcoming";
+  const { handleAction, getButtonText, isPurchased } = useMovieAction(movie);
+
   return (
     <div className="relative w-full h-[70vh] md:h-[85vh] overflow-hidden">
       <div
@@ -69,8 +71,13 @@ const MovieHero = ({ movie }) => {
               </span>
             </div>
             <div className="flex flex-col md:flex-row items-center gap-6">
-              <button className="btn btn-primary btn-lg rounded-xl px-10 gap-3 shadow-lg shadow-primary/20 hover:scale-105 transition-all w-full md:w-auto">
-                {isUpcoming ? "Pre-Order" : "Buy Now"} — ${movie?.price}
+              <button
+                onClick={handleAction}
+                className={`btn btn-lg rounded-xl px-10 gap-3 shadow-lg transition-all w-full md:w-auto ${isPurchased ? "bg-green-600 text-black shadow-green-500/20 cursor-default" : "btn-primary hover:scale-105"}`}
+              >
+                {isPurchased
+                  ? "Watch Now"
+                  : `${getButtonText()} — $${movie?.price}`}
               </button>
               <div className="text-center md:text-left">
                 <p className="text-[10px] text-gray-500 uppercase tracking-[0.2em] font-bold">
