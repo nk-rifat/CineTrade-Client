@@ -19,10 +19,9 @@ const useMovieAction = (movie) => {
 
     if (isPurchased) {
       navigate(`movie/watch/${movie._id}`);
-      return;
+    } else {
+      navigate(`/payment/movie/${movie._id}`);
     }
-
-    navigate(`/payment/movie/${movie._id}`);
   };
 
   const getButtonText = () => {

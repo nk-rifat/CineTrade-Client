@@ -1,50 +1,56 @@
 import { useEffect } from "react";
-import axiosPublic, { setAccessToken } from "../api/axios";
+import { axiosSecure, axiosPublic, setAccessToken } from "../api/axios";
 import { useAuth } from "./useAuth";
+import { useQueryClient } from "@tanstack/react-query";
 
 const useAxiosSecure = () => {
   const { logOut } = useAuth();
+  const queryClient = useQueryClient();
 
   useEffect(() => {
-    // RESPONSE INTERCEPTOR
-    const responseInterceptor = axiosPublic.interceptors.response.use(
+    // 1. This watches every response coming back from the server.
+    const responseInterceptor = axiosSecure.interceptors.response.use(
       (res) => res,
       async (error) => {
         const originalRequest = error.config;
 
-        // If status is 401 (Expired) and we haven't retried yet
+        // 2. Only attempt a refresh if the error is 401 and we haven't tried retrying yet.
         if (error.response?.status === 401 && !originalRequest._retry) {
           originalRequest._retry = true;
 
           try {
-            // Attempt to get a new token
+            // 3. Use axiosPublic so this call DOES NOT trigger this same interceptor.
             const res = await axiosPublic.post("/refresh");
             const newAccessToken = res.data.accessToken;
 
+            // 4. Save the new token in memory and update the headers for the retry.
             setAccessToken(newAccessToken);
-
-            // Update the header for the retry
             originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
-            
-            // Execute the original request again with the new token
-            return axiosPublic(originalRequest);
+
+            // 5.Re-run the failed request with the fresh token and return the result.
+            return axiosSecure(originalRequest);
           } catch (refreshError) {
-            // If the refresh token is also expired, force logout
+            // 6.Clear the TanStack Query cache to remove stale data.
+            queryClient.clear();
+            // Log the user out to reset the app state.
             logOut();
             return Promise.reject(refreshError);
           }
         }
+
+        // If it's not a 401 error or retry already happened, just throw the error.
         return Promise.reject(error);
-      }
+      },
     );
 
-    // CLEANUP: Removes the interceptor when the component using this hook unmounts
+    // 7. Remove the interceptor when this hook unmounts to prevent multiple interceptors stacking up.
     return () => {
-      axiosPublic.interceptors.response.eject(responseInterceptor);
+      axiosSecure.interceptors.response.eject(responseInterceptor);
     };
-  }, [logOut]);
+  }, [logOut, queryClient]);
 
-  return axiosPublic;
+  // Return the configured axios instance for use in components.
+  return axiosSecure;
 };
 
 export default useAxiosSecure;
