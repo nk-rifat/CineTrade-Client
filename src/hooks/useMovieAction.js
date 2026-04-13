@@ -18,7 +18,7 @@ const useMovieAction = (movie) => {
     }
 
     if (isPurchased) {
-      navigate(`/watch/${movie._id}`);
+      navigate(`movie/watch/${movie._id}`);
       return;
     }
 

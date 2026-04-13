@@ -47,7 +47,7 @@ export const router = createBrowserRouter([
         element: <MovieDetails />,
       },
       {
-        path: "watch/:id",
+        path: "movie/watch/:id",
         element: (
           <PrivateRoute>
             <WatchMovie />

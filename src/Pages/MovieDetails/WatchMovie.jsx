@@ -97,10 +97,6 @@ const WatchMovie = () => {
         </h1>
 
         <div className="h-1 w-20 bg-amber-500 mb-6 shadow-[0_0_15px_rgba(14,165,233,0.5)]"></div>
-
-        <p className="text-gray-400 text-lg max-w-3xl leading-relaxed font-light">
-          {movie?.description}
-        </p>
       </div>
     </div>
   );
