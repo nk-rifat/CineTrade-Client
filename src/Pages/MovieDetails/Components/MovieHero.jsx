@@ -73,7 +73,7 @@ const MovieHero = ({ movie }) => {
             <div className="flex flex-col md:flex-row items-center gap-6">
               <button
                 onClick={handleAction}
-                className={`btn btn-lg rounded-xl px-10 gap-3 shadow-lg transition-all w-full md:w-auto ${isPurchased ? "bg-green-600 text-black shadow-green-500/20 cursor-default" : "btn-primary hover:scale-105"}`}
+                className={`btn btn-lg rounded-xl px-10 gap-3 shadow-lg transition-all w-full md:w-auto ${isPurchased ? "bg-green-700 text-white shadow-green-500/20 cursor-default" : "btn-primary hover:scale-105"}`}
               >
                 {isPurchased
                   ? "Watch Now"
