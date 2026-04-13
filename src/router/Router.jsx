@@ -15,6 +15,7 @@ import PartnerApplications from "../Pages/Dashboard/PartnerApplications/PartnerA
 import PartnerPaymentPage from "../Pages/BecomeModerator/PartnerPaymentPage";
 import AdminRoute from "../routes/AdminRoute";
 import MoviePaymentPage from "../Pages/BuyMovie/MoviePaymentPage";
+import WatchMovie from "../Pages/MovieDetails/WatchMovie";
 
 export const router = createBrowserRouter([
   {
@@ -44,6 +45,14 @@ export const router = createBrowserRouter([
       {
         path: "movies/:id",
         element: <MovieDetails />,
+      },
+      {
+        path: "watch/:id",
+        element: (
+          <PrivateRoute>
+            <WatchMovie />
+          </PrivateRoute>
+        ),
       },
       {
         path: "become-partner",
