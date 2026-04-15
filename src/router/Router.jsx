@@ -16,6 +16,7 @@ import PartnerPaymentPage from "../Pages/BecomeModerator/PartnerPaymentPage";
 import AdminRoute from "../routes/AdminRoute";
 import MoviePaymentPage from "../Pages/BuyMovie/MoviePaymentPage";
 import WatchMovie from "../Pages/MovieDetails/WatchMovie";
+import EditProfile from "../Pages/Dashboard/UpdateProfile/EditProfile";
 
 export const router = createBrowserRouter([
   {
@@ -96,6 +97,14 @@ export const router = createBrowserRouter([
           <AdminRoute>
             <PartnerApplications />
           </AdminRoute>
+        ),
+      },
+      {
+        path: "edit-profile",
+        element: (
+          <PrivateRoute>
+            <EditProfile />
+          </PrivateRoute>
         ),
       },
     ],

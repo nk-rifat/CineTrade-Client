@@ -85,8 +85,8 @@ const DashboardLayout = () => {
           </li>
 
           <li>
-            <NavLink to="/dashboard/profile" className={navLinkClass}>
-              <FaUserEdit /> Profile Settings
+            <NavLink to="/dashboard/edit-profile" className={navLinkClass}>
+              <FaUserEdit /> Update Profile
             </NavLink>
           </li>
           {/* Admin links */}

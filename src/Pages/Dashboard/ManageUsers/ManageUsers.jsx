@@ -22,7 +22,7 @@ const ManageUsers = () => {
   // Mutation for updating user status
   const updateUserMutation = useMutation({
     mutationFn: async ({ userId, updateData }) => {
-      const res = await axiosSecure.patch(`/users/${userId}`, updateData);
+      const res = await axiosSecure.patch(`/admin/manage-user/${userId}`, updateData);
       return res.data;
     },
     onSuccess: () => {
