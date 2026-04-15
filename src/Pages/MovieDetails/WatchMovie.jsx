@@ -39,7 +39,7 @@ const WatchMovie = () => {
           onClick={() => navigate(-1)}
           className="mt-8 px-8 py-3 bg-white text-black font-bold rounded-full hover:bg-sky-500 hover:text-white transition-all"
         >
-          Return to Movie Details
+          Return
         </button>
       </div>
     );
