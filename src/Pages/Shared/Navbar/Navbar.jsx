@@ -107,9 +107,9 @@ const Navbar = () => {
                 className="btn btn-ghost btn-circle avatar border-2 border-sky-500"
               >
                 <div className="relative w-10 h-10 rounded-full overflow-hidden shadow-md">
-                  {user.photoURL ? (
+                  {user?.profilePic ? (
                     <img
-                      src={user.photoURL}
+                      src={user?.profilePic}
                       alt="Profile"
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-200"
                     />
@@ -125,7 +125,7 @@ const Navbar = () => {
                 className="menu menu-sm dropdown-content mt-3 z-30 p-2 shadow-2xl bg-white dark:bg-slate-800 rounded-box w-52 border border-slate-100 dark:border-slate-700"
               >
                 <li>
-                  <Link to="/profile">My Profile</Link>
+                  <Link to="dashboard/edit-profile">My Profile</Link>
                 </li>
                 <li>
                   <Link to="/dashboard">Dashboard</Link>
