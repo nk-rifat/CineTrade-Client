@@ -34,13 +34,13 @@ const MyMovies = () => {
   //  Empty State
   if (purchasedIds.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center text-center min-h-[60vh] bg-base-200 rounded-xl p-6">
+      <div className="flex flex-col items-center justify-center text-center min-h-[60vh]  rounded-xl p-6">
         <div className="text-5xl mb-3">🎬</div>
         <h2 className="text-2xl font-bold mb-2">No Movies Purchased Yet</h2>
 
         <button
           onClick={() => navigate("/all-movies")}
-          className="btn btn-primary"
+          className="btn btn-primary btn-wide rounded-full font-bold shadow-lg hover:shadow-primary/30 transition-all duration-300"
         >
           Browse All Movies
         </button>
