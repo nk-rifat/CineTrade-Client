@@ -25,12 +25,13 @@ const useMovieAction = (movie) => {
   };
 
   const getButtonText = () => {
-    if (!currentUser) return "Buy Now";
-    if (currentUser.role === "admin" || currentUser.role === "partner")
+    if (currentUser?.role === "admin" || currentUser?.role === "partner") {
       return "Not Available";
+    }
+
     if (isPurchased) return "Watch Now";
-    if (movie.release_status === "upcoming") return "Pre-Order";
-    return "Buy Now";
+
+    return movie.release_status === "upcoming" ? "Pre-Order" : "Buy Now";
   };
 
   return {
