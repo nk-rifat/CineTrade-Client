@@ -79,17 +79,30 @@ const DashboardLayout = () => {
           </li>
 
           <li>
-            <NavLink to="/dashboard/my-movies" className={navLinkClass}>
-              <FaFilm /> My Movies
-            </NavLink>
-          </li>
-
-          <li>
             <NavLink to="/dashboard/edit-profile" className={navLinkClass}>
               <FaUserEdit /> Update Profile
             </NavLink>
           </li>
+
+          {/* User Links */}
+
+          {user?.role === "user" && (
+            <li>
+              <NavLink to="/dashboard/my-movies" className={navLinkClass}>
+                <FaFilm /> My Movies
+              </NavLink>
+            </li>
+          )}
+
+           {/* Partner Links */}
+           {user?.role === "partner" && (
+            <li>
+              
+            </li>
+           )}
+
           {/* Admin links */}
+
           {user?.role === "admin" && (
             <>
               <li>
@@ -107,7 +120,7 @@ const DashboardLayout = () => {
                   to="/dashboard/partner-applications"
                   className={navLinkClass}
                 >
-                  <FaHandshake /> Partner Applications    
+                  <FaHandshake /> Partner Applications
                 </NavLink>
               </li>
               <li>
