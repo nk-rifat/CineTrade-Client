@@ -18,6 +18,8 @@ import MoviePaymentPage from "../Pages/BuyMovie/MoviePaymentPage";
 import WatchMovie from "../Pages/MovieDetails/WatchMovie";
 import EditProfile from "../Pages/Dashboard/UpdateProfile/EditProfile";
 import AddMovie from "../Pages/Dashboard/AddNewMovie/AddNewMovie";
+import PendingMovies from "../Pages/Dashboard/PendingMovies/PendingMovies";
+import PartnerRoute from "../routes/PartnerRoute";
 
 export const router = createBrowserRouter([
   {
@@ -111,6 +113,14 @@ export const router = createBrowserRouter([
       {
         path: "add-movie",
         element: <AddMovie />,
+      },
+      {
+        path: "pending-movies",
+        element: (
+          <PartnerRoute>
+            <PendingMovies />
+          </PartnerRoute>
+        ),
       },
     ],
   },
