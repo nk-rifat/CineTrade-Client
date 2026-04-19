@@ -9,6 +9,8 @@ import {
   FaUsers,
   FaChartLine,
   FaCogs,
+  FaPlusSquare,
+  FaThList,
 } from "react-icons/fa";
 import Logo from "../Pages/Shared/components/Logo";
 import { useAuth } from "../hooks/useAuth";
@@ -94,12 +96,21 @@ const DashboardLayout = () => {
             </li>
           )}
 
-           {/* Partner Links */}
-           {user?.role === "partner" && (
-            <li>
-              
-            </li>
-           )}
+          {/* Partner Links */}
+          {user?.role === "partner" && (
+            <>
+              <li>
+                <NavLink to="/dashboard/add-movie" className={navLinkClass}>
+                  <FaPlusSquare /> Add a New Movie
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/my-movies" className={navLinkClass}>
+                  <FaThList /> My Uploaded Movies
+                </NavLink>
+              </li>
+            </>
+          )}
 
           {/* Admin links */}
 

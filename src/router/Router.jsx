@@ -17,6 +17,7 @@ import AdminRoute from "../routes/AdminRoute";
 import MoviePaymentPage from "../Pages/BuyMovie/MoviePaymentPage";
 import WatchMovie from "../Pages/MovieDetails/WatchMovie";
 import EditProfile from "../Pages/Dashboard/UpdateProfile/EditProfile";
+import AddMovie from "../Pages/Dashboard/AddNewMovie/AddNewMovie";
 
 export const router = createBrowserRouter([
   {
@@ -106,6 +107,10 @@ export const router = createBrowserRouter([
             <EditProfile />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "add-movie",
+        element: <AddMovie />,
       },
     ],
   },
