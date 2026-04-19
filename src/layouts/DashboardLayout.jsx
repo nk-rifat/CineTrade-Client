@@ -11,6 +11,7 @@ import {
   FaCogs,
   FaPlusSquare,
   FaThList,
+  FaClock,
 } from "react-icons/fa";
 import Logo from "../Pages/Shared/components/Logo";
 import { useAuth } from "../hooks/useAuth";
@@ -105,7 +106,15 @@ const DashboardLayout = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/my-movies" className={navLinkClass}>
+                <NavLink
+                  to="/dashboard/pending-movies"
+                  className={navLinkClass}
+                >
+                  <FaClock /> Pending Movies
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/uploaded-movies" className={navLinkClass}>
                   <FaThList /> My Uploaded Movies
                 </NavLink>
               </li>
