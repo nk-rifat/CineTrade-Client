@@ -82,10 +82,10 @@ const EditProfileForm = ({ user }) => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 flex items-center justify-center p-6 text-white">
+    <div className="min-h-screen flex items-center justify-center p-6 text-white">
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-md bg-slate-900 border border-white/10 p-8 rounded-3xl shadow-2xl"
+        className="w-full max-w-md border border-white/10 p-8 rounded-3xl shadow-2xl"
       >
         <h2 className="text-2xl font-bold mb-6 text-center text-white">
           Edit Profile

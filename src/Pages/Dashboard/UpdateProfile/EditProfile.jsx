@@ -7,7 +7,7 @@ const EditProfile = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <FiLoader className="text-sky-500 animate-spin text-4xl" />
       </div>
     );
@@ -15,7 +15,7 @@ const EditProfile = () => {
 
   if (isError || !currentUser) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center text-white">
+      <div className="min-h-screen flex items-center justify-center text-white">
         <p>Error loading profile. Please log in again.</p>
       </div>
     );
