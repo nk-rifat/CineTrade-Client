@@ -1,6 +1,8 @@
 import { FiEdit2, FiTrash2, FiEye, FiShoppingBag } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 const DashboardMovieCard = ({ movie }) => {
+  const navigate = useNavigate();
   return (
     <div className="group relative h-[420px] rounded-2xl overflow-hidden bg-base-300 shadow-xl transition-all duration-500 hover:scale-[1.03] hover:shadow-2xl">
       {/* Background Poster */}
@@ -14,6 +16,7 @@ const DashboardMovieCard = ({ movie }) => {
 
       <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-6">
         <button
+        onClick={() => navigate(`/dashboard/edit-movie/${movie._id}`)}
           className="btn btn-circle btn-lg bg-emerald-500 hover:bg-emerald-600 border-none text-white shadow-2xl scale-75 group-hover:scale-100 transition-all duration-300 delay-75"
         >
           <FiEdit2 size={26} />

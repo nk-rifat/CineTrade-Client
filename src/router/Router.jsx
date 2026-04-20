@@ -22,6 +22,8 @@ import PendingMovies from "../Pages/Dashboard/PendingMovies/PendingMovies";
 import PartnerRoute from "../routes/PartnerRoute";
 import DashboardHome from "../Pages/Dashboard/DashboardHome/DashboardHome";
 import UploadedMovies from "../Pages/Dashboard/UploadedMovies/UploadedMovies";
+import EditMovie from "../Pages/Shared/components/EditMovie/EditMovie";
+
 
 export const router = createBrowserRouter([
   {
@@ -131,6 +133,10 @@ export const router = createBrowserRouter([
       {
         path: "uploaded-movies",
         element: <UploadedMovies />,
+      },
+      {
+        path: "edit-movie/:id",
+        element: <EditMovie />,
       },
     ],
   },
