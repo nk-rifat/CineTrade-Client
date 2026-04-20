@@ -20,6 +20,7 @@ import EditProfile from "../Pages/Dashboard/UpdateProfile/EditProfile";
 import AddMovie from "../Pages/Dashboard/AddNewMovie/AddNewMovie";
 import PendingMovies from "../Pages/Dashboard/PendingMovies/PendingMovies";
 import PartnerRoute from "../routes/PartnerRoute";
+import DashboardHome from "../Pages/Dashboard/DashboardHome";
 
 export const router = createBrowserRouter([
   {
@@ -92,6 +93,10 @@ export const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+      {
+        index: true,
+        element: <DashboardHome />,
+      },
       { path: "my-movies", element: <MyMovies /> },
       { path: "manage-users", element: <ManageUsers /> },
       {
