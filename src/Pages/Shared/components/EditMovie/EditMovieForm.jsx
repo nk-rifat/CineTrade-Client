@@ -115,7 +115,7 @@ const EditMovieForm = ({
             <Field label="Video URL">
               <div className="relative">
                 <input
-                  disabled={isPartner}
+                disabled={isPartner}
                   {...register("videoUrl")}
                   className={inputClasses}
                   type="url"

@@ -104,6 +104,7 @@ const EditMovie = () => {
       setIsUploading(false);
     }
   };
+  
 
   if (isLoading)
     return <p className="text-center text-white py-20">Loading...</p>;
