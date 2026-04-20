@@ -20,7 +20,8 @@ import EditProfile from "../Pages/Dashboard/UpdateProfile/EditProfile";
 import AddMovie from "../Pages/Dashboard/AddNewMovie/AddNewMovie";
 import PendingMovies from "../Pages/Dashboard/PendingMovies/PendingMovies";
 import PartnerRoute from "../routes/PartnerRoute";
-import DashboardHome from "../Pages/Dashboard/DashboardHome";
+import DashboardHome from "../Pages/Dashboard/DashboardHome/DashboardHome";
+import UploadedMovies from "../Pages/Dashboard/UploadedMovies/UploadedMovies";
 
 export const router = createBrowserRouter([
   {
@@ -126,6 +127,10 @@ export const router = createBrowserRouter([
             <PendingMovies />
           </PartnerRoute>
         ),
+      },
+      {
+        path: "uploaded-movies",
+        element: <UploadedMovies />,
       },
     ],
   },
