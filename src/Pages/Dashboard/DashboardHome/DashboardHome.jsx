@@ -1,7 +1,9 @@
-import useCurrentUser from "../../hooks/useCurrentUser";
-import UserHome from "./UserHome";
-import PartnerHome from "./PartnerHome";
+
+import useCurrentUser from "../../../hooks/useCurrentUser";
 import AdminHome from "./AdminHome";
+import PartnerHome from "./PartnerHome";
+import UserHome from "./UserHome";
+
 
 const DashboardHome = () => {
   const { data: currentUser, isLoading } = useCurrentUser();
