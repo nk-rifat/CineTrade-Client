@@ -23,7 +23,7 @@ import PartnerRoute from "../routes/PartnerRoute";
 import DashboardHome from "../Pages/Dashboard/DashboardHome/DashboardHome";
 import UploadedMovies from "../Pages/Dashboard/UploadedMovies/UploadedMovies";
 import EditMovie from "../Pages/Shared/components/EditMovie/EditMovie";
-
+import ManageMovies from "../Pages/Dashboard/ManageMovies/ManageMovies";
 
 export const router = createBrowserRouter([
   {
@@ -138,6 +138,7 @@ export const router = createBrowserRouter([
         path: "edit-movie/:id",
         element: <EditMovie />,
       },
+      { path: "manage-movies", element: <ManageMovies /> },
     ],
   },
 ]);
