@@ -6,12 +6,14 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import { uploadImage } from "../../../../utils/uploadImage";
 import EditMovieForm from "./EditMovieForm";
+import { useAuth } from "../../../../hooks/useAuth";
 
 const EditMovie = () => {
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+  const { user } = useAuth();
 
   const [posterPreview, setPosterPreview] = useState(null);
   const [isUploading, setIsUploading] = useState(false);
@@ -56,7 +58,11 @@ const EditMovie = () => {
           timer: 2000,
           showConfirmButton: false,
         });
-        navigate("/dashboard/uploaded-movies");
+        if (user?.role === "admin") {
+          navigate("/dashboard/manage-movies");
+        } else {
+          navigate("/dashboard/uploaded-movies");
+        }
       }
     },
     onError: (error) => {
@@ -104,7 +110,6 @@ const EditMovie = () => {
       setIsUploading(false);
     }
   };
-  
 
   if (isLoading)
     return <p className="text-center text-white py-20">Loading...</p>;
