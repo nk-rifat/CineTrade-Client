@@ -82,7 +82,7 @@ const DashboardLayout = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard" className={navLinkClass}>
+            <NavLink to="/dashboard" end className={navLinkClass}>
               <FaThLarge /> Dashboard Home
             </NavLink>
           </li>
