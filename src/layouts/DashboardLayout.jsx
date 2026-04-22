@@ -12,6 +12,7 @@ import {
   FaPlusSquare,
   FaThList,
   FaClock,
+  FaThLarge
 } from "react-icons/fa";
 import Logo from "../Pages/Shared/components/Logo";
 import { useAuth } from "../hooks/useAuth";
@@ -78,6 +79,11 @@ const DashboardLayout = () => {
           <li>
             <NavLink to="/" className={navLinkClass}>
               <FaHome /> Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard" className={navLinkClass}>
+              <FaThLarge /> Dashboard Home
             </NavLink>
           </li>
 
