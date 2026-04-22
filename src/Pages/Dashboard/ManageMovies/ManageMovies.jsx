@@ -2,8 +2,10 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import DashboardMovieCard from "../../Shared/components/DashboardMovieCard";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useDeleteMovie from "../../../hooks/useDeleteMovie";
 
 const ManageMovies = () => {
+  const { handleDelete } = useDeleteMovie(["admin-movies"]);
   const [page, setPage] = useState(1);
   const [filter, setFilter] = useState("all");
   const axiosSecure = useAxiosSecure();
@@ -50,7 +52,11 @@ const ManageMovies = () => {
       {/*  MOVIE GRID */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
         {movies.map((movie) => (
-          <DashboardMovieCard key={movie._id} movie={movie} />
+          <DashboardMovieCard
+            key={movie._id}
+            movie={movie}
+            onDelete={handleDelete}
+          />
         ))}
       </div>
 

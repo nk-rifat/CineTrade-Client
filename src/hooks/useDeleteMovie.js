@@ -12,21 +12,18 @@ const useDeleteMovie = (queryKey) => {
       return data;
     },
 
-    onSuccess: (data) => {
-      if (data.deletedCount > 0) {
-        queryClient.invalidateQueries({ queryKey });
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey });
 
-        Swal.fire({
-          title: "Deleted!",
-          text: "Movie has been removed.",
-          icon: "success",
-          background: "#121212",
-          color: "#fff",
-          confirmButtonColor: "#f59e0b",
-        });
-      }
+      Swal.fire({
+        title: "Deleted!",
+        text: "Movie has been removed.",
+        icon: "success",
+        background: "#121212",
+        color: "#fff",
+        confirmButtonColor: "#f59e0b",
+      });
     },
-
     onError: (error) => {
       Swal.fire(
         "Error",
@@ -37,6 +34,7 @@ const useDeleteMovie = (queryKey) => {
   });
 
   const handleDelete = (id) => {
+    console.log("movie id", id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
