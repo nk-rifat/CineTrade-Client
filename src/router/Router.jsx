@@ -24,6 +24,7 @@ import DashboardHome from "../Pages/Dashboard/DashboardHome/DashboardHome";
 import UploadedMovies from "../Pages/Dashboard/UploadedMovies/UploadedMovies";
 import EditMovie from "../Pages/Shared/components/EditMovie/EditMovie";
 import ManageMovies from "../Pages/Dashboard/ManageMovies/ManageMovies";
+import PendingMoviesApproval from "../Pages/Dashboard/PendingMoviesApproval/PendingMoviesApproval";
 
 export const router = createBrowserRouter([
   {
@@ -139,6 +140,14 @@ export const router = createBrowserRouter([
         element: <EditMovie />,
       },
       { path: "manage-movies", element: <ManageMovies /> },
+      {
+        path: "movie-approval",
+        element: (
+          <AdminRoute>
+            <PendingMoviesApproval />
+          </AdminRoute>
+        ),
+      },
     ],
   },
 ]);

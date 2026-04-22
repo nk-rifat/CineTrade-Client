@@ -12,7 +12,7 @@ import {
   FaPlusSquare,
   FaThList,
   FaClock,
-  FaThLarge
+  FaThLarge,
 } from "react-icons/fa";
 import Logo from "../Pages/Shared/components/Logo";
 import { useAuth } from "../hooks/useAuth";
@@ -135,11 +135,6 @@ const DashboardLayout = () => {
           {user?.role === "admin" && (
             <>
               <li>
-                <NavLink to="/dashboard/admin" className={navLinkClass}>
-                  <FaUserShield /> Admin Dashboard
-                </NavLink>
-              </li>
-              <li>
                 <NavLink to="/dashboard/manage-users" className={navLinkClass}>
                   <FaUsers /> Manage Users
                 </NavLink>
@@ -150,6 +145,14 @@ const DashboardLayout = () => {
                   className={navLinkClass}
                 >
                   <FaHandshake /> Partner Applications
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/movie-approval"
+                  className={navLinkClass}
+                >
+                  <FaClock /> Pending Movies Approval
                 </NavLink>
               </li>
               <li>
