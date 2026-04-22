@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaStar, FaRegClock, FaGlobe } from "react-icons/fa";
+import { FaStar, FaRegClock, FaGlobe, FaTicketAlt } from "react-icons/fa";
 import { HiOutlineArrowLeft, HiOutlineCalendar } from "react-icons/hi";
 import { formatMinutesToHours } from "../../../utils/formatMinutesToHours";
 import useMovieAction from "../../../hooks/useMovieAction";
@@ -67,7 +67,8 @@ const MovieHero = ({ movie }) => {
                 <FaGlobe size={16} className="text-sky-500" /> {movie?.language}
               </span>
               <span className="flex items-center gap-1.5 text-yellow-400 font-bold not-italic">
-                <FaStar /> {movie?.rating}
+                <FaTicketAlt />
+                {movie?.sold}
               </span>
             </div>
             <div className="flex flex-col md:flex-row items-center gap-6">
