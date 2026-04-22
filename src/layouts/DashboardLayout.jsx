@@ -114,7 +114,10 @@ const DashboardLayout = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/uploaded-movies" className={navLinkClass}>
+                <NavLink
+                  to="/dashboard/uploaded-movies"
+                  className={navLinkClass}
+                >
                   <FaThList /> My Uploaded Movies
                 </NavLink>
               </li>
@@ -141,6 +144,11 @@ const DashboardLayout = () => {
                   className={navLinkClass}
                 >
                   <FaHandshake /> Partner Applications
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/add-movie" className={navLinkClass}>
+                  <FaPlusSquare /> Add a New Movie
                 </NavLink>
               </li>
               <li>
