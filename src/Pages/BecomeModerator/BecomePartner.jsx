@@ -12,7 +12,7 @@ const BecomePartner = () => {
   const { data: application, isLoading } = useQuery({
     queryKey: ["partnerApplication"],
     queryFn: async () => {
-      const res = await axiosPublic.get("/partner/my-application");
+      const res = await axiosPublic.get("/my-application");
       return res.data;
     },
   });
@@ -24,7 +24,7 @@ const BecomePartner = () => {
         fullName: formData?.fullName,
         reason: formData?.reason,
       };
-      const res = await axiosPublic.post("/partner/apply", payload);
+      const res = await axiosPublic.post("/apply/become-partner", payload);
       return res.data;
     },
 

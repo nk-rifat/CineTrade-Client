@@ -16,7 +16,7 @@ const usePurchasedMovies = () => {
     queryKey: ["purchasedMovies", purchasedIds],
     enabled: !!currentUser && purchasedIds.length > 0,
     queryFn: async () => {
-      const res = await axiosSecure.post("/movies/by-ids", {
+      const res = await axiosSecure.post("/movies/purchase/by-ids", {
         ids: purchasedIds,
       });
       return res.data;

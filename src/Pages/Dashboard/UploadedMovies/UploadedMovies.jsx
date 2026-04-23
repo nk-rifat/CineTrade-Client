@@ -17,7 +17,7 @@ const UploadedMovies = () => {
   } = useQuery({
     queryKey: ["uploaded-movies"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/uploaded-movies");
+      const res = await axiosSecure.get("/partner/uploaded-movies");
       return res.data;
     },
   });

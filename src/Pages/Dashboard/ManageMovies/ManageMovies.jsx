@@ -16,7 +16,7 @@ const ManageMovies = () => {
     queryKey: ["admin-movies", page, filter],
     queryFn: async () => {
       const res = await axiosSecure.get(
-        `/admin/movies?page=${page}&limit=${limit}&addedBy=${filter}`,
+        `/admin/all-movies?page=${page}&limit=${limit}&addedBy=${filter}`,
       );
       return res.data;
     },

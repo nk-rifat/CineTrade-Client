@@ -13,7 +13,7 @@ import { useAuth } from "../../../hooks/useAuth";
 
 const PendingMovies = () => {
   const axiosSecure = useAxiosSecure();
-  const {user} = useAuth();
+  const { user } = useAuth();
 
   const isAdmin = user?.role === "admin";
 
@@ -24,7 +24,7 @@ const PendingMovies = () => {
   } = useQuery({
     queryKey: ["pending-movies"],
     queryFn: async () => {
-      const { data } = await axiosSecure.get("/movies/pending");
+      const { data } = await axiosSecure.get("/partner/movies/pending");
       return data;
     },
   });

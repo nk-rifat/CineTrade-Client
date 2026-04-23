@@ -19,7 +19,7 @@ const AdminHome = () => {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["admin-dashboard"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/admin/dashboard-summary");
+      const res = await axiosSecure.get("/admin/dashboard");
       return res.data;
     },
   });

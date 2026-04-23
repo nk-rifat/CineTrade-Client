@@ -13,7 +13,7 @@ const PartnerApplications = () => {
   } = useQuery({
     queryKey: ["partner-applications"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/partner-applications");
+      const res = await axiosSecure.get("/admin/all-partner-applications");
       return res.data?.success ? res.data.data : [];
     },
   });
@@ -36,7 +36,7 @@ const PartnerApplications = () => {
     if (result.isConfirmed) {
       try {
         const res = await axiosSecure.patch(
-          `/application-update-status/${id}`,
+          `/admin/application-update-status/${id}`,
           { status }
         );
 
