@@ -46,8 +46,8 @@ const PartnerHome = () => {
   return (
     <div className="p-4 md:p-8 space-y-10 text-white min-h-screen">
       <header>
-        <h1 className="text-4xl text-amber-500 font-semibold">
-          Partner Dashboard
+        <h1 className="text-4xl text-amber-500 font-bold tracking-tight">
+          Partner <span className="text-white">Dashboard</span>
         </h1>
         <p className="text-slate-500 font-medium italic">
           Performance metrics & sales activity
