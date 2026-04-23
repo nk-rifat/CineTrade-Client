@@ -82,8 +82,8 @@ const PartnerHome = () => {
           color="from-pink-500 to-rose-500"
         />
         <StatCard
-          title="Earnings"
-          value={`$${stats.earnings || 0}`}
+          title="Earnings (After 20% Reduction)"
+          value={`$${stats.earnings.toFixed(2)}`}
           icon={<FiDollarSign />}
           color="from-fuchsia-600 to-purple-500"
         />
