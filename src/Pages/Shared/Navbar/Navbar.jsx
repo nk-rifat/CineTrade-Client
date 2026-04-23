@@ -130,14 +130,16 @@ const Navbar = () => {
                 <li>
                   <Link to="/dashboard">Dashboard</Link>
                 </li>
-                <li>
-                  <Link
-                    to="/become-partner"
-                    className="text-sky-500 font-semibold"
-                  >
-                    Become a Partner
-                  </Link>
-                </li>
+                {user && user?.role !== "admin" && (
+                  <li>
+                    <Link
+                      to="/become-partner"
+                      className="text-sky-500 font-semibold"
+                    >
+                      Become a Partner
+                    </Link>
+                  </li>
+                )}
                 <div className="divider my-1"></div>
                 <li>
                   <button
