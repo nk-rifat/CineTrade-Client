@@ -1,7 +1,7 @@
 
 import useCurrentUser from "../../../hooks/useCurrentUser";
 import AdminHome from "./AdminHome";
-import PartnerHome from "./PartnerHome";
+import PartnerHome from "./PartnerHome/PartnerHome";
 import UserHome from "./UserHome";
 
 
