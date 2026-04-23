@@ -13,18 +13,17 @@ import MyMovies from "../Pages/Dashboard/MyMovies/MyMovies";
 import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 import PartnerApplications from "../Pages/Dashboard/PartnerApplications/PartnerApplications";
 import PartnerPaymentPage from "../Pages/BecomeModerator/PartnerPaymentPage";
-import AdminRoute from "../routes/AdminRoute";
 import MoviePaymentPage from "../Pages/BuyMovie/MoviePaymentPage";
 import WatchMovie from "../Pages/MovieDetails/WatchMovie";
 import EditProfile from "../Pages/Dashboard/UpdateProfile/EditProfile";
 import AddMovie from "../Pages/Dashboard/AddNewMovie/AddNewMovie";
 import PendingMovies from "../Pages/Dashboard/PendingMovies/PendingMovies";
-import PartnerRoute from "../routes/PartnerRoute";
 import DashboardHome from "../Pages/Dashboard/DashboardHome/DashboardHome";
 import UploadedMovies from "../Pages/Dashboard/UploadedMovies/UploadedMovies";
 import EditMovie from "../Pages/Shared/components/EditMovie/EditMovie";
 import ManageMovies from "../Pages/Dashboard/ManageMovies/ManageMovies";
 import PendingMoviesApproval from "../Pages/Dashboard/PendingMoviesApproval/PendingMoviesApproval";
+import PrivilegedRoute from "../routes/PrivilegedRoute";
 
 export const router = createBrowserRouter([
   {
@@ -101,51 +100,76 @@ export const router = createBrowserRouter([
         index: true,
         element: <DashboardHome />,
       },
-      { path: "my-movies", element: <MyMovies /> },
-      { path: "manage-users", element: <ManageUsers /> },
+      {
+        path: "my-movies",
+        element: <MyMovies />,
+      },
+      {
+        path: "manage-users",
+        element: (
+          <PrivilegedRoute allowedRoles={["admin"]}>
+            <ManageUsers />
+          </PrivilegedRoute>
+        ),
+      },
       {
         path: "partner-applications",
         element: (
-          <AdminRoute>
+          <PrivilegedRoute allowedRoles={["admin"]}>
             <PartnerApplications />
-          </AdminRoute>
+          </PrivilegedRoute>
         ),
       },
       {
         path: "edit-profile",
-        element: (
-          <PrivateRoute>
-            <EditProfile />
-          </PrivateRoute>
-        ),
+        element: <EditProfile />,
       },
       {
         path: "add-movie",
-        element: <AddMovie />,
+        element: (
+          <PrivilegedRoute allowedRoles={["admin", "partner"]}>
+            <AddMovie />
+          </PrivilegedRoute>
+        ),
       },
       {
         path: "pending-movies",
         element: (
-          <PartnerRoute>
+          <PrivilegedRoute allowedRoles={["partner"]}>
             <PendingMovies />
-          </PartnerRoute>
+          </PrivilegedRoute>
         ),
       },
       {
         path: "uploaded-movies",
-        element: <UploadedMovies />,
+        element: (
+          <PrivilegedRoute allowedRoles={["partner"]}>
+            <UploadedMovies />
+          </PrivilegedRoute>
+        ),
       },
       {
         path: "edit-movie/:id",
-        element: <EditMovie />,
+        element: (
+          <PrivilegedRoute allowedRoles={["admin", "partner"]}>
+            <EditMovie />
+          </PrivilegedRoute>
+        ),
       },
-      { path: "manage-movies", element: <ManageMovies /> },
+      {
+        path: "manage-movies",
+        element: (
+          <PrivilegedRoute allowedRoles={["admin"]}>
+            <ManageMovies />
+          </PrivilegedRoute>
+        ),
+      },
       {
         path: "movie-approval",
         element: (
-          <AdminRoute>
+          <PrivilegedRoute allowedRoles={["admin"]}>
             <PendingMoviesApproval />
-          </AdminRoute>
+          </PrivilegedRoute>
         ),
       },
     ],
