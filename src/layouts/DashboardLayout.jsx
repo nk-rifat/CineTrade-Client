@@ -60,7 +60,7 @@ const DashboardLayout = () => {
         </div>
 
         {/* Page Content */}
-        <div className="p-4 bg-gradient-to-br from-black via-slate-900 to-black min-h-screen text-white">
+        <div className="bg-gradient-to-br from-black via-slate-900 to-black min-h-screen text-white">
           <Outlet />
         </div>
       </div>
@@ -163,12 +163,6 @@ const DashboardLayout = () => {
               <li>
                 <NavLink to="/dashboard/manage-movies" className={navLinkClass}>
                   <FaFilm /> Manage Movies
-                </NavLink>
-              </li>
-
-              <li>
-                <NavLink to="/dashboard/reports" className={navLinkClass}>
-                  <FaChartLine /> Reports & Analytics
                 </NavLink>
               </li>
             </>
