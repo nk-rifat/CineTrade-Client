@@ -1,22 +1,13 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css";
 import MovieCard from "../../Shared/components/MovieCard";
+import usePopularMovies from "../../../hooks/usePopularMovies";
 
 const PopularSection = () => {
-  const { data: popularMovies, isLoading } = useQuery({
-    queryKey: ["popularMovies"],
-    queryFn: async () => {
-      const res = await axios.get(
-        `${import.meta.env.VITE_SERVER_BASE_URL}/movies/popular`,
-      );
-      return res.data;
-    },
-  });
+  const { data: popularMovies, isLoading } = usePopularMovies();
 
   if (isLoading) {
     return <p className="text-white text-center">Loading...</p>;

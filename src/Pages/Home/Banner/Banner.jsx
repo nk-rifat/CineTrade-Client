@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 import "swiper/css";
@@ -8,17 +6,10 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import { formatMinutesToHours } from "../../../utils/formatMinutesToHours";
 import { FaHandshake } from "react-icons/fa";
+import usePopularMovies from "../../../hooks/usePopularMovies";
 
 const Banner = () => {
-  const { data: popularMovies, isLoading } = useQuery({
-    queryKey: ["popularMovies"],
-    queryFn: async () => {
-      const res = await axios.get(
-        `${import.meta.env.VITE_SERVER_BASE_URL}/movies/popular`,
-      );
-      return res.data;
-    },
-  });
+  const { data: popularMovies, isLoading } = usePopularMovies();
 
   if (isLoading) {
     return (
