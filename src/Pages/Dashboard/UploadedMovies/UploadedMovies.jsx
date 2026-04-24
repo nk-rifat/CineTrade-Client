@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import DashboardMovieCard from "../../Shared/components/DashboardMovieCard";
 import Swal from "sweetalert2";
 import useDeleteMovie from "../../../hooks/useDeleteMovie";
+import { FiCloudLightning } from "react-icons/fi";
 
 const UploadedMovies = () => {
   const { handleDelete } = useDeleteMovie(["uploaded-movies"]);
@@ -40,9 +41,10 @@ const UploadedMovies = () => {
 
   return (
     <div className="p-6">
-      <h1 className="text-3xl font-bold mb-8 text-amber-500">
-        Your Uploaded Movies
-      </h1>
+      <h2 className="text-4xl font-black text-white tracking-tight flex items-center gap-3 mb-8">
+        <FiCloudLightning className="text-amber-500" />
+        My Uploaded Movies
+      </h2>
 
       {movies.length === 0 ? (
         <p className="text-center py-20 opacity-50 text-xl">No movies found.</p>

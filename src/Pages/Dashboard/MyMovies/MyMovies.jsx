@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import MovieCard from "../../Shared/components/MovieCard";
 import usePurchasedMovies from "../../../hooks/usePurchasedMovies";
+import { FiCreditCard } from "react-icons/fi";
 
 const MyMovies = () => {
   const navigate = useNavigate();
@@ -35,7 +36,10 @@ const MyMovies = () => {
   // Movies Grid
   return (
     <div className="p-4">
-      <h2 className="text-2xl font-bold mb-6">My Purchased Movies</h2>
+      <h2 className="text-4xl font-black text-white tracking-tight flex items-center gap-3 mb-8">
+        <FiCreditCard className="text-amber-500" />
+        My Purchase Movies
+      </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {purchaseMovies.map((movie) => (
