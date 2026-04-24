@@ -14,6 +14,10 @@ const useAxiosSecure = () => {
       async (error) => {
         const originalRequest = error.config;
 
+        if (originalRequest.url.includes("/refresh")) {
+          return Promise.reject(error);
+        }
+
         // 2. Only attempt a refresh if the error is 401 and we haven't tried retrying yet.
         if (error.response?.status === 401 && !originalRequest._retry) {
           originalRequest._retry = true;
