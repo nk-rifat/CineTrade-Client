@@ -40,11 +40,13 @@ const PopularSection = () => {
           1024: { slidesPerView: 5 },
         }}
       >
-        {popularMovies.map((movie) => (
-          <SwiperSlide key={movie._id}>
-            <MovieCard movie={movie} />
-          </SwiperSlide>
-        ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+          {popularMovies.map((movie) => (
+            <SwiperSlide key={movie._id}>
+              <MovieCard movie={movie} />
+            </SwiperSlide>
+          ))}
+        </div>
       </Swiper>
     </section>
   );
