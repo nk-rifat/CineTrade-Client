@@ -25,7 +25,7 @@ const WatchMovie = () => {
 
   if (!isLoading && movie?.release_status === "upcoming") {
     return (
-      <div className="h-screen w-full flex flex-col items-center justify-center bg-[#0a0a0a] text-white p-6 text-center">
+      <div className="h-screen w-full flex flex-col items-center justify-center bg-gradient-to-br from-black via-slate-900 to-black text-white p-6 text-center">
         <HiOutlineExclamationCircle className="w-16 h-16 text-sky-500 mb-6 animate-pulse" />
         <h2 className="text-3xl font-black uppercase italic tracking-tighter">
           Content Locked
@@ -61,7 +61,7 @@ const WatchMovie = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
+    <div className="min-h-screen bg-gradient-to-br from-black via-slate-900 to-black text-white">
       {/* Header */}
       <nav className="p-6">
         <button
@@ -72,7 +72,7 @@ const WatchMovie = () => {
             className="group-hover:-translate-x-1 transition-transform"
             size={20}
           />
-          <span className="font-medium tracking-wide text-amber-500">
+          <span className="font-semibold tracking-wide text-amber-500">
             Exit Player
           </span>
         </button>
