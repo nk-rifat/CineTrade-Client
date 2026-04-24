@@ -48,7 +48,10 @@ const Banner = () => {
               {/* --- CONTENT LAYER --- */}
               <div className="relative h-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col justify-center items-center md:items-end text-center md:text-right text-white z-10">
                 <div className="max-w-2xl space-y-4 md:space-y-6">
-                  <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-black leading-tight tracking-tighter uppercase drop-shadow-2xl">
+                  <h1
+                    className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-black leading-tight tracking-tighter uppercase drop-shadow-2xl 
+               bg-gradient-to-r from-sky-400 via-white to-amber-500 bg-clip-text text-transparent"
+                  >
                     {movie.title}
                   </h1>
 
