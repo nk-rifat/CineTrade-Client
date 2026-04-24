@@ -26,7 +26,7 @@ const MoviesByGenres = () => {
   }
 
   return (
-    <section className="bg-[#050505] min-h-screen px-6 md:px-12 py-10">
+    <section className="bg-gradient-to-br from-black via-slate-900 to-black min-h-screen px-6 md:px-12 py-10">
       {/* Header */}
       <div className="flex items-center justify-between mb-10">
         <h2 className="text-2xl md:text-3xl font-black uppercase italic text-white">

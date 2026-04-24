@@ -34,7 +34,7 @@ const FaqSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-[#050505] text-white">
+    <section className="py-20 text-white">
       <div className="max-w-4xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">

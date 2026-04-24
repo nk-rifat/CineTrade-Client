@@ -30,7 +30,7 @@ const AllMovies = () => {
   });
 
   return (
-    <div className="px-4 bg-[#050505] md:px-10 py-10 bg-[#050505]">
+    <div className="px-4 bg-gradient-to-br from-black via-slate-900 to-black md:px-10 py-10 bg-[#050505]">
       {/* Header + Filters Row */}
       <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-6 mb-6">
         {/* Left: Header and Description */}

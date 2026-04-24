@@ -23,7 +23,7 @@ const NewReleaseSection = () => {
   }
 
   return (
-    <section className="px-4 pt-6 md:px-10 bg-[#050505]">
+    <section className="px-4 pt-6 md:px-10">
       <div className="flex items-center justify-between mb-14">
         <h2 className="text-4xl md:text-5xl font-black text-white uppercase italic">
           New{" "}
