@@ -8,13 +8,10 @@ const PartnerPaymentPage = () => {
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
 
-
   const { data: application = {} } = useQuery({
     queryKey: ["application", id],
     queryFn: async () => {
-      const res = await axiosSecure.get(
-        `/partner/applications/${id}`,
-      );
+      const res = await axiosSecure.get(`/partner/applications/${id}`);
       return res.data;
     },
   });
@@ -23,7 +20,7 @@ const PartnerPaymentPage = () => {
     <Payment>
       <PaymentForm
         type="partner"
-        referenceId={id}
+        referenceId={application?._id}
         amount={49.99}
         successRedirect="/dashboard"
       />
