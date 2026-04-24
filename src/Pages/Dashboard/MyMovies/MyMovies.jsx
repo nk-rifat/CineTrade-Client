@@ -2,19 +2,14 @@ import { useNavigate } from "react-router-dom";
 import MovieCard from "../../Shared/components/MovieCard";
 import usePurchasedMovies from "../../../hooks/usePurchasedMovies";
 import { FiCreditCard } from "react-icons/fi";
+import Loading from "../../../Components/Shared/Loading";
 
 const MyMovies = () => {
   const navigate = useNavigate();
   const { purchaseMovies, isLoading } = usePurchasedMovies();
 
-  // Loading State
-  if (isLoading) {
-    return (
-      <div className="flex justify-center items-center min-h-[60vh]">
-        <span className="loading loading-spinner loading-lg"></span>
-      </div>
-    );
-  }
+  if (isLoading)
+    return <Loading message="Accessing Your Library..." fullPage={true} />;
 
   //  Empty State
   if (purchaseMovies.length === 0) {

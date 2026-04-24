@@ -3,6 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 import { HiOutlineArrowLeft, HiOutlineExclamationCircle } from "react-icons/hi";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import WatchMoviePlayer from "./Components/WatchMoviePlayer";
+import Loading from "../../Components/Shared/Loading";
+import Error from "../../Components/Shared/Error";
 
 const WatchMovie = () => {
   const { id } = useParams();
@@ -13,6 +15,8 @@ const WatchMovie = () => {
     data: movie,
     isLoading,
     isError,
+    error,
+    refetch,
   } = useQuery({
     queryKey: ["movie", id],
     queryFn: async () => {
@@ -22,8 +26,11 @@ const WatchMovie = () => {
     enabled: !!id,
     retry: 1,
   });
+  if (isLoading) {
+    return <Loading message="Buffering Stream..." fullPage={true} />;
+  }
 
-  if (!isLoading && movie?.release_status === "upcoming") {
+  if (movie?.release_status === "upcoming") {
     return (
       <div className="h-screen w-full flex flex-col items-center justify-center bg-gradient-to-br from-black via-slate-900 to-black text-white p-6 text-center">
         <HiOutlineExclamationCircle className="w-16 h-16 text-sky-500 mb-6 animate-pulse" />
@@ -47,15 +54,14 @@ const WatchMovie = () => {
 
   if (isError) {
     return (
-      <div className="h-screen w-full flex flex-col items-center justify-center bg-[#0a0a0a] text-white">
-        <HiOutlineExclamationCircle className="w-12 h-12 text-red-500 mb-4" />
-        <h2 className="text-xl font-bold">Failed to load movie</h2>
-        <button
-          onClick={() => navigate(-1)}
-          className="mt-4 text-sky-500 hover:text-white transition-colors underline underline-offset-4"
-        >
-          Go Back
-        </button>
+      <div className="h-screen flex items-center justify-center bg-black p-6">
+        <Error
+          message={
+            error?.message ||
+            "We couldn't connect to the secure streaming server."
+          }
+          onRetry={refetch}
+        />
       </div>
     );
   }

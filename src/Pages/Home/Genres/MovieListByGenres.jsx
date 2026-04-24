@@ -2,6 +2,7 @@ import { useSearchParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import MovieCard from "../../Shared/components/MovieCard";
+import Loading from "../../../Components/Shared/Loading";
 
 const MoviesByGenres = () => {
   const [searchParams] = useSearchParams();
@@ -18,11 +19,7 @@ const MoviesByGenres = () => {
   });
 
   if (isLoading) {
-    return (
-      <div className="flex justify-center p-20 bg-black">
-        <span className="loading loading-spinner text-amber-500"></span>
-      </div>
-    );
+    return <Loading fullPage={true} />;
   }
 
   return (

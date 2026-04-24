@@ -10,6 +10,8 @@ import {
 } from "react-icons/fi";
 import PendingMovieTable from "../../Shared/components/PendingMovieTable";
 import { useAuth } from "../../../hooks/useAuth";
+import Loading from "../../../Components/Shared/Loading";
+import Error from "../../../Components/Shared/Error";
 
 const PendingMovies = () => {
   const axiosSecure = useAxiosSecure();
@@ -21,6 +23,8 @@ const PendingMovies = () => {
     data: pendingMovies = [],
     isLoading,
     isError,
+    error,
+    refetch,
   } = useQuery({
     queryKey: ["pending-movies"],
     queryFn: async () => {
@@ -29,25 +33,11 @@ const PendingMovies = () => {
     },
   });
 
-  if (isLoading) {
-    return (
-      <div className="flex flex-col justify-center items-center min-h-[60vh] gap-4">
-        <FiLoader className="animate-spin text-4xl text-blue-500" />
-        <p className="text-gray-500 animate-pulse font-medium">
-          Fetching pending Movies...
-        </p>
-      </div>
-    );
-  }
+  if (isLoading)
+    return <Loading message="Fetching pending Movies..." fullPage={true} />;
 
   if (isError) {
-    return (
-      <div className="text-center bg-red-500/10 border border-red-500/20 rounded-2xl p-10 mt-10 max-w-lg mx-auto">
-        <p className="text-red-500 font-semibold">
-          Failed to load pending movies.
-        </p>
-      </div>
-    );
+    return <Error message={error.message} onRetry={refetch} />;
   }
 
   return (

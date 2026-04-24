@@ -4,6 +4,8 @@ import DashboardMovieCard from "../../Shared/components/DashboardMovieCard";
 import Swal from "sweetalert2";
 import useDeleteMovie from "../../../hooks/useDeleteMovie";
 import { FiCloudLightning } from "react-icons/fi";
+import Loading from "../../../Components/Shared/Loading";
+import Error from "../../../Components/Shared/Error";
 
 const UploadedMovies = () => {
   const { handleDelete } = useDeleteMovie(["uploaded-movies"]);
@@ -15,6 +17,7 @@ const UploadedMovies = () => {
     isLoading,
     isError,
     error,
+    refetch,
   } = useQuery({
     queryKey: ["uploaded-movies"],
     queryFn: async () => {
@@ -23,20 +26,10 @@ const UploadedMovies = () => {
     },
   });
 
-  if (isLoading) {
-    return (
-      <div className="flex justify-center items-center min-h-[400px]">
-        <span className="loading loading-spinner loading-lg text-primary"></span>
-      </div>
-    );
-  }
+  if (isLoading) return <Loading fullPage={true} />;
 
   if (isError) {
-    return (
-      <div className="alert alert-error max-w-md mx-auto mt-10 text-white">
-        <span>{error?.message || "Error loading movies"}</span>
-      </div>
-    );
+    return <Error message={error.message} onRetry={refetch} />;
   }
 
   return (

@@ -5,12 +5,13 @@ import "swiper/css/navigation";
 import "swiper/css";
 import MovieCard from "../../Shared/components/MovieCard";
 import usePopularMovies from "../../../hooks/usePopularMovies";
+import Loading from "../../../Components/Shared/Loading";
 
 const PopularSection = () => {
   const { data: popularMovies, isLoading } = usePopularMovies();
 
   if (isLoading) {
-    return <p className="text-white text-center">Loading...</p>;
+    return <Loading fullPage={true} />;
   }
 
   return (

@@ -1,10 +1,9 @@
 import { motion } from 'framer-motion';
 
-const Loading = ({ message = "PREPARING SCREEN...", fullPage = false }) => {
+const Loading = ({ message = "Loading...", fullPage = false }) => {
   return (
     <div className={`flex flex-col items-center justify-center w-full gap-6 ${fullPage ? 'h-screen bg-black' : 'h-[300px]'}`}>
       <div className="relative">
-        {/* Modern multi-layer spinner */}
         <motion.div
           className="w-16 h-16 rounded-full border-2 border-dashed border-sky-400/30"
           animate={{ rotate: 360 }}

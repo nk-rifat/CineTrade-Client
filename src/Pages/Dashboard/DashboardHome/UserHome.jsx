@@ -1,17 +1,12 @@
 import { Link } from "react-router-dom";
 import { Play, CreditCard, Film, ArrowRight, Star, Clock } from "lucide-react";
 import usePurchasedMovies from "../../../hooks/usePurchasedMovies";
+import Loading from "../../../Components/Shared/Loading";
 
 const UserHome = () => {
   const { purchaseMovies, isLoading, currentUser } = usePurchasedMovies();
 
-  if (isLoading) {
-    return (
-      <div className="flex justify-center items-center h-[60vh]">
-        <span className="loading loading-spinner loading-lg text-primary"></span>
-      </div>
-    );
-  }
+  if (isLoading) return <Loading fullPage={true} />;
 
   const totalSpent = purchaseMovies.reduce((sum, m) => sum + (m.price || 0), 0);
   const recentPurchaseMovies = [...purchaseMovies].reverse().slice(0, 4);

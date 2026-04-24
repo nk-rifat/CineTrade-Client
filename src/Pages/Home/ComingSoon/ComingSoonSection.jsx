@@ -1,13 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import MovieCard from "../../Shared/components/MovieCard";
+import Loading from "../../../Components/Shared/Loading";
 
 const ComingSoonSection = () => {
   const { data: comingSoonMovies, isLoading } = useQuery({
     queryKey: ["comingSoon"],
     queryFn: async () => {
       const res = await axios.get(
-        `${import.meta.env.VITE_SERVER_BASE_URL}/movies/coming-soon`
+        `${import.meta.env.VITE_SERVER_BASE_URL}/movies/coming-soon`,
       );
       return res.data;
     },
@@ -15,8 +16,8 @@ const ComingSoonSection = () => {
 
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center min-h-[400px] bg-[#050505]">
-        <span className="loading loading-ring loading-lg text-white"></span>
+      <div className="w-full h-[400px] bg-[#050505]">
+        <Loading message="Previewing Upcoming Titles..." fullPage={false} />
       </div>
     );
   }

@@ -1,3 +1,4 @@
+import Loading from "../../../Components/Shared/Loading";
 import useCurrentUser from "../../../hooks/useCurrentUser";
 import EditProfileForm from "./EditProfileForm";
 import { FiLoader } from "react-icons/fi";
@@ -5,13 +6,7 @@ import { FiLoader } from "react-icons/fi";
 const EditProfile = () => {
   const { data: currentUser, isLoading, isError } = useCurrentUser();
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <FiLoader className="text-sky-500 animate-spin text-4xl" />
-      </div>
-    );
-  }
+  if (isLoading) return <Loading fullPage={true} />;
 
   if (isError || !currentUser) {
     return (

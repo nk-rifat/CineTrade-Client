@@ -7,6 +7,8 @@ import MovieTrailer from "./Components/MovieTrailer";
 import RelatedMovies from "./Components/RelatedMovies";
 import { useEffect } from "react";
 import { useAuth } from "../../hooks/useAuth";
+import Loading from "../../Components/Shared/Loading";
+import Error from "../../Components/Shared/Error";
 
 const MovieDetails = () => {
   const { user } = useAuth();
@@ -16,6 +18,8 @@ const MovieDetails = () => {
     data: movie,
     isLoading,
     isError,
+    error,
+    refetch,
   } = useQuery({
     queryKey: ["movie", id],
     queryFn: async () => {
@@ -48,19 +52,23 @@ const MovieDetails = () => {
     }
   }, [id, user?.role]);
 
-  if (isLoading)
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-[#0a0a0a]">
-        <div className="loading loading-ring loading-lg text-primary"></div>
-      </div>
-    );
+  if (isLoading) {
+    return <Loading message="Unrolling Film..." fullPage={true} />;
+  }
 
-  if (isError || !movie)
+  if (isError || !movie) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-[#0a0a0a] text-white">
-        <h2 className="text-2xl font-bold opacity-50 mb-4">Movie not found</h2>
+      <div className="min-h-screen flex items-center justify-center bg-black p-6">
+        <Error
+          message={
+            error?.message ||
+            "This title might have been removed or is temporarily unavailable."
+          }
+          onRetry={refetch}
+        />
       </div>
     );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-slate-900 to-black text-white">

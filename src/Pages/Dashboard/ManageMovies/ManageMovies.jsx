@@ -4,6 +4,7 @@ import DashboardMovieCard from "../../Shared/components/DashboardMovieCard";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useDeleteMovie from "../../../hooks/useDeleteMovie";
 import { FiFilm } from "react-icons/fi";
+import Loading from "../../../Components/Shared/Loading";
 
 const ManageMovies = () => {
   const { handleDelete } = useDeleteMovie(["admin-movies"]);
@@ -26,9 +27,7 @@ const ManageMovies = () => {
   const movies = data?.movies || [];
   const totalPages = data?.totalPages || 0;
 
-  if (isLoading) {
-    return <p className="text-center mt-10">Loading...</p>;
-  }
+  if (isLoading) return <Loading fullPage={true} />;
 
   return (
     <div className="p-6">

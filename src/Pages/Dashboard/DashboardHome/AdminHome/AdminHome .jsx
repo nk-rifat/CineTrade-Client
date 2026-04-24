@@ -12,11 +12,13 @@ import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import StatCard from "../PartnerHome/StatCard";
 import { ChartCard, ModernAreaChart } from "../PartnerHome/PartnerCharts";
 import ActivityLeaderboard from "../PartnerHome/ActivityLeaderboard";
+import Loading from "../../../../Components/Shared/Loading";
+import Error from "../../../../Components/Shared/Error";
 
 const AdminHome = () => {
   const axiosSecure = useAxiosSecure();
 
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, isError, error, refetch } = useQuery({
     queryKey: ["admin-dashboard"],
     queryFn: async () => {
       const res = await axiosSecure.get("/admin/dashboard");
@@ -24,26 +26,9 @@ const AdminHome = () => {
     },
   });
 
-  // --- LOADING STATE ---
-  if (isLoading)
-    return (
-      <div className="h-[80vh] flex justify-center items-center bg-[#0f172a]">
-        <span className="loading loading-bars loading-lg text-amber-500"></span>
-      </div>
-    );
+  if (isLoading) return <Loading fullPage={true} />;
 
-  // --- ERROR STATE ---
-  if (isError)
-    return (
-      <div className="h-[80vh] flex justify-center items-center bg-[#0f172a] p-10">
-        <div className="text-error bg-error/10 border border-error/20 p-6 rounded-2xl">
-          <p className="font-bold text-lg">Error loading Admin Data</p>
-          <p className="text-sm opacity-70 italic">
-            Please verify your connection or admin permissions.
-          </p>
-        </div>
-      </div>
-    );
+  if (isError) return <Error message={error.message} onRetry={refetch} />;
 
   const {
     stats = {},

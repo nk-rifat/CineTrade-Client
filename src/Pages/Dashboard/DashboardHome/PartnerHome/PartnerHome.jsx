@@ -11,10 +11,12 @@ import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import StatCard from "./StatCard";
 import { ChartCard, ModernAreaChart } from "./PartnerCharts";
 import ActivityLeaderboard from "./ActivityLeaderboard";
+import Loading from "../../../../Components/Shared/Loading";
+import Error from "../../../../Components/Shared/Error";
 
 const PartnerHome = () => {
   const axiosSecure = useAxiosSecure();
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, isError, error, refetch } = useQuery({
     queryKey: ["partner-dashboard"],
     queryFn: async () => {
       const res = await axiosSecure.get("/partner/dashboard");
@@ -22,19 +24,9 @@ const PartnerHome = () => {
     },
   });
 
-  if (isLoading)
-    return (
-      <div className="h-[60vh] flex justify-center items-center">
-        <span className="loading loading-bars loading-lg text-primary"></span>
-      </div>
-    );
+  if (isLoading) return <Loading fullPage={true} />;
 
-  if (isError)
-    return (
-      <div className="p-10 text-error bg-error/10 rounded-2xl border border-error/20">
-        Critical error loading dashboard.
-      </div>
-    );
+  if (isError) return <Error message={error.message} onRetry={refetch} />;
 
   const {
     stats = {},

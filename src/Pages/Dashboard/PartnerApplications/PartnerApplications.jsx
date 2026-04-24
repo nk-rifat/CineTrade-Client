@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import ApplicationRow from "./ApplicationRow";
 import Swal from "sweetalert2";
 import { FiUserPlus } from "react-icons/fi";
+import Loading from "../../../Components/Shared/Loading";
 
 const PartnerApplications = () => {
   const axiosSecure = useAxiosSecure();
@@ -60,11 +61,7 @@ const PartnerApplications = () => {
   };
 
   if (isLoading)
-    return (
-      <div className="flex justify-center mt-20">
-        <span className="loading loading-bars loading-lg"></span>
-      </div>
-    );
+    return <Loading message="Fetching Candidates..." fullPage={true} />;
 
   return (
     <div className="p-6">

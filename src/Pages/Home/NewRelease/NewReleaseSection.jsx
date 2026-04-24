@@ -6,6 +6,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css";
 import MovieCard from "../../Shared/components/MovieCard";
+import Loading from "../../../Components/Shared/Loading";
 
 const NewReleaseSection = () => {
   const { data: newRelease, isLoading } = useQuery({
@@ -19,7 +20,7 @@ const NewReleaseSection = () => {
   });
 
   if (isLoading) {
-    return <p className="text-white text-center">Loading...</p>;
+    return <Loading fullPage={true} />;
   }
 
   return (

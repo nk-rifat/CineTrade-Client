@@ -7,19 +7,15 @@ import "swiper/css/effect-fade";
 import { formatMinutesToHours } from "../../../utils/formatMinutesToHours";
 import { FaHandshake } from "react-icons/fa";
 import usePopularMovies from "../../../hooks/usePopularMovies";
+import Loading from "../../../Components/Shared/Loading";
 
 const Banner = () => {
   const { data: popularMovies, isLoading } = usePopularMovies();
 
   if (isLoading) {
     return (
-      <div className="w-full h-[450px] md:h-[550px] lg:h-[650px] bg-indigo-950 flex items-center justify-center">
-        <div className="flex flex-col items-center gap-4">
-          <div className="w-12 h-12 border-4 border-sky-400 border-t-transparent rounded-full animate-spin"></div>
-          <p className="text-sky-200 font-medium animate-pulse tracking-widest text-sm md:text-base">
-            FETCHING BLOCKBUSTERS...
-          </p>
-        </div>
+      <div className="w-full h-[500px] md:h-[600px] lg:h-[700px] bg-[#050505]">
+        <Loading message="Preparing Premiers..." fullPage={false} />
       </div>
     );
   }

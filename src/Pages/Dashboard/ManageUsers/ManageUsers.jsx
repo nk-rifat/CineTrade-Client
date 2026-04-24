@@ -4,6 +4,7 @@ import UserStats from "./UserStats";
 import UserTable from "./UserTable";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Loading from "../../../Components/Shared/Loading";
 
 const ManageUsers = () => {
   const queryClient = useQueryClient();
@@ -22,7 +23,10 @@ const ManageUsers = () => {
   // Mutation for updating user status
   const updateUserMutation = useMutation({
     mutationFn: async ({ userId, updateData }) => {
-      const res = await axiosSecure.patch(`/admin/manage-user/${userId}`, updateData);
+      const res = await axiosSecure.patch(
+        `/admin/manage-user/${userId}`,
+        updateData,
+      );
       return res.data;
     },
     onSuccess: () => {
@@ -61,16 +65,7 @@ const ManageUsers = () => {
     });
   };
 
-  if (isLoading) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-[400px] space-y-3">
-        <span className="loading loading-spinner loading-lg text-indigo-500"></span>
-        <p className="text-slate-400 font-medium animate-pulse">
-          Fetching user directory...
-        </p>
-      </div>
-    );
-  }
+  if (isLoading) return <Loading message="Fetching User..." fullPage={true} />;
 
   return (
     <div className="p-6 max-w-9xl mx-auto">

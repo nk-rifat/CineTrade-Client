@@ -7,6 +7,8 @@ import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import { uploadImage } from "../../../../utils/uploadImage";
 import EditMovieForm from "./EditMovieForm";
 import { useAuth } from "../../../../hooks/useAuth";
+import Loading from "../../../../Components/Shared/Loading";
+import Error from "../../../../Components/Shared/Error";
 
 const EditMovie = () => {
   const { id } = useParams();
@@ -19,7 +21,13 @@ const EditMovie = () => {
   const [isUploading, setIsUploading] = useState(false);
 
   // Fetch single Movie Data
-  const { data: movie, isLoading } = useQuery({
+  const {
+    data: movie,
+    isLoading,
+    isError,
+    error,
+    refetch,
+  } = useQuery({
     queryKey: ["movie", id],
     queryFn: async () => {
       const res = await axiosSecure.get(`/movies/${id}`);
@@ -112,7 +120,14 @@ const EditMovie = () => {
   };
 
   if (isLoading)
-    return <p className="text-center text-white py-20">Loading...</p>;
+    return <Loading message="Fetching Movie Data..." fullPage={true} />;
+
+  if (isError)
+    return (
+      <div className="py-20">
+        <Error message={error?.message} onRetry={refetch} />
+      </div>
+    );
 
   return (
     <div className="max-w-5xl mx-auto p-6">

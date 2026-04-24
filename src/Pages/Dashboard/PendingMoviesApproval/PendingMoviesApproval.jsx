@@ -4,11 +4,12 @@ import Swal from "sweetalert2";
 import { FiClock, FiFilm, FiCheck, FiX } from "react-icons/fi";
 import PendingMovieTable from "../../Shared/components/PendingMovieTable";
 import { useAuth } from "../../../hooks/useAuth";
+import Loading from "../../../Components/Shared/Loading";
 
 const PendingMoviesApproval = () => {
   const axiosSecure = useAxiosSecure();
   const queryClient = useQueryClient();
-  const {user} = useAuth();
+  const { user } = useAuth();
 
   const isAdmin = user?.role === "admin";
 
@@ -67,9 +68,10 @@ const PendingMoviesApproval = () => {
 
   if (isLoading)
     return (
-      <div className="flex justify-center items-center h-96">
-        <span className="loading loading-spinner loading-lg text-amber-500"></span>
-      </div>
+      <Loading
+        message="Fetching pending Movies For Approval..."
+        fullPage={true}
+      />
     );
 
   return (
