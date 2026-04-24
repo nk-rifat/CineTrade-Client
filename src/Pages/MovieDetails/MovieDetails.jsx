@@ -31,8 +31,7 @@ const MovieDetails = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [id]);
 
-  
-  //increase the views of movie if visit details page 
+  //increase the views of movie if visit details page
 
   useEffect(() => {
     if (!id) return;
@@ -64,7 +63,7 @@ const MovieDetails = () => {
     );
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
+    <div className="min-h-screen bg-gradient-to-br from-black via-slate-900 to-black text-white">
       <MovieHero movie={movie} />
 
       <div className="container mx-auto px-6 py-20">
