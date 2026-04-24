@@ -68,7 +68,7 @@ const Banner = () => {
 
                   <div className="flex flex-row flex-wrap gap-2 md:gap-4 pt-6 justify-center md:justify-end items-center">
                     <Link to="/become-partner" className="block w-fit">
-                      <button className="w-fit px-4 md:px-8 py-2.5 md:py-4 bg-sky-500 text-white text-[12px] md:text-base font-black rounded-xl md:rounded-2xl shadow-lg hover:bg-sky-400 transition-all active:scale-95 flex items-center justify-center gap-2">
+                      <button className="w-fit px-4 md:px-8 py-2.5 md:py-4 bg-gradient-to-r from-sky-500 to-blue-600 text-white text-[12px] md:text-base font-black rounded-xl md:rounded-2xl shadow-lg hover:bg-sky-400 transition-all active:scale-95 flex items-center justify-center gap-2">
                         <FaHandshake className="text-lg" />
                         <span>Become Partner</span>
                       </button>
