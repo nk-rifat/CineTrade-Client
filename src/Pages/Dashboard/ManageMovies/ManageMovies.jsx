@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import DashboardMovieCard from "../../Shared/components/DashboardMovieCard";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useDeleteMovie from "../../../hooks/useDeleteMovie";
+import { FiFilm } from "react-icons/fi";
 
 const ManageMovies = () => {
   const { handleDelete } = useDeleteMovie(["admin-movies"]);
@@ -33,10 +34,13 @@ const ManageMovies = () => {
     <div className="p-6">
       {/* FILTER */}
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl font-bold text-amber-500 ">Manage All Movies</h2>
+        <h2 className="text-4xl font-black text-white tracking-tight flex items-center gap-3">
+          <FiFilm className="text-amber-500" />
+          Manage All Movies
+        </h2>
 
         <select
-          className="select select-bordered text-amber-500 font-semibold"
+          className="select select-bordered text-amber-500 bg-slate-900 font-semibold"
           value={filter}
           onChange={(e) => {
             setFilter(e.target.value);
