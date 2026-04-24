@@ -37,6 +37,13 @@ const AllMovies = () => {
     placeholderData: keepPreviousData,
   });
 
+  if (isLoading)
+    return (
+      <div className="w-full h-[400px] bg-[#050505]">
+        <Loading />
+      </div>
+    );
+
   if (isError) return <Error message={error.message} onRetry={refetch} />;
 
   return (
@@ -71,8 +78,6 @@ const AllMovies = () => {
               <option value="">Select</option>
               <option value="price_asc">Price Low → High</option>
               <option value="price_desc">Price High → Low</option>
-              <option value="rating_desc">Rating High → Low</option>
-              <option value="rating_asc">Rating Low → High</option>
             </select>
           </div>
 
