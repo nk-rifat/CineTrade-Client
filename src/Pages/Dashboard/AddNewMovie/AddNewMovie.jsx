@@ -78,7 +78,6 @@ const AddMovie = () => {
         director: data.director,
         language: data.language,
         trailer: data.trailer,
-        category: data.category,
         videoUrl: data.videoUrl,
       };
 
