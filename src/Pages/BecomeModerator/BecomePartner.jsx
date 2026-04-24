@@ -5,13 +5,21 @@ import axiosPublic from "../../api/axios";
 import BecomePartnerForm from "./BecomePartnerForm";
 import PartnerStatus from "./PartnerStatus";
 import { useAuth } from "../../hooks/useAuth";
+import Loading from "../../Components/Shared/Loading";
+import Error from "../../Components/Shared/Error";
 
 const BecomePartner = () => {
   const { user } = useAuth();
   const queryClient = useQueryClient();
 
   // Get application
-  const { data: application, isLoading } = useQuery({
+  const {
+    data: application,
+    isLoading,
+    isError,
+    error,
+    refetch,
+  } = useQuery({
     queryKey: ["partnerApplication"],
     queryFn: async () => {
       const res = await axiosPublic.get("/my-application");
@@ -37,7 +45,7 @@ const BecomePartner = () => {
         title: "Application Submitted!",
         text: "Your request is under review by admin.",
       });
-      queryClient.invalidateQueries(["partnerApplication"]);
+      queryClient.invalidateQueries({ queryKey: ["partnerApplication"] });
     },
 
     onError: (err) => {
@@ -60,7 +68,10 @@ const BecomePartner = () => {
     mutate(data);
   };
 
-  if (isLoading) return <p className="text-white">Loading...</p>;
+  if (isLoading)
+    return <Loading message="Checking Status..." fullPage={true} />;
+
+  if (isError) return <Error message={error.message} onRetry={refetch} />;
 
   if (user?.role === "admin") return;
 
