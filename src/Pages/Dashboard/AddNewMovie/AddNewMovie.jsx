@@ -98,7 +98,7 @@ const AddMovie = () => {
     <div className="max-w-5xl mx-auto p-6">
       <header className="mb-10">
         <h1 className="text-4xl font-extrabold text-white tracking-tight flex items-center gap-4">
-          <FiFilm className="text-blue-500" /> Add New Movie
+          <FiFilm className="text-amber-500" /> Add New Movie
         </h1>
         <p className="text-gray-500 text-lg mt-2">
           {user?.role === "admin"
