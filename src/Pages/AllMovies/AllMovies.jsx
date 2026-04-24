@@ -1,7 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import MovieCard from "../Shared/components/MovieCard";
 import { useEffect, useState } from "react";
+import Loading from "../../Components/Shared/Loading";
+import Error from "../../Components/Shared/Error";
 
 const AllMovies = () => {
   const [filters, setFilters] = useState({ sort: "", language: "", year: "" });
@@ -16,7 +18,13 @@ const AllMovies = () => {
     return () => clearTimeout(timer);
   }, [filters]);
 
-  const { data: movies = [], isLoading } = useQuery({
+  const {
+    data: movies = [],
+    isLoading,
+    isError,
+    error,
+    refetch,
+  } = useQuery({
     queryKey: ["movies", debouncedFilters],
     queryFn: async () => {
       const res = await axios.get(
@@ -26,8 +34,10 @@ const AllMovies = () => {
 
       return res.data;
     },
-    keepPreviousData: true,
+    placeholderData: keepPreviousData,
   });
+
+  if (isError) return <Error message={error.message} onRetry={refetch} />;
 
   return (
     <div className="px-4 bg-gradient-to-br from-black via-slate-900 to-black md:px-10 py-10 bg-[#050505]">
@@ -99,7 +109,7 @@ const AllMovies = () => {
 
       {/* Movies Grid */}
       {isLoading ? (
-        <p className="text-center text-white mt-10">Loading...</p>
+        <Loading message="Loading Movies..." />
       ) : movies.length === 0 ? (
         <p className="text-center text-white mt-10 text-lg font-medium">
           No movies match your filter criteria.
