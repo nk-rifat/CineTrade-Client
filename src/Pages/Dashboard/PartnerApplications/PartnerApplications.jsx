@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import ApplicationRow from "./ApplicationRow";
 import Swal from "sweetalert2";
+import { FiUserPlus } from "react-icons/fi";
 
 const PartnerApplications = () => {
   const axiosSecure = useAxiosSecure();
@@ -21,42 +22,42 @@ const PartnerApplications = () => {
   //handle status update - Approve or Reject
 
   const handleUpdateStatus = async (id, status) => {
-  const actionText = status === "approved" ? "Approve" : "Reject";
+    const actionText = status === "approved" ? "Approve" : "Reject";
 
-  Swal.fire({
-    title: `${actionText} this application?`,
-    icon: status === "approved" ? "info" : "warning",
-    showCancelButton: true,
-    confirmButtonColor: status === "approved" ? "#38bdf8" : "#ef4444",
-    cancelButtonColor: "#64748b",
-    confirmButtonText: `Yes, ${actionText}`,
-    background: "#0f172a",
-    color: "#f1f5f9",
-  }).then(async (result) => {
-    if (result.isConfirmed) {
-      try {
-        const res = await axiosSecure.patch(
-          `/admin/application-update-status/${id}`,
-          { status }
-        );
+    Swal.fire({
+      title: `${actionText} this application?`,
+      icon: status === "approved" ? "info" : "warning",
+      showCancelButton: true,
+      confirmButtonColor: status === "approved" ? "#38bdf8" : "#ef4444",
+      cancelButtonColor: "#64748b",
+      confirmButtonText: `Yes, ${actionText}`,
+      background: "#0f172a",
+      color: "#f1f5f9",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const res = await axiosSecure.patch(
+            `/admin/application-update-status/${id}`,
+            { status },
+          );
 
-        if (res.data.success) {
-          refetch();
+          if (res.data.success) {
+            refetch();
 
-          Swal.fire({
-            title: "Updated!",
-            text: `Application ${status}`,
-            icon: "success",
-            background: "#0f172a",
-            color: "#f1f5f9",
-          });
+            Swal.fire({
+              title: "Updated!",
+              text: `Application ${status}`,
+              icon: "success",
+              background: "#0f172a",
+              color: "#f1f5f9",
+            });
+          }
+        } catch (error) {
+          Swal.fire("Error", "Something went wrong.", "error");
         }
-      } catch (error) {
-        Swal.fire("Error", "Something went wrong.", "error");
       }
-    }
-  });
-};
+    });
+  };
 
   if (isLoading)
     return (
@@ -67,8 +68,9 @@ const PartnerApplications = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl text-amber-500 font-bold mb-6">
-        Partner Applications ({applications.length})
+      <h2 className="text-4xl font-black text-white tracking-tight flex items-center gap-3 mb-8">
+        <FiUserPlus className="text-amber-500" />
+        Partner Applications
       </h2>
 
       <div className="overflow-x-auto bg-slate-900 rounded-lg shadow-md border border-slate-800">
