@@ -4,7 +4,7 @@ import { useAuth } from "../../hooks/useAuth";
 import TermsBox from "./TermsBox";
 
 const BecomePartnerForm = ({ onSubmit, isPending }) => {
-  const auth = useAuth();
+  const {user} = useAuth();
 
   const {
     register,
@@ -24,7 +24,7 @@ const BecomePartnerForm = ({ onSubmit, isPending }) => {
         <Field label="Full Name" error={errors.fullName}>
           <input
             {...register("fullName")}
-            defaultValue={auth?.user?.fullName}
+            defaultValue={user?.fullName}
             readOnly
             className="input-style"
           />
@@ -32,7 +32,7 @@ const BecomePartnerForm = ({ onSubmit, isPending }) => {
 
         <Field label="Email Address" error={errors.email}>
           <input
-            defaultValue={auth?.user?.email}
+            defaultValue={user?.email}
             {...register("email")}
             readOnly
             type="email"

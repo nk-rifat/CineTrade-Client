@@ -4,8 +4,10 @@ import axiosPublic from "../../api/axios";
 
 import BecomePartnerForm from "./BecomePartnerForm";
 import PartnerStatus from "./PartnerStatus";
+import { useAuth } from "../../hooks/useAuth";
 
 const BecomePartner = () => {
+  const { user } = useAuth();
   const queryClient = useQueryClient();
 
   // Get application
@@ -59,6 +61,8 @@ const BecomePartner = () => {
   };
 
   if (isLoading) return <p className="text-white">Loading...</p>;
+
+  if (user?.role === "admin") return;
 
   return (
     <div className="space-y-6">
