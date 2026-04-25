@@ -5,10 +5,10 @@ import {
   useSearchParams,
 } from "react-router-dom";
 import Logo from "../components/Logo";
-import Search from "../components/Search";
 import NavDropdown from "./NavDropDown";
 import { useAuth } from "../../../hooks/useAuth";
 import { useGenres } from "../../../hooks/useGenres";
+import Search from "../../../Components/Search/Search";
 
 const Navbar = () => {
   const location = useLocation();
