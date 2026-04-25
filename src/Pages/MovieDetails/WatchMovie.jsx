@@ -5,6 +5,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import WatchMoviePlayer from "./Components/WatchMoviePlayer";
 import Loading from "../../Components/Shared/Loading";
 import Error from "../../Components/Shared/Error";
+import { formatMinutesToHours } from "../../utils/formatMinutesToHours";
 
 const WatchMovie = () => {
   const { id } = useParams();
@@ -94,7 +95,7 @@ const WatchMovie = () => {
             {movie?.release_status || "Released"}
           </span>
           <span className="text-gray-400 text-sm font-medium">
-            {movie?.release_year} • {movie?.duration}
+            {movie?.release_year} • {formatMinutesToHours(movie?.duration)}
           </span>
         </div>
 
