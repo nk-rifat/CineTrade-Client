@@ -63,9 +63,6 @@ const RelatedMovies = () => {
             </h3>
             <div className="flex items-center gap-3 text-sm text-gray-500">
               <span>{m.release_year}</span>
-              <span className="flex items-center gap-1">
-                <FaStar className="text-yellow-500" /> {m.rating}
-              </span>
             </div>
           </Link>
         ))}
