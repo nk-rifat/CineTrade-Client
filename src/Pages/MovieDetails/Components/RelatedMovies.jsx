@@ -1,21 +1,30 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { FaStar, FaArrowRight } from "react-icons/fa";
+import Loading from "../../../Components/Shared/Loading";
 
-const RelatedMovies = ({ currentId, genre }) => {
+const RelatedMovies = () => {
+  const { id } = useParams();
   const { data: relatedMovies = [], isLoading } = useQuery({
-    queryKey: ["related-movies", genre],
-    enabled: !!genre,
+    queryKey: ["related-movies", id],
+    enabled: !!id,
+
     queryFn: async () => {
       const res = await axios.get(
-        `${import.meta.env.VITE_SERVER_BASE_URL}/movies?genre=${genre}`,
+        `${import.meta.env.VITE_SERVER_BASE_URL}/movies/related/${id}`,
       );
-      return res.data.filter((m) => m._id !== currentId).slice(0, 4);
+      return res.data;
     },
   });
 
-  if (isLoading || relatedMovies.length === 0) return null;
+  if (isLoading) {
+    return <Loading message="Scanning for similar titles..." />;
+  }
+
+  if (!relatedMovies || relatedMovies.length === 0) {
+    return null;
+  }
 
   return (
     <div className="mt-32">

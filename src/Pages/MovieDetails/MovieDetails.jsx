@@ -83,7 +83,7 @@ const MovieDetails = () => {
             <MovieTrailer movie={movie} />
           </div>
         </div>
-        <RelatedMovies currentId={id} genre={movie?.genres?.[0]} />
+        <RelatedMovies />
       </div>
     </div>
   );
