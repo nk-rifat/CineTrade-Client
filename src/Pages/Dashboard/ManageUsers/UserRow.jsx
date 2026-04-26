@@ -59,7 +59,7 @@ const UserRow = ({ user, index, handleUpdate }) => {
               color="text-amber-500"
             />
 
-            <div className="w-[1px] bg-slate-700 h-4 self-center mx-1"></div>
+            <div className="w-px bg-slate-700 h-4 self-center mx-1"></div>
 
             <ActionButton
               onClick={handleStatusToggle}

@@ -25,7 +25,7 @@ const MoviePaymentPage = () => {
   });
 
   if (isLoading) {
-    return <Loading message="PREPARING YOUR TICKET..." fullPage={true} />;
+    return <Loading fullPage={true} />;
   }
 
   if (isError) {

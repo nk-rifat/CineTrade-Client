@@ -2,7 +2,7 @@ import BecomePartner from "./BecomePartner";
 
 const BecomePartnerPage = () => {
   return (
-    <div className="w-full min-h-screen bg-gradient-to-br from-black via-slate-900 to-black py-6 px-4 sm:py-10 sm:px-6 flex items-center justify-center">
+    <div className="w-full min-h-screen bg-linear-to-br from-black via-slate-900 to-black py-6 px-4 sm:py-10 sm:px-6 flex items-center justify-center">
       <div className="max-w-6xl bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row">
         {/* Left Side: Marketing Info */}
 

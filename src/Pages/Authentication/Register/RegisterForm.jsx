@@ -66,7 +66,7 @@ const RegisterForm = () => {
   return (
     <form
       onSubmit={handleSubmit(submitForm)}
-      className="space-y-4 pb-10 lg:pb-[60px]"
+      className="space-y-4 pb-10 lg:pb-15"
     >
       <Field label="First Name" error={errors.firstName}>
         <input
@@ -124,7 +124,7 @@ const RegisterForm = () => {
       <div className="pt-2">
         <button
           type="submit"
-          className="w-full py-3.5 px-4 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-600 hover:to-indigo-700 text-white font-bold rounded-xl shadow-lg shadow-sky-500/25 transition-all active:scale-[0.98] focus:ring-4 focus:ring-sky-500/20"
+          className="w-full py-3.5 px-4 bg-linear-to-br from-sky-500 to-indigo-600 hover:from-sky-600 hover:to-indigo-700 text-white font-bold rounded-xl shadow-lg shadow-sky-500/25 transition-all active:scale-[0.98] focus:ring-4 focus:ring-sky-500/20"
         >
           Register
         </button>
@@ -132,7 +132,7 @@ const RegisterForm = () => {
 
       <div className="relative py-4">
         <div className="absolute inset-0 flex items-center">
-          <div className="w-full border-t border-slate-200 dark:border-slate-700"></div>
+          <div className="w-full border-t border-slate-200"></div>
         </div>
       </div>
 

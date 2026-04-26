@@ -16,7 +16,7 @@ export const ChartCard = ({ title, subtitle, children, glow }) => (
       background:
         "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%)",
     }}
-    className="backdrop-blur-xl border border-white/10 p-8 rounded-[32px] transition-all duration-500 hover:border-white/20"
+    className="backdrop-blur-xl border border-white/10 p-8 rounded-4xl transition-all duration-500 hover:border-white/20"
   >
     <div className="flex flex-col gap-1 mb-8">
       <h2 className="text-xl font-bold tracking-tight text-slate-100">
@@ -26,7 +26,7 @@ export const ChartCard = ({ title, subtitle, children, glow }) => (
         {subtitle}
       </p>
     </div>
-    <div className="h-[300px] w-full">{children}</div>
+    <div className="h-75 w-full">{children}</div>
   </div>
 );
 

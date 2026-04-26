@@ -23,7 +23,7 @@ const MoviesByGenres = () => {
   }
 
   return (
-    <section className="bg-gradient-to-br from-black via-slate-900 to-black min-h-screen px-6 md:px-12 py-10">
+    <section className="bg-linear-to-br from-black via-slate-900 to-black min-h-screen px-6 md:px-12 py-10">
       {/* Header */}
       <div className="flex items-center justify-between mb-10">
         <h2 className="text-2xl md:text-3xl font-black uppercase italic text-white">
@@ -32,7 +32,7 @@ const MoviesByGenres = () => {
             Movies
           </span>
         </h2>
-        <div className="h-[1px] flex-grow ml-6 bg-gradient-to-r from-amber-500/50 to-transparent hidden md:block"></div>
+        <div className="h-px grow ml-6 bg-linear-to-r from-amber-500/50 to-transparent hidden md:block"></div>
       </div>
 
       {/* Movies Grid */}

@@ -60,7 +60,7 @@ const DashboardLayout = () => {
         </div>
 
         {/* Page Content */}
-        <div className="bg-gradient-to-br from-black via-slate-900 to-black min-h-screen text-white">
+        <div className="bg-linear-to-br from-black via-slate-900 to-black min-h-screen text-white">
           <Outlet />
         </div>
       </div>

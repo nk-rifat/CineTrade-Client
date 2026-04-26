@@ -23,7 +23,7 @@ const GenresSection = () => {
               Categories
             </span>
           </h2>
-          <div className="h-[1px] flex-grow ml-8 bg-gradient-to-r from-sky-500/50 to-transparent hidden md:block"></div>
+          <div className="h-1px grow ml-8 bg-linear-to-r from-sky-500/50 to-transparent hidden md:block"></div>
         </div>
 
         {/* The Grid */}
@@ -33,7 +33,7 @@ const GenresSection = () => {
               key={genre}
               to={`/movies?genre=${genre}`}
               className="group flex items-center justify-center py-3 px-4 rounded-md 
-                         bg-[#1a1a1a] border border-white/[0.03] 
+                         bg-[#1a1a1a] border border-white/3 
                          hover:border-amber-500/50 hover:bg-amber-500/10 
                          active:scale-95
                          transition-all duration-200 ease-in-out

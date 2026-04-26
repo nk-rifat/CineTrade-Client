@@ -7,7 +7,7 @@ import PopularSection from "../Popular/PopularSection";
 
 const Home = () => {
   return (
-    <div className="bg-gradient-to-br from-black via-slate-900 to-black">
+    <div className="bg-linear-to-br from-black via-slate-900 to-black">
       <Banner />
       <GenresSection />
       <ComingSoonSection />

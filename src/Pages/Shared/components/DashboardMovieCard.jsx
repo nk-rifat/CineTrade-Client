@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const DashboardMovieCard = ({ movie, onDelete }) => {
   const navigate = useNavigate();
   return (
-    <div className="group relative h-[420px] rounded-2xl overflow-hidden bg-base-300 shadow-xl transition-all duration-500 hover:scale-[1.03] hover:shadow-2xl">
+    <div className="group relative h-105 rounded-2xl overflow-hidden bg-base-300 shadow-xl transition-all duration-500 hover:scale-[1.03] hover:shadow-2xl">
       {/* Background Poster */}
       <img
         src={movie.poster}
@@ -12,7 +12,7 @@ const DashboardMovieCard = ({ movie, onDelete }) => {
         className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
       />
 
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/30 to-transparent" />
 
       <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-6">
         <button

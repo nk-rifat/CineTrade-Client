@@ -14,7 +14,7 @@ const UserHome = () => {
   return (
     <div className="max-w-7xl mx-auto p-6 space-y-10 animate-in fade-in duration-500">
       {/* Hero Section */}
-      <div className="relative overflow-hidden rounded-[2rem] bg-slate-900 p-8 shadow-2xl border border-white/5 group">
+      <div className="relative overflow-hidden rounded-4xl bg-slate-900 p-8 shadow-2xl border border-white/5 group">
         <div className="absolute -top-24 -right-24 w-64 h-64 bg-primary/20 rounded-full blur-[80px] group-hover:bg-primary/30 transition-colors duration-500" />
         <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-secondary/10 rounded-full blur-[80px]" />
 
@@ -35,7 +35,7 @@ const UserHome = () => {
             <div>
               <h2 className="text-4xl font-extrabold tracking-tight text-white">
                 Welcome back,{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+                <span className="text-transparent bg-clip-text bg-linear-to-br from-primary to-secondary">
                   {currentUser?.fullName?.split(" ")[0]}
                 </span>
                 !
@@ -60,10 +60,10 @@ const UserHome = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-4">
         {/* Total Movies */}
         <div className="group relative rounded-[2.5rem] bg-white p-2 transition-all duration-500 hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)]">
-          <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-blue-500 to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="absolute inset-0 rounded-[2.5rem] bg-linear-to-br from-blue-500 to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
           <div className="relative h-full rounded-[2.3rem] bg-white p-8 border border-slate-100 flex items-center gap-6">
-            <div className="relative flex-shrink-0 w-20 h-20 rounded-3xl bg-blue-50 flex items-center justify-center text-blue-600 transition-all duration-500 group-hover:bg-blue-600 group-hover:text-white group-hover:rotate-6 group-hover:scale-110">
+            <div className="relative shrink-0 w-20 h-20 rounded-3xl bg-blue-50 flex items-center justify-center text-blue-600 transition-all duration-500 group-hover:bg-blue-600 group-hover:text-white group-hover:rotate-6 group-hover:scale-110">
               <Film size={32} strokeWidth={2} />
               <div className="absolute top-1 left-1 w-full h-full bg-white/20 rounded-3xl blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
@@ -83,10 +83,10 @@ const UserHome = () => {
 
         {/*Total Spent */}
         <div className="group relative rounded-[2.5rem] bg-white p-2 transition-all duration-500 hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)]">
-          <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-emerald-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="absolute inset-0 rounded-[2.5rem] bg-linear-to-br from-emerald-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
           <div className="relative h-full rounded-[2.3rem] bg-white p-8 border border-slate-100 flex items-center gap-6">
-            <div className="relative flex-shrink-0 w-20 h-20 rounded-3xl bg-emerald-50 flex items-center justify-center text-emerald-600 transition-all duration-500 group-hover:bg-emerald-600 group-hover:text-white group-hover:-rotate-6 group-hover:scale-110">
+            <div className="relative shrink-0 w-20 h-20 rounded-3xl bg-emerald-50 flex items-center justify-center text-emerald-600 transition-all duration-500 group-hover:bg-emerald-600 group-hover:text-white group-hover:-rotate-6 group-hover:scale-110">
               <CreditCard size={32} strokeWidth={2} />
               <div className="absolute top-1 left-1 w-full h-full bg-white/20 rounded-3xl blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
@@ -136,7 +136,7 @@ const UserHome = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {recentPurchaseMovies.map((movie) => (
               <div key={movie._id} className="group">
-                <div className="relative aspect-[2/3] overflow-hidden rounded-[2rem] shadow-lg transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-primary/20">
+                <div className="relative aspect-2/3 overflow-hidden rounded-4xl shadow-lg transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-primary/20">
                   <img
                     src={movie.poster}
                     alt={movie.title}

@@ -63,7 +63,7 @@ const LoginForm = () => {
   return (
     <form
       onSubmit={handleSubmit(submitForm)}
-      className="space-y-4 pb-10 lg:pb-[60px]"
+      className="space-y-4 pb-10 lg:pb-15"
     >
       <Field label="Email" error={errors.email}>
         <input
@@ -102,13 +102,13 @@ const LoginForm = () => {
       <div className="pt-2">
         <button
           type="submit"
-          className="w-full py-3.5 px-4 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-600 hover:to-indigo-700 text-white font-bold rounded-xl shadow-lg shadow-sky-500/25 transition-all active:scale-[0.98] focus:ring-4 focus:ring-sky-500/20"
+          className="w-full py-3.5 px-4 bg-linear-to-br from-sky-500 to-indigo-600 hover:from-sky-600 hover:to-indigo-700 text-white font-bold rounded-xl shadow-lg shadow-sky-500/25 transition-all active:scale-[0.98] focus:ring-4 focus:ring-sky-500/20"
         >
           Sign In to CineTrade
         </button>
       </div>
 
-      <div className="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800 text-center">
+      <div className="mt-8 pt-6 border-t border-slate-100 text-center">
         <p className="text-sm text-gray-200">
           Don't have an account?{" "}
           <Link

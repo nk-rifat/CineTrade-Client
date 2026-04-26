@@ -23,7 +23,7 @@ const PopularSection = () => {
             cineTrade
           </span>
         </h2>
-        <div className="h-[1px] flex-grow ml-8 bg-gradient-to-r from-sky-500/50 to-transparent hidden md:block"></div>
+        <div className="h-px grow ml-8 bg-linear-to-r from-sky-500/50 to-transparent hidden md:block"></div>
       </div>
 
       {/* Slider */}

@@ -13,7 +13,7 @@ const MovieHero = ({ movie }) => {
         className="absolute inset-0 bg-cover bg-center scale-105 transition-transform duration-1000"
         style={{ backgroundImage: `url(${movie?.poster})` }}
       >
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/70 to-transparent"></div>
+        <div className="absolute inset-0 bg-linear-to-t from-[#0a0a0a] via-[#0a0a0a]/70 to-transparent"></div>
         <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
       </div>
 

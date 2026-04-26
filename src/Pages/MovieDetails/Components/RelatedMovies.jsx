@@ -46,13 +46,13 @@ const RelatedMovies = () => {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {relatedMovies.map((m) => (
           <Link key={m._id} to={`/movies/${m._id}`} className="group">
-            <div className="relative aspect-[2/3] rounded-2xl overflow-hidden border border-white/5 bg-white/5 transition-all duration-500 group-hover:border-amber-500 group-hover:-translate-y-2">
+            <div className="relative aspect-2/3 rounded-2xl overflow-hidden border border-white/5 bg-white/5 transition-all duration-500 group-hover:border-amber-500 group-hover:-translate-y-2">
               <img
                 src={m.poster}
                 alt={m.title}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+              <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
                 <span className="text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full border-2 border-amber-500  ">
                   View Info
                 </span>

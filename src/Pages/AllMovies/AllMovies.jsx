@@ -39,7 +39,7 @@ const AllMovies = () => {
 
   if (isLoading)
     return (
-      <div className="w-full h-[400px] bg-[#050505]">
+      <div className="w-full h-100 bg-[#050505]">
         <Loading />
       </div>
     );
@@ -47,7 +47,7 @@ const AllMovies = () => {
   if (isError) return <Error message={error.message} onRetry={refetch} />;
 
   return (
-    <div className="px-4 bg-gradient-to-br from-black via-slate-900 to-black md:px-10 py-10 bg-[#050505]">
+    <div className="px-4 bg-linear-to-br from-black via-slate-900 to-black md:px-10 py-10">
       {/* Header + Filters Row */}
       <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-6 mb-6">
         {/* Left: Header and Description */}

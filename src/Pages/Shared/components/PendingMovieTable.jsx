@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 const PendingMovieTable = ({ movies, isAdmin, renderActions }) => {
 
   return (
-    <div className="overflow-hidden bg-white/5 backdrop-blur-md rounded-[2rem] border border-white/10 shadow-2xl">
+    <div className="overflow-hidden bg-white/5 backdrop-blur-md rounded-4xl border border-white/10 shadow-2xl">
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="border-b border-white/10 bg-white/[0.02]">
+            <tr className="border-b border-white/10 bg-white/2">
               <th className="px-6 py-5 text-sm font-bold text-gray-400 uppercase tracking-wider">
                 Movie Info
               </th>
@@ -34,12 +34,12 @@ const PendingMovieTable = ({ movies, isAdmin, renderActions }) => {
             {movies.map((movie) => (
               <tr
                 key={movie._id}
-                className="group hover:bg-white/[0.03] transition-colors duration-300"
+                className="group hover:bg-white/3 transition-colors duration-300"
               >
                 {/* Movie Info */}
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-4">
-                    <div className="relative h-20 w-14 flex-shrink-0">
+                    <div className="relative h-20 w-14 shrink-0">
                       <img
                         src={movie.poster}
                         alt={movie.title}

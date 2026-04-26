@@ -71,7 +71,7 @@ const MovieDetails = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-slate-900 to-black text-white">
+    <div className="min-h-screen bg-linear-to-br from-black via-slate-900 to-black text-white">
       <MovieHero movie={movie} />
 
       <div className="container mx-auto px-6 py-20">

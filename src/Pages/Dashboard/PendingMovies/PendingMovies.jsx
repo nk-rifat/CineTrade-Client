@@ -45,7 +45,7 @@ const PendingMovies = () => {
       {/* Header Section */}
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-4">
         <div>
-          <h2 className="text-4xl font-extrabold text-white tracking-t  ight flex items-center gap-3">
+          <h2 className="text-4xl font-extrabold text-white tracking-tight flex items-center gap-3">
             <FiClock className="text-amber-500" /> Pending Movies
           </h2>
           <p className="text-gray-500 mt-2 text-lg">

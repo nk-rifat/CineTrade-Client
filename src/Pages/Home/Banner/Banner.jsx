@@ -14,14 +14,14 @@ const Banner = () => {
 
   if (isLoading) {
     return (
-      <div className="w-full h-[500px] md:h-[600px] lg:h-[700px] bg-[#050505]">
+      <div className="w-full h-125 md:h-150 lg:h-175 bg-[#050505]">
         <Loading message="Preparing Premiers..." fullPage={false} />
       </div>
     );
   }
 
   return (
-    <div className="relative w-full h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden shadow-2xl bg-indigo-950">
+    <div className="relative w-full h-125 md:h-150 lg:h-175 overflow-hidden shadow-2xl bg-indigo-950">
       <Swiper
         modules={[Autoplay, Pagination, EffectFade]}
         effect="fade"
@@ -35,10 +35,10 @@ const Banner = () => {
             <div className="relative h-full w-full">
               {/* --- BACKGROUND LAYER --- */}
               <div
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-[7000ms] scale-110"
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-7000 scale-110"
                 style={{ backgroundImage: `url(${movie.poster})` }}
               >
-                <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-indigo-950 via-indigo-950/70 md:via-indigo-950/60 to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-t md:bg-linear-to-l from-indigo-950 via-indigo-950/70 md:via-indigo-950/60 to-transparent"></div>
               </div>
 
               {/* --- CONTENT LAYER --- */}
@@ -46,7 +46,7 @@ const Banner = () => {
                 <div className="max-w-2xl space-y-4 md:space-y-6">
                   <h1
                     className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-black leading-tight tracking-tighter uppercase drop-shadow-2xl 
-               bg-gradient-to-r from-sky-400 via-white to-amber-500 bg-clip-text text-transparent"
+               bg-linear-to-r from-sky-400 via-white to-amber-500 bg-clip-text text-transparent"
                   >
                     {movie.title}
                   </h1>
@@ -64,7 +64,7 @@ const Banner = () => {
 
                   <div className="flex flex-row flex-wrap gap-2 md:gap-4 pt-6 justify-center md:justify-end items-center">
                     <Link to="/become-partner" className="block w-fit">
-                      <button className="w-fit px-4 md:px-8 py-2.5 md:py-4 bg-gradient-to-r from-sky-500 to-blue-600 text-white text-[12px] md:text-base font-black rounded-xl md:rounded-2xl shadow-lg hover:bg-sky-400 transition-all active:scale-95 flex items-center justify-center gap-2">
+                      <button className="w-fit px-4 md:px-8 py-2.5 md:py-4 bg-linear-to-r from-sky-500 to-blue-600 text-white text-[12px] md:text-base font-black rounded-xl md:rounded-2xl shadow-lg hover:bg-sky-400 transition-all active:scale-95 flex items-center justify-center gap-2">
                         <FaHandshake className="text-lg" />
                         <span>Become Partner</span>
                       </button>

@@ -14,7 +14,7 @@ const PaymentSection = ({ applicationId }) => {
 
       <button
         onClick={handlePayment}
-        className="w-full py-3 bg-gradient-to-r from-sky-600 to-indigo-700 text-white font-bold rounded-xl"
+        className="w-full py-3 bg-linear-to-br from-sky-600 to-indigo-700 text-white font-bold rounded-xl"
       >
         Pay Now ($49.99)
       </button>

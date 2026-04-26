@@ -42,7 +42,7 @@ const ActivityLeaderboard = ({ topMovies, recentTransactions }) => {
                     />
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-slate-200 group-hover:text-sky-500 transition-colors truncate max-w-[140px] md:max-w-xs">
+                    <h4 className="text-sm font-bold text-slate-200 group-hover:text-sky-500 transition-colors truncate max-w-35 md:max-w-xs">
                       {movie.title}
                     </h4>
                     <p className="text-[10px] text-slate-500 flex items-center gap-1 font-medium mt-0.5">
@@ -94,10 +94,10 @@ const ActivityLeaderboard = ({ topMovies, recentTransactions }) => {
             recentTransactions.map((tx) => (
               <div
                 key={tx._id}
-                className="group flex items-center justify-between p-4 hover:bg-white/[0.04] border-b border-white/[0.05] last:border-0 transition-all"
+                className="group flex items-center justify-between p-4 hover:bg-white/4 border-b border-white/5 last:border-0 transition-all"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-white/10 to-transparent flex items-center justify-center text-slate-300 text-sm font-bold border border-white/10 group-hover:border-secondary/40 transition-colors">
+                  <div className="w-10 h-10 rounded-full bg-linear-to-br from-white/10 to-transparent flex items-center justify-center text-slate-300 text-sm font-bold border border-white/10 group-hover:border-secondary/40 transition-colors">
                     {tx.email?.charAt(0).toUpperCase()}
                   </div>
                   <div>

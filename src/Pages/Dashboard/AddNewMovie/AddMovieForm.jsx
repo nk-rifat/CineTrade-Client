@@ -16,7 +16,7 @@ const AddMovieForm = ({
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Left Section */}
-        <div className="space-y-4 p-8 bg-white/5 rounded-[2rem] border border-white/10 backdrop-blur-xl">
+        <div className="space-y-4 p-8 bg-white/5 rounded-4xl border border-white/10 backdrop-blur-xl">
           <div className="grid grid-cols-2 gap-4">
             <Field label="Movie Title" error={errors.title}>
               <input
@@ -65,7 +65,7 @@ const AddMovieForm = ({
         </div>
 
         {/* Right Section */}
-        <div className="space-y-4 p-8 bg-white/5 rounded-[2rem] border border-white/10 backdrop-blur-xl">
+        <div className="space-y-4 p-8 bg-white/5 rounded-4xl border border-white/10 backdrop-blur-xl">
           <Field label="Poster Image" error={errors.poster}>
             <label className="flex flex-col items-center justify-center w-full h-32 mt-1 border-2 border-dashed border-white/10 rounded-xl bg-white/5 hover:bg-white/10 cursor-pointer transition-all">
               <div className="flex flex-col items-center justify-center pt-5 pb-6">
@@ -122,7 +122,7 @@ const AddMovieForm = ({
       </div>
 
       {/* Tags Section */}
-      <div className="p-8 bg-white/5 rounded-[2rem] border border-white/10">
+      <div className="p-8 bg-white/5 rounded-4xl border border-white/10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Field label="Genres (comma separated)" error={errors.genres}>
             <input

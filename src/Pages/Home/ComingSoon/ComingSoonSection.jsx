@@ -16,7 +16,7 @@ const ComingSoonSection = () => {
 
   if (isLoading) {
     return (
-      <div className="w-full h-[400px] bg-[#050505]">
+      <div className="w-full h-100 bg-[#050505]">
         <Loading message="Previewing Upcoming Titles..." fullPage={false} />
       </div>
     );
@@ -33,7 +33,7 @@ const ComingSoonSection = () => {
               Movies
             </span>
           </h2>
-          <div className="h-[1px] flex-grow ml-8 bg-gradient-to-r from-sky-500/50 to-transparent hidden md:block"></div>
+          <div className="h-px grow ml-8 bg-linear-to-r from-sky-500/50 to-transparent hidden md:block"></div>
         </div>
 
         {/* Grid */}

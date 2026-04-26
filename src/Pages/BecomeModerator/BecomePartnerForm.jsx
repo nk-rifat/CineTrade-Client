@@ -59,7 +59,7 @@ const BecomePartnerForm = ({ onSubmit, isPending }) => {
       <button
         type="submit"
         disabled={isPending}
-        className="w-full py-3.5 bg-gradient-to-r from-sky-600 to-indigo-700 text-white font-bold rounded-xl"
+        className="w-full py-3.5 bg-linear-to-br from-sky-600 to-indigo-700 text-white font-bold rounded-xl"
       >
         {isPending ? "Submitting..." : "Apply for Partner"}
       </button>

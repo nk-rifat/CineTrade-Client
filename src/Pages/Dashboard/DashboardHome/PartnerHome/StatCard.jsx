@@ -1,11 +1,11 @@
 const StatCard = ({ title, value, icon, color, detail }) => (
-  <div className="relative group p-[1px] rounded-3xl overflow-hidden transition-all hover:scale-[1.03]">
+  <div className="relative group p-px rounded-3xl overflow-hidden transition-all hover:scale-[1.03]">
     <div
-      className={`absolute inset-0 bg-gradient-to-br ${color} opacity-10 group-hover:opacity-30`}
+      className={`absolute inset-0 bg-linear-to-br ${color} opacity-10 group-hover:opacity-30`}
     ></div>
     <div className="relative bg-[#0f1115] p-6 rounded-[23px] h-full border border-white/5">
       <div
-        className={`w-10 h-10 rounded-xl bg-gradient-to-br ${color} flex items-center justify-center text-xl mb-4 shadow-lg`}
+        className={`w-10 h-10 rounded-xl bg-linear-to-br ${color} flex items-center justify-center text-xl mb-4 shadow-lg`}
       >
         {icon}
       </div>

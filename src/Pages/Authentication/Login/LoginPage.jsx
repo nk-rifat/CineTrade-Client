@@ -4,7 +4,7 @@ import LoginForm from "./LoginForm";
 
 const LoginPage = () => {
   return (
-    <div className="min-h-screen grid grid-cols-1 lg:grid-cols-2 bg-gradient-to-br from-black via-slate-900 to-black">
+    <div className="min-h-screen grid grid-cols-1 lg:grid-cols-2 bg-linear-to-br from-black via-slate-900 to-black">
       {/* Left: Lottie Animation */}
       <div className="hidden lg:flex relative items-center justify-center p-12 bg-slate-900 border-r border-white/10">
         <div className="max-w-lg text-center flex flex-col items-center gap-6">

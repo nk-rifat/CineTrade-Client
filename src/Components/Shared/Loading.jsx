@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 const Loading = ({ message = "Loading...", fullPage = false }) => {
   return (
-    <div className={`flex flex-col items-center justify-center w-full gap-6 ${fullPage ? 'h-screen bg-black' : 'h-[300px]'}`}>
+    <div className={`flex flex-col items-center justify-center w-full gap-6 ${fullPage ? 'h-screen bg-black' : 'h-75'}`}>
       <div className="relative">
         <motion.div
           className="w-16 h-16 rounded-full border-2 border-dashed border-sky-400/30"
@@ -15,7 +15,7 @@ const Loading = ({ message = "Loading...", fullPage = false }) => {
           transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
         />
         <motion.div
-          className="absolute inset-4 w-8 h-8 rounded-full bg-gradient-to-br from-white/10 to-transparent backdrop-blur-sm"
+          className="absolute inset-4 w-8 h-8 rounded-full bg-linear-to-br from-white/10 to-transparent backdrop-blur-sm"
           animate={{ scale: [1, 1.2, 1] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
         />

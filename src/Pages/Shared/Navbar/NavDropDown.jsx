@@ -25,7 +25,7 @@ const NavDropdown = ({ title, genres, currentFilter }) => (
     </div>
     <div
       tabIndex={0}
-      className="dropdown-content menu bg-white rounded-box z-[20] w-[350px] p-4 shadow-2xl border border-slate-100 mt-2"
+      className="dropdown-content menu bg-white rounded-box z-20 w-87.5 p-4 shadow-2xl border border-slate-100 mt-2"
     >
       <ul className="grid grid-cols-2 gap-1">
         {genres.map((genre, index) => (

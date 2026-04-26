@@ -10,14 +10,14 @@ const MovieCard = ({ movie }) => {
   return (
     <div className="bg-[#141414] flex flex-col h-full  group rounded-2xl overflow-hidden border border-white/10 hover:border-amber-500 transition-all duration-300 hover:shadow-[0_0_25px_rgba(245,158,11,0.2)]">
       {/* Image */}
-      <div className="relative h-[360px] overflow-hidden">
+      <div className="relative h-90 overflow-hidden">
         <img
           src={movie?.poster}
           alt={movie?.title}
           className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
         />
 
-        <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-linear-to-t from-[#141414] via-transparent to-transparent"></div>
 
         {/* Badge */}
         {isUpcoming && (

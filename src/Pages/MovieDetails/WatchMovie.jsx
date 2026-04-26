@@ -33,7 +33,7 @@ const WatchMovie = () => {
 
   if (movie?.release_status === "upcoming") {
     return (
-      <div className="h-screen w-full flex flex-col items-center justify-center bg-gradient-to-br from-black via-slate-900 to-black text-white p-6 text-center">
+      <div className="h-screen w-full flex flex-col items-center justify-center bg-linear-to-br from-black via-slate-900 to-black text-white p-6 text-center">
         <HiOutlineExclamationCircle className="w-16 h-16 text-sky-500 mb-6 animate-pulse" />
         <h2 className="text-3xl font-black uppercase italic tracking-tighter">
           Content Locked
@@ -68,7 +68,7 @@ const WatchMovie = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-slate-900 to-black text-white">
+    <div className="min-h-screen bg-linear-to-br from-black via-slate-900 to-black text-white">
       {/* Header */}
       <nav className="p-6">
         <button
@@ -99,7 +99,7 @@ const WatchMovie = () => {
           </span>
         </div>
 
-        <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter italic mb-4 text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500">
+        <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter italic mb-4 text-transparent bg-clip-text bg-linear-to-b from-white to-gray-500">
           {movie?.title}
         </h1>
 

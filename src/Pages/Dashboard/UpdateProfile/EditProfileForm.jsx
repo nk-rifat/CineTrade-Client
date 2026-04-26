@@ -114,7 +114,7 @@ const EditProfileForm = ({ user }) => {
         {/* Form Controls */}
         <div className="space-y-4">
           <div>
-            <label className="text-sm font-semibold mb-2 block flex items-center gap-2 text-gray-300">
+            <label className="text-sm font-semibold mb-2 block items-center gap-2 text-gray-300">
               <FiUser className="text-sky-500" /> Full Name
             </label>
             <input
@@ -128,7 +128,7 @@ const EditProfileForm = ({ user }) => {
           </div>
 
           <div className="opacity-60">
-            <label className="text-sm font-semibold mb-2 block flex items-center gap-2 text-gray-300">
+            <label className="text-sm font-semibold mb-2 block items-center gap-2 text-gray-300">
               <FiMail /> Email (Read-only)
             </label>
             <div className="bg-black/20 px-4 py-3 rounded-xl border border-white/5 text-gray-400">

@@ -20,7 +20,7 @@ const EditMovieForm = ({
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* LEFT COLUMN */}
-        <div className="space-y-4 p-8 bg-white/5 rounded-[2rem] border border-white/10 backdrop-blur-xl">
+        <div className="space-y-4 p-8 bg-white/5 rounded-4xl border border-white/10 backdrop-blur-xl">
           <Field label="Movie Title" error={errors.title}>
             <input
               {...register("title", { required: "Title is required" })}
@@ -57,7 +57,7 @@ const EditMovieForm = ({
         </div>
 
         {/* RIGHT COLUMN */}
-        <div className="space-y-4 p-8 bg-white/5 rounded-[2rem] border border-white/10 backdrop-blur-xl">
+        <div className="space-y-4 p-8 bg-white/5 rounded-4xl border border-white/10 backdrop-blur-xl">
           <div className="grid grid-cols-2 gap-4">
             <Field label="Price">
               <input
@@ -153,7 +153,7 @@ const EditMovieForm = ({
         </div>
       </div>
 
-      <div className="p-8 bg-white/5 rounded-[2rem] border border-white/10">
+      <div className="p-8 bg-white/5 rounded-4xl border border-white/10">
         <div className="grid grid-cols-2 gap-6">
           <Field label="Genres (comma separated)">
             <input

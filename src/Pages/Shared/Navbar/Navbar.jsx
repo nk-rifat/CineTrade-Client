@@ -52,7 +52,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="sticky top-0 z-50 backdrop-blur-lg bg-gradient-to-b from-[#0f0f1a] to-black border-b border-sky-500/20 shadow-[0_4px_30px_rgba(56,189,248,0.1)] w-full">
+    <div className="sticky top-0 z-50 backdrop-blur-lg bg-linear-to-b from-[#0f0f1a] to-black border-b border-sky-500/20 shadow-[0_4px_30px_rgba(56,189,248,0.1)] w-full">
       <div className="navbar max-w-full mx-auto px-4 sm:px-8">
         {/* mobile menu */}
         <div className="navbar-start">
