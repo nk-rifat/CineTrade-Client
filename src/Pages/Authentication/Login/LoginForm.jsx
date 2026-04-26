@@ -21,7 +21,6 @@ const LoginForm = () => {
       password: data.password,
     };
 
-    console.log(payload);
     try {
       const res = await login(payload);
       if (res?.status === 200) {
