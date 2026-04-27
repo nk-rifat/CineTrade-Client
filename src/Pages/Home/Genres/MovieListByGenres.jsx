@@ -8,7 +8,7 @@ const MoviesByGenres = () => {
   const [searchParams] = useSearchParams();
   const genre = searchParams.get("genre");
 
-  const { data: movies = [], isLoading } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["moviesByGenre", genre],
     queryFn: async () => {
       const res = await axios.get(
@@ -17,6 +17,8 @@ const MoviesByGenres = () => {
       return res.data;
     },
   });
+
+  const movies = data?.movies || [];
 
   if (isLoading) {
     return <Loading fullPage={true} />;
