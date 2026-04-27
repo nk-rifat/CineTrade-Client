@@ -66,7 +66,7 @@ const ManageMovies = () => {
       {/* PAGINATION */}
       <div className="flex justify-center mt-8 gap-2">
         <button
-          className="btn"
+          className="px-4 py-2 bg-slate-800 text-white rounded hover:bg-amber-500 hover:text-black disabled:opacity-50 disabled:hover:bg-slate-800 disabled:hover:text-white transition-all cursor-pointer font-bold"
           disabled={page === 1}
           onClick={() => setPage(page - 1)}
         >
@@ -77,14 +77,14 @@ const ManageMovies = () => {
           <button
             key={num}
             onClick={() => setPage(num + 1)}
-            className={`btn ${page === num + 1 ? "btn-primary" : ""}`}
+            className={`btn ${page === num + 1 ? "bg-amber-500 border-none" : ""}`}
           >
             {num + 1}
           </button>
         ))}
 
         <button
-          className="btn"
+          className="px-4 py-2 bg-slate-800 text-white rounded hover:bg-amber-500 hover:text-black disabled:opacity-50 disabled:hover:bg-slate-800 disabled:hover:text-white transition-all cursor-pointer font-bold"
           disabled={page === totalPages}
           onClick={() => setPage(page + 1)}
         >

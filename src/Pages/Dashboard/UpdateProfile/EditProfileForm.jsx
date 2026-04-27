@@ -151,7 +151,7 @@ const EditProfileForm = ({ user }) => {
           <button
             type="submit"
             disabled={mutation.isPending}
-            className="w-full py-4 mt-4 bg-sky-600 hover:bg-sky-700 disabled:opacity-50 font-bold rounded-xl transition flex items-center justify-center gap-2 shadow-lg active:scale-[0.98]"
+            className="btn-primary-gradient"
           >
             {mutation.isPending ? (
               <>
