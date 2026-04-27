@@ -7,6 +7,8 @@ import Error from "../../Components/Shared/Error";
 import MovieFilters from "./MovieFilters";
 
 const AllMovies = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
   const [filters, setFilters] = useState({ sort: "", language: "", year: "" });
 
   const [debouncedFilters, setDebouncedFilters] = useState(filters);
@@ -19,24 +21,27 @@ const AllMovies = () => {
     return () => clearTimeout(timer);
   }, [filters]);
 
-  const {
-    data: movies = [],
-    isLoading,
-    isError,
-    error,
-    refetch,
-  } = useQuery({
-    queryKey: ["movies", debouncedFilters],
+  const { data, isLoading, isError, error, refetch } = useQuery({
+    queryKey: ["movies", debouncedFilters, currentPage],
     queryFn: async () => {
       const res = await axios.get(
         `${import.meta.env.VITE_SERVER_BASE_URL}/movies`,
-        { params: debouncedFilters },
+        {
+          params: {
+            ...debouncedFilters,
+            page: currentPage,
+            limit: itemsPerPage,
+          },
+        },
       );
 
       return res.data;
     },
     placeholderData: keepPreviousData,
   });
+
+  const movies = data?.movies || [];
+  const totalPages = data?.totalPages || 0;
 
   if (isLoading)
     return (
@@ -84,6 +89,45 @@ const AllMovies = () => {
           ))}
         </div>
       )}
+
+      {/* PAGINATION (Numbered Style) */}
+      <div className="flex flex-wrap justify-center items-center mt-12 gap-2">
+        {/* Prev Button */}
+        <button
+          disabled={currentPage === 1}
+          onClick={() => setCurrentPage((prev) => prev - 1)}
+          className="px-4 py-2 bg-slate-800 text-white rounded hover:bg-amber-500 hover:text-black disabled:opacity-50 disabled:hover:bg-slate-800 disabled:hover:text-white transition-all cursor-pointer font-bold"
+        >
+          Prev
+        </button>
+
+        {/* Page Numbers */}
+        {[...Array(totalPages).keys()].map((num) => {
+          const pageNum = num + 1;
+          return (
+            <button
+              key={pageNum}
+              onClick={() => setCurrentPage(pageNum)}
+              className={`w-10 h-10 rounded font-bold transition-all cursor-pointer border ${
+                currentPage === pageNum
+                  ? "bg-amber-500 text-black border-amber-500"
+                  : "bg-transparent text-white border-slate-700 hover:border-amber-500"
+              }`}
+            >
+              {pageNum}
+            </button>
+          );
+        })}
+
+        {/* Next Button */}
+        <button
+          disabled={currentPage === totalPages}
+          onClick={() => setCurrentPage((prev) => prev + 1)}
+          className="px-4 py-2 bg-slate-800 text-white rounded hover:bg-amber-500 hover:text-black disabled:opacity-50 disabled:hover:bg-slate-800 disabled:hover:text-white transition-all cursor-pointer font-bold"
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 };
