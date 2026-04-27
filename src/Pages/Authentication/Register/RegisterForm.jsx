@@ -122,10 +122,7 @@ const RegisterForm = () => {
       )}
 
       <div className="pt-2">
-        <button
-          type="submit"
-          className="w-full py-3.5 px-4 bg-linear-to-br from-sky-500 to-indigo-600 hover:from-sky-600 hover:to-indigo-700 text-white font-bold rounded-xl shadow-lg shadow-sky-500/25 transition-all active:scale-[0.98] focus:ring-4 focus:ring-sky-500/20"
-        >
+        <button type="submit" className="btn-primary-gradient">
           Register
         </button>
       </div>
