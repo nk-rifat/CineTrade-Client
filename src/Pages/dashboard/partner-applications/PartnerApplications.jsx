@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import ApplicationRow from "./ApplicationRow";
 import Swal from "sweetalert2";
@@ -7,6 +7,7 @@ import Loading from "../../../Components/Shared/Loading";
 
 const PartnerApplications = () => {
   const axiosSecure = useAxiosSecure();
+  const queryClient = useQueryClient();
 
   const {
     data: applications = [],
@@ -44,6 +45,7 @@ const PartnerApplications = () => {
 
           if (res.data.success) {
             refetch();
+            queryClient.invalidateQueries({ queryKey: ["currentUser"] });
 
             Swal.fire({
               title: "Updated!",

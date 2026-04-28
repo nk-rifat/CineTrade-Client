@@ -14,11 +14,12 @@ import {
   FaClock,
   FaThLarge,
 } from "react-icons/fa";
-import { useAuth } from "../hooks/useAuth";
 import Logo from "../components/shared/Logo";
+import useCurrentUser from "../hooks/useCurrentUser";
+import Loading from "../Components/Shared/Loading";
 
 const DashboardLayout = () => {
-  const { user } = useAuth();
+  const { data: currentUser, isLoading } = useCurrentUser();
   const navLinkClass = ({ isActive }) =>
     `flex items-center gap-3 px-4 py-2 rounded-lg transition-all duration-200 ${
       isActive
@@ -26,6 +27,9 @@ const DashboardLayout = () => {
         : "hover:bg-slate-800 hover:text-white"
     }`;
 
+  if (isLoading) {
+    return <Loading message="Loading Dashboard..." fullPage={true} />;
+  }
   return (
     <div className="drawer lg:drawer-open">
       <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
@@ -95,7 +99,7 @@ const DashboardLayout = () => {
 
           {/* User Links */}
 
-          {user?.role === "user" && (
+          {currentUser?.role === "user" && (
             <li>
               <NavLink to="/dashboard/my-movies" className={navLinkClass}>
                 <FaFilm /> My Movies
@@ -104,7 +108,7 @@ const DashboardLayout = () => {
           )}
 
           {/* Partner Links */}
-          {user?.role === "partner" && (
+          {currentUser?.role === "partner" && (
             <>
               <li>
                 <NavLink to="/dashboard/add-movie" className={navLinkClass}>
@@ -132,7 +136,7 @@ const DashboardLayout = () => {
 
           {/* Admin links */}
 
-          {user?.role === "admin" && (
+          {currentUser?.role === "admin" && (
             <>
               <li>
                 <NavLink to="/dashboard/manage-users" className={navLinkClass}>

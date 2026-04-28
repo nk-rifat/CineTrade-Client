@@ -9,11 +9,10 @@ import PrivateRoute from "../routes/PrivateRoute";
 import PrivilegedRoute from "../routes/PrivilegedRoute";
 import AllMovies from "../Pages/all-movies/AllMovies";
 import MovieDetails from "../Pages/movie-details/MovieDetails";
-import BecomePartnerPage from "../Pages/become-moderator/BecomePartnerPage";
 import MyMovies from "../Pages/dashboard/my-movies/MyMovies";
 import ManageUsers from "../Pages/dashboard/manage-users/ManageUsers";
 import PartnerApplications from "../Pages/dashboard/partner-applications/PartnerApplications";
-import PartnerPaymentPage from "../Pages/become-moderator/PartnerPaymentPage";
+import PartnerPaymentPage from "../Pages/become-partner/PartnerPaymentPage";
 import MoviePaymentPage from "../Pages/buy-movie/MoviePaymentPage";
 import WatchMovie from "../Pages/movie-details/WatchMovie";
 import EditProfile from "../Pages/dashboard/update-profile/EditProfile";
@@ -24,6 +23,7 @@ import UploadedMovies from "../Pages/dashboard/uploaded-movies/UploadedMovies";
 import ManageMovies from "../Pages/dashboard/manage-movies/ManageMovies";
 import PendingMoviesApproval from "../Pages/dashboard/pending-movies-approval/PendingMoviesApproval";
 import EditMovie from "../components/edit-movie/EditMovie";
+import BecomePartnerPage from "../pages/become-partner/BecomePartnerPage";
 
 export const router = createBrowserRouter([
   {

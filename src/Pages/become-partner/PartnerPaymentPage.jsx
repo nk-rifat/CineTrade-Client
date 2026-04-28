@@ -46,7 +46,7 @@ const PartnerPaymentPage = () => {
         type="partner"
         referenceId={application?._id}
         amount={49.99}
-        successRedirect="/dashboard"
+        successRedirect="/become-partner"
       />
     </Payment>
   );

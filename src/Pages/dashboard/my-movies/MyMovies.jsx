@@ -3,13 +3,17 @@ import usePurchasedMovies from "../../../hooks/usePurchasedMovies";
 import { FiCreditCard } from "react-icons/fi";
 import Loading from "../../../Components/Shared/Loading";
 import MovieCard from "../../../components/shared/MovieCard";
+import { useAuth } from "../../../hooks/useAuth";
 
 const MyMovies = () => {
   const navigate = useNavigate();
   const { purchaseMovies, isLoading } = usePurchasedMovies();
+  const { user } = useAuth();
 
   if (isLoading)
     return <Loading message="Accessing Your Library..." fullPage={true} />;
+
+  if (user?.role !== "user") return;
 
   //  Empty State
   if (purchaseMovies.length === 0) {
