@@ -21,25 +21,17 @@ const EditMovieForm = ({
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* LEFT COLUMN */}
         <div className="space-y-4 p-8 bg-white/5 rounded-4xl border border-white/10 backdrop-blur-xl">
-          <Field label="Movie Title" error={errors.title}>
-            <input
-              {...register("title", { required: "Title is required" })}
-              className={inputClasses}
-              type="text"
-            />
-          </Field>
-
           <div className="grid grid-cols-2 gap-4">
-            <Field label="Language">
+            <Field label="Movie Title" error={errors.title}>
               <input
-                {...register("language")}
+                {...register("title", { required: "Title is required" })}
                 className={inputClasses}
                 type="text"
               />
             </Field>
-            <Field label="Category">
+            <Field label="Language">
               <input
-                {...register("category")}
+                {...register("language")}
                 className={inputClasses}
                 type="text"
               />
@@ -54,10 +46,6 @@ const EditMovieForm = ({
               type="text"
             />
           </Field>
-        </div>
-
-        {/* RIGHT COLUMN */}
-        <div className="space-y-4 p-8 bg-white/5 rounded-4xl border border-white/10 backdrop-blur-xl">
           <div className="grid grid-cols-2 gap-4">
             <Field label="Price">
               <input
@@ -74,7 +62,10 @@ const EditMovieForm = ({
               />
             </Field>
           </div>
+        </div>
 
+        {/* RIGHT COLUMN */}
+        <div className="space-y-4 p-8 bg-white/5 rounded-4xl border border-white/10 backdrop-blur-xl">
           <Field label="Poster Image">
             <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-white/10 rounded-xl bg-white/5 cursor-pointer overflow-hidden hover:bg-white/10">
               {posterPreview ? (
@@ -115,7 +106,7 @@ const EditMovieForm = ({
             <Field label="Video URL">
               <div className="relative">
                 <input
-                disabled={isPartner}
+                  disabled={isPartner}
                   {...register("videoUrl")}
                   className={inputClasses}
                   type="url"

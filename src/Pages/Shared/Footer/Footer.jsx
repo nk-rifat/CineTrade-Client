@@ -17,19 +17,19 @@ const Footer = () => {
         {/* Links */}
         <nav className="flex  sm:flex-row justify-center items-center gap-4 md:gap-6 text-white">
           <Link
-            to="/privacy"
+            to="/"
             className="text-white hover:text-sky-400 transition-colors"
           >
             Privacy
           </Link>
           <Link
-            to="/terms"
+            to="/"
             className="text-white hover:text-sky-400 transition-colors"
           >
             Terms
           </Link>
           <Link
-            to="/contact"
+            to="/"
             className="text-white hover:text-sky-400 transition-colors"
           >
             Contact
