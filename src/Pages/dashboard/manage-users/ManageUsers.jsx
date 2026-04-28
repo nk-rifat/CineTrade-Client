@@ -13,7 +13,7 @@ const ManageUsers = () => {
   const { data, isLoading } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/users");
+      const res = await axiosSecure.get("/admin/users");
       return res.data;
     },
   });
