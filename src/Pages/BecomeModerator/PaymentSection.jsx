@@ -12,10 +12,7 @@ const PaymentSection = ({ applicationId }) => {
         ✅ Approved! Complete payment to become a partner.
       </p>
 
-      <button
-        onClick={handlePayment}
-        className="w-full py-3 bg-linear-to-br from-sky-600 to-indigo-700 text-white font-bold rounded-xl"
-      >
+      <button onClick={handlePayment} className="btn-primary-gradient">
         Pay Now ($49.99)
       </button>
     </div>

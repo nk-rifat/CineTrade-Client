@@ -4,7 +4,7 @@ import { useAuth } from "../../hooks/useAuth";
 import TermsBox from "./TermsBox";
 
 const BecomePartnerForm = ({ onSubmit, isPending }) => {
-  const {user} = useAuth();
+  const { user } = useAuth();
 
   const {
     register,
@@ -41,7 +41,10 @@ const BecomePartnerForm = ({ onSubmit, isPending }) => {
         </Field>
       </div>
 
-      <Field label="Why do you want to become a moderator?" error={errors.reason}>
+      <Field
+        label="Why do you want to become a moderator?"
+        error={errors.reason}
+      >
         <textarea
           {...register("reason", {
             required: "Please provide a reason",
@@ -54,12 +57,12 @@ const BecomePartnerForm = ({ onSubmit, isPending }) => {
       </Field>
 
       {/* Terms */}
-      <TermsBox/>
+      <TermsBox />
 
       <button
         type="submit"
         disabled={isPending}
-        className="w-full py-3.5 bg-linear-to-br from-sky-600 to-indigo-700 text-white font-bold rounded-xl"
+        className="btn-primary-gradient"
       >
         {isPending ? "Submitting..." : "Apply for Partner"}
       </button>

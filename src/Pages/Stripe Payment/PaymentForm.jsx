@@ -118,7 +118,7 @@ const PaymentForm = ({ type, referenceId, amount, successRedirect }) => {
       <button
         type="submit"
         disabled={!stripe || loading}
-        className="btn bg-green-500 text-white w-full rounded-xl"
+        className="btn-primary-gradient"
       >
         {loading ? "Processing..." : `Pay $ ${amount}`}
       </button>

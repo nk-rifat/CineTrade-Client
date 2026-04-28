@@ -81,7 +81,6 @@ export const ModernAreaChart = ({ data, color }) => (
         strokeWidth={4}
         fillOpacity={1}
         fill={`url(#g-${color})`}
-        // Animation for better UX
         animationBegin={0}
         animationDuration={1500}
         animationEasing="ease-in-out"
