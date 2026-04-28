@@ -14,8 +14,8 @@ import {
   FaClock,
   FaThLarge,
 } from "react-icons/fa";
-import Logo from "../Pages/Shared/components/Logo";
 import { useAuth } from "../hooks/useAuth";
+import Logo from "../components/shared/Logo";
 
 const DashboardLayout = () => {
   const { user } = useAuth();

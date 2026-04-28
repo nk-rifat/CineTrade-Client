@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
-import Field from "../../Shared/components/Field";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { useAuth } from "../../../hooks/useAuth";
+import Field from "../../../components/shared/Field";
 
 const RegisterForm = () => {
   const navigate = useNavigate();

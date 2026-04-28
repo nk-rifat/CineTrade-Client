@@ -1,8 +1,8 @@
 import { useSearchParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import MovieCard from "../../Shared/components/MovieCard";
 import Loading from "../../../Components/Shared/Loading";
+import MovieCard from "../../../components/shared/MovieCard";
 
 const MoviesByGenres = () => {
   const [searchParams] = useSearchParams();
