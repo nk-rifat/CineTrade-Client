@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useGenres } from "../../../hooks/useGenres";
 import { motion } from "framer-motion";
+import Loading from "../../../Components/Shared/Loading";
 
 // 1. Container controls the "stagger" orchestrating the children
 const containerVariants = {
@@ -43,11 +44,7 @@ const GenresSection = () => {
   const { data: genres, isLoading } = useGenres();
 
   if (isLoading) {
-    return (
-      <div className="flex justify-center p-10 w-full bg-[#050505]">
-        <span className="loading loading-spinner loading-sm text-amber-500"></span>
-      </div>
-    );
+    return <Loading />;
   }
 
   return (
