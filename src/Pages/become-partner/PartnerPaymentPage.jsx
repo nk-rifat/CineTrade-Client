@@ -5,6 +5,7 @@ import Loading from "../../Components/Shared/Loading";
 import Error from "../../Components/Shared/Error";
 import Payment from "../stripe-payment/Payment";
 import PaymentForm from "../stripe-payment/PaymentForm";
+import { useEffect } from "react";
 
 const PartnerPaymentPage = () => {
   const { id } = useParams();
@@ -23,6 +24,10 @@ const PartnerPaymentPage = () => {
       return res.data;
     },
   });
+
+  useEffect(() => {
+    document.title = "CineTrade - Partner Payment";
+  }, []);
 
   if (isLoading) {
     return (

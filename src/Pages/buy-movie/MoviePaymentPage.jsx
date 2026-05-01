@@ -5,6 +5,7 @@ import Loading from "../../Components/Shared/Loading";
 import Error from "../../Components/Shared/Error";
 import Payment from "../stripe-payment/Payment";
 import PaymentForm from "../stripe-payment/PaymentForm";
+import { useEffect } from "react";
 
 const MoviePaymentPage = () => {
   const { id } = useParams();
@@ -23,6 +24,10 @@ const MoviePaymentPage = () => {
       return res.data;
     },
   });
+
+  useEffect(() => {
+    document.title = "CineTrade - Buy Movie";
+  }, []);
 
   if (isLoading) {
     return <Loading fullPage={true} />;

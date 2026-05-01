@@ -6,6 +6,7 @@ import WatchMoviePlayer from "./Components/WatchMoviePlayer";
 import Loading from "../../Components/Shared/Loading";
 import Error from "../../Components/Shared/Error";
 import { formatMinutesToHours } from "../../utils/formatMinutesToHours";
+import { useEffect } from "react";
 
 const WatchMovie = () => {
   const { id } = useParams();
@@ -27,6 +28,11 @@ const WatchMovie = () => {
     enabled: !!id,
     retry: 1,
   });
+
+  useEffect(() => {
+    document.title = "CineTrade - Watch Movie";
+  }, []);
+
   if (isLoading) {
     return <Loading message="Buffering Stream..." fullPage={true} />;
   }

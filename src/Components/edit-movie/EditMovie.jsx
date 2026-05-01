@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams, useNavigate } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -118,6 +118,10 @@ const EditMovie = () => {
       setIsUploading(false);
     }
   };
+
+  useEffect(() => {
+    document.title = "CineTrade - Edit Movie";
+  }, []);
 
   if (isLoading)
     return <Loading message="Fetching Movie Data..." fullPage={true} />;

@@ -52,6 +52,12 @@ const MovieDetails = () => {
     }
   }, [id, user?.role]);
 
+  useEffect(() => {
+    if (movie?.title) {
+      document.title = `CineTrade - ${movie.title}`;
+    }
+  }, [movie]);
+
   if (isLoading) {
     return <Loading message="Unrolling Film..." fullPage={true} />;
   }

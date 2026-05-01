@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 import {
   FaFilm,
   FaHistory,
@@ -17,15 +17,23 @@ import {
 import Logo from "../components/shared/Logo";
 import useCurrentUser from "../hooks/useCurrentUser";
 import Loading from "../Components/Shared/Loading";
+import { useEffect } from "react";
+import { getPageTitle } from "../utils/getPageTitle";
 
 const DashboardLayout = () => {
   const { data: currentUser, isLoading } = useCurrentUser();
+  const location = useLocation();
   const navLinkClass = ({ isActive }) =>
     `flex items-center gap-3 px-4 py-2 rounded-lg transition-all duration-200 ${
       isActive
         ? "bg-red-600 text-white shadow-md"
         : "hover:bg-slate-800 hover:text-white"
     }`;
+
+  // Dashboard title control
+  useEffect(() => {
+    document.title = `CineTrade - ${getPageTitle(location.pathname)}`;
+  }, [location.pathname]);
 
   if (isLoading) {
     return <Loading message="Loading Dashboard..." fullPage={true} />;
