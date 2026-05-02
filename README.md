@@ -6,7 +6,7 @@
 
 ## 🔗 Project Resources
 
-- **Live Application:**
+- **Live Application:** [Live-link](https://cine-trade.netlify.app)
 - **Client-Side Source:** [CineTrade-Client](https://github.com/nk-rifat/CineTrade-Client)
 - **Server-Side Source:** [CineTrade-Server](https://github.com/nk-rifat/cineTrade-Server)
 
