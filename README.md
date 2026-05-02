@@ -99,16 +99,6 @@ CineTrade bridges the gap between digital content creators and consumers. Built 
 
 ---
 
-## 📂 Core Architecture Highlights
-
-- **Custom Authorization Middleware:** Decoupled security architecture that keeps route handlers clean, modular, and maintainable.
-
-- **Revenue Sharing Engine:** Server-side logic automatically calculates partner payouts and platform commissions to ensure financial accuracy.
-
-- **Modern REST API Design:** Clean, scalable, and well-structured endpoints built to support future growth and feature expansion.
-
----
-
 ## 📸 Project Preview
 
 ### 🏠 Homepage
